@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Role;
+use Illuminate\Support\Facades\Mail;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Config;
 
 class AuthController extends Controller
 {
@@ -82,5 +84,33 @@ class AuthController extends Controller
             'active'    => 0,
             'role_id'   => $roleId
         ]);
+    }
+
+    /**
+     * Sends activation key
+     *
+     * @param $activationCode
+     */
+    protected function sendActivation($email, $name, $activationCode) {
+        Mail::send('emails.activate', ['activationCode' => $activationCode], function($message) use ($email, $name, $activationCode){
+            $message
+                ->to($email, $name)
+                ->subject('Aktiviraj račun');
+        });
+    }
+
+    /**
+     * Poskrbi za aktivacijo racuna
+     *
+     * @param $activationCode
+     */
+    public function activate($activationCode) {
+        $user = User::where('activate_token', $activationCode)->first();
+
+        $user->active = 1;
+        $user->activate_token = null;
+        $user->save();
+
+        return redirect(Config::get('paths.root'))->withErrors(['success' => 'Račun uspešno aktiviran']);
     }
 }

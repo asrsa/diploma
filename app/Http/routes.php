@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('account/activate/{activationCode}', 'Auth\AuthController@activate');
+
 Route::auth();
 
 Route::group(['middleware' => 'web'], function() {
