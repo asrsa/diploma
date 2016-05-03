@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -49,9 +50,12 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'firstName' => 'required|max:50',
+            'lastName' => 'required|max:50',
+            'gender' => 'required',
+            'birthday' => 'required',
+            'email' => 'required|email|max:100|unique:users',
+            'password' => 'required|min:5|confirmed',
         ]);
     }
 
@@ -63,10 +67,20 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        $roleId = Role::where('title', 'user')->first()->id;
+        $secretCode = $data['email'] . rand(1,999999);
+        $activateToken = hash('md5', $secretCode);
+
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'email'     => $data['email'],
+            'firstName' => $data['firstName'],
+            'lastName'  => $data['lastName'],
+            'password'  => bcrypt($data['password']),
+            'gender'    => $data['gender'],
+            'birthday'  => $data['birthday'],
+            'activate_token' => $activateToken,
+            'active'    => 0,
+            'role_id'   => $roleId
         ]);
     }
 }

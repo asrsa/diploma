@@ -2,6 +2,8 @@
 
 define('LARAVEL_START', microtime(true));
 
+ini_set('xdebug.max_nesting_level', 300);
+
 /*
 |--------------------------------------------------------------------------
 | Register The Composer Auto Loader

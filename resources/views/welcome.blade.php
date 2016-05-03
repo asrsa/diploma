@@ -8,6 +8,12 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
+                    @if ($errors->has('success'))
+                        <div class="alert alert-success">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>{{ $errors->first('success') }}</strong>
+                        </div>
+                    @endif
                     Your Application's Landing Page.
                 </div>
             </div>
