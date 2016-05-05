@@ -97,7 +97,12 @@ return [
         ],
         'password' => [
             'min' => 'Geslo mora biti dolgo vsaj 6 znakov.',
-            'confirmed' => "Gesli se morata ujemati."
+            'confirmed' => 'Gesli se morata ujemati.'
+        ],
+        'image' => [
+            'required' => 'Izberi sliko.',
+            'max' => 'Slika ne sme biti večja od :max kb.',
+            'mimes' => 'Slika mora biti tipa: :values.',
         ]
     ],
 

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class AccountController extends Controller
 {
@@ -21,7 +23,34 @@ class AccountController extends Controller
         return view('account\settings', ['img_name' => $img]);
     }
 
+    //upload nove avatar slike
     public function avatarChange(Request $request) {
-        dd($request->input());
+        $user = Auth::user();
+
+        $this->validate($request, array(
+            'image' => 'required|mimes:jpeg,png,bmp|max:100'
+        ));
+
+        $img = $request->file('image');
+
+        $imgPath = $img->getRealPath();
+        $imgExt = $img->getClientOriginalExtension();
+
+        $hashed = hash('md5', $user->email);
+        $newName = $hashed.'.'.$imgExt;
+
+        $img->move('avatars', $newName);
+        //upload file
+        /*Storage::disk('public')->put(
+            $img->getClientOriginalName(),
+            file_get_contents($img->getRealPath())
+        );
+
+        dd(Storage::disk('public')->exists($img->getClientOriginalName()));*/
+
+        $user->avatar = $newName;
+        $user->save();
+
+        return Redirect::back()->withErrors(['success' => trans('views\accountPage.avatarChanged')]);
     }
 }

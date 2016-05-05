@@ -17,4 +17,6 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'account_activated' => 'Account has been successfully activated.',
     'account_activated_fail' => 'This account has already been activated.',
+
+    'unathourized' => 'You can not access this page.',
 ];

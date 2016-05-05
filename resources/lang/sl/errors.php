@@ -17,4 +17,6 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'account_activated' => 'Račun uspešno aktiviran.',
     'account_activated_fail' => 'Ta račun je že bil aktiviran.',
+
+    'unathourized' => 'Dostopa do te strani nimate.',
 ];

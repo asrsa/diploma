@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'title'   => 'Nastavitve računa',
-    'update_avatar' => 'Spremeni avatar',
-    'avatarChanged' => 'Avatar je bil spremenjen',
+    'title'   => 'User settings',
+    'update_avatar' => 'Change avatar.',
+    'avatarChanged' => 'Avatar was changed.',
 ];

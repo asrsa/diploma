@@ -19,7 +19,7 @@ class UserMiddleware
     {
         //only user can access
         if(!$request->user()->isUser()) {
-            return redirect(Config::get('paths.PATH_ROOT'))->withErrors(['error' => 'You cannot access this page']);
+            return redirect(Config::get('paths.PATH_ROOT'))->withErrors(['error' => trans('errors.unathourized')]);
         }
         return $next($request);
     }
