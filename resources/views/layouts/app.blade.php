@@ -63,6 +63,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/account') }}"><i class="fa"></i>{{trans('views\layoutPage.accountPage')}}</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>{{trans('views\layoutPage.logout')}}</a></li>
                             </ul>
                         </li>

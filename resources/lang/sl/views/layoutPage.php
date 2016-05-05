@@ -12,4 +12,5 @@ return [
     'login'     => 'Prijava',
     'register'  => 'Registracija',
     'logout'    => 'Odjava',
+    'accountPage' => 'Nastavitve',
 ];

@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password', 100);
             $table->string('gender', 1)->default('U');
             $table->date('birthday');
+            $table->string('avatar', 200)->nullable();
             $table->string('activate_token', 100)->nullable();
             $table->tinyInteger('active')->default(0);
             $table->integer('role_id')->unsigned();

@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'failed' => 'Napačen uporabnik ali geslo.',
+    'failed' => 'Wrong email or password.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'account_activated' => 'Račun uspešno aktiviran.',
-    'account_activated_fail' => 'Ta račun je že bil aktiviran.',
+    'account_activated' => 'Account has been successfully activated.',
+    'account_activated_fail' => 'This account has already been activated.',
 ];

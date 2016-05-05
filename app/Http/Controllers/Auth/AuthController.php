@@ -41,6 +41,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        //$this->middleware('web');
     }
 
     /**
@@ -80,6 +81,7 @@ class AuthController extends Controller
             'password'  => bcrypt($data['password']),
             'gender'    => $data['gender'],
             'birthday'  => $data['birthday'],
+            'avatar'    => Config::get('constants.AVATAR_DEFAULT'),
             'activate_token' => $activateToken,
             'active'    => 0,
             'role_id'   => $roleId
@@ -107,10 +109,13 @@ class AuthController extends Controller
     public function activate($activationCode) {
         $user = User::where('activate_token', $activationCode)->first();
 
+        if(!isset($user)) {
+            return redirect(Config::get('paths.PATH_ROOT').'login')->withErrors(['success' => trans('errors.account_activated_fail')]);
+        }
         $user->active = 1;
         $user->activate_token = null;
         $user->save();
 
-        return redirect(Config::get('paths.root'))->withErrors(['success' => 'Račun uspešno aktiviran']);
+        return redirect(Config::get('paths.PATH_ROOT').'login')->withErrors(['success' => trans('errors.account_activated')]);
     }
 }

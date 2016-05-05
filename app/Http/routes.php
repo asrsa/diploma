@@ -11,15 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('account/activate/{activationCode}', 'Auth\AuthController@activate');
 
 Route::auth();
 
-Route::group(['middleware' => 'web'], function() {
+Route::group(['middlewareGroups' => ['web']], function() {
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
     Route::get('/home', 'HomeController@index');
+    Route::get('/account', 'AccountController@index')->name('account');
+    Route::post('/avatar/change', 'AccountController@avatarChange');
 });

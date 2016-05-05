@@ -8,6 +8,12 @@
                 <div class="panel-heading">{!!trans('views\loginPage.login')!!}</div>
                 <div class="panel-body">
 
+                    @if ($errors->has('success'))
+                        <div class="alert alert-success">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>{{ $errors->first('success') }}</strong>
+                        </div>
+                    @endif
                     @if ($errors->has('active'))
                         <div class="alert alert-warning">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -22,7 +28,7 @@
                             <label class="col-md-4 control-label">{{trans('views\loginPage.email')}}</label>
 
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ Cookie::get('rememberUser')}}"> {{--old('email')--}}
+                                <input type="email" class="form-control" name="email" value="{{ Cookie::get('rememberUser') == ''? old('email') : Cookie::get('rememberUser')}}">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">

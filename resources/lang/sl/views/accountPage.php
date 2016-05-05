@@ -5,13 +5,9 @@ return [
     /*
     |--------------------------------------------------------------------------
     | Sporocila uporabljena v viewih
-    | ENGLISH
     |--------------------------------------------------------------------------
     */
-    'siteName'  => 'News',
-    'home'      => 'Home',
-    'login'     => 'Login',
-    'register'  => 'Register',
-    'logout'    => 'Logout',
-    'accountPage' => 'Settings',
+
+    'title'   => 'Nastavitve računa',
+    'update_avatar' => 'Spremeni avatar',
 ];

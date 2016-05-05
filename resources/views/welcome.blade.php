@@ -14,6 +14,12 @@
                             <strong>{{ $errors->first('success') }}</strong>
                         </div>
                     @endif
+                    @if ($errors->has('error'))
+                        <div class="alert alert-danger">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>{{ $errors->first('error') }}</strong>
+                        </div>
+                    @endif
                     Your Application's Landing Page.
                 </div>
             </div>

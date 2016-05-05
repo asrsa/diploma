@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Config;
 
 class User extends Authenticatable
 {
@@ -19,12 +20,26 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'name', 'firstName', 'lastName', 'gender', 'birthday', 'role_id', 'password', 'activate_token'
+        'email', 'name', 'firstName', 'lastName', 'gender', 'birthday', 'role_id', 'password', 'avatar', 'activate_token'
     ];
 
     protected $hidden = [
-        'remember_token'
+        'password', 'remember_token'
     ];
+
+
+    public function isAdmin() {
+        return $this->role->id == Config::get('constants.ROLE_ADMIN');
+    }
+
+    public function isAuthor() {
+        return $this->role->id == Config::get('constants.ROLE_AUTHOR');
+    }
+
+    public function isUser() {
+        return $this->role->id == Config::get('constants.ROLE_USER');
+    }
+
 
     public function role() {
         return $this->belongsTo('App\Role');

@@ -73,7 +73,7 @@ trait RegistersUsers
 
         $this->sendActivation($email, $name, $code);
 
-        return redirect(Config::get('paths.root'))->withErrors(['success' => 'Registracija uspešna!']);
+        return redirect(Config::get('paths.PATH_ROOT'))->withErrors(['success' => 'Registracija uspešna!']);
     }
 
     /**
