@@ -80,6 +80,12 @@ trait AuthenticatesUsers
         if($request->has('remember')) {
             $this->remember = $credentials['email'];
         }
+        /*else {
+            $oldCookie = \Illuminate\Support\Facades\Request::cookie(Config::get('constants.REMEMBER_COOKIE_NAME'));
+            if($oldCookie === $credentials['email']) {
+                $this->remember = $credentials['email'];
+            }
+        }*/
 
         //ce uporabnik ni aktiviran se ne more prijaviti
         $user = User::where('email', $credentials['email'])->first();
@@ -136,9 +142,15 @@ trait AuthenticatesUsers
             return $this->authenticated($request, Auth::guard($this->getGuard())->user());
         }
 
-        return redirect()
-            ->intended($this->redirectPath())
-            ->withCookie(cookie(Config::get('constants.REMEMBER_COOKIE_NAME'), $this->remember, Config::get('constants.REMEMBER_COOKIE_MINUTES')));
+        if($this->remember != '') {
+            return redirect()
+                ->intended($this->redirectPath())
+                ->withCookie(cookie(Config::get('constants.REMEMBER_COOKIE_NAME'), $this->remember, Config::get('constants.REMEMBER_COOKIE_MINUTES')));
+        }
+        else {
+            return redirect()
+                ->intended($this->redirectPath());
+        }
     }
 
     /**
@@ -149,12 +161,21 @@ trait AuthenticatesUsers
      */
     protected function sendFailedLoginResponse(Request $request)
     {
-        return redirect()->back()
-            ->withInput($request->only($this->loginUsername(), 'remember'))
-            ->withCookie(cookie(Config::get('constants.REMEMBER_COOKIE_NAME'), $this->remember, Config::get('constants.REMEMBER_COOKIE_MINUTES')))
-            ->withErrors([
-                $this->loginUsername() => $this->getFailedLoginMessage(),
-            ]);
+        if($this->remember != '') {
+            return redirect()->back()
+                ->withInput($request->only($this->loginUsername(), 'remember'))
+                ->withCookie(cookie(Config::get('constants.REMEMBER_COOKIE_NAME'), $this->remember, Config::get('constants.REMEMBER_COOKIE_MINUTES')))
+                ->withErrors([
+                    $this->loginUsername() => $this->getFailedLoginMessage(),
+                ]);
+        }
+        else {
+            return redirect()->back()
+                ->withInput($request->only($this->loginUsername(), 'remember'))
+                ->withErrors([
+                    $this->loginUsername() => $this->getFailedLoginMessage(),
+                ]);
+        }
     }
 
     /**
@@ -177,12 +198,21 @@ trait AuthenticatesUsers
      */
     protected function sendNonActiveResponse(Request $request)
     {
-        return redirect()->back()
-            ->withInput($request->only($this->loginUsername(), 'remember'))
-            ->withCookie(cookie(Config::get('constants.REMEMBER_COOKIE_NAME'), $this->remember, Config::get('constants.REMEMBER_COOKIE_MINUTES')))
-            ->withErrors([
-                'active' => $this->getNonActiveMessage(),
-            ]);
+        if($this->remember != '') {
+            return redirect()->back()
+                ->withInput($request->only($this->loginUsername(), 'remember'))
+                ->withCookie(cookie(Config::get('constants.REMEMBER_COOKIE_NAME'), $this->remember, Config::get('constants.REMEMBER_COOKIE_MINUTES')))
+                ->withErrors([
+                    'active' => $this->getNonActiveMessage(),
+                ]);
+        }
+        else {
+            return redirect()->back()
+                ->withInput($request->only($this->loginUsername(), 'remember'))
+                ->withErrors([
+                    'active' => $this->getNonActiveMessage(),
+                ]);
+        }
     }
 
     /**
