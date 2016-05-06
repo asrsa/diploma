@@ -22,6 +22,10 @@ Route::group(['middlewareGroups' => ['web']], function() {
     });
 
     Route::get('/home', 'HomeController@index');
+
+    //user account routes
     Route::get('/account', 'AccountController@index')->name('account');
     Route::post('/avatar/change', 'AccountController@avatarChange');
+    Route::get('/account/password', 'AccountController@showReset')->name('resetPassword');
+    Route::post('/account/password/reset', 'AccountController@resetPassword');
 });

@@ -63,4 +63,24 @@ class AccountController extends Controller
 
         return Redirect::back()->withErrors(['success' => trans('views\accountPage.avatarChanged')]);
     }
+
+    //password resets
+    public function showReset() {
+        return view('account.resetPassword');
+    }
+
+    //reset password
+    public function resetPassword(Request $request) {
+        $user = Auth::user();
+
+        $this->validate($request, array(
+            'password' => 'required|min:6|confirmed',
+        ));
+
+        $user->forceFill(array(
+            'password' => bcrypt($request->input('password'))
+        ))->save();
+
+        return Redirect::route('account')->withErrors(['success' => trans('views\accountPage.passwordResetSuccess')]);
+    }
 }

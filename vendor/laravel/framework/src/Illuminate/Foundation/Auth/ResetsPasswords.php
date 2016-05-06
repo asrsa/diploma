@@ -218,7 +218,7 @@ trait ResetsPasswords
         return [
             'token' => 'required',
             'email' => 'required|email',
-            'password' => 'required|confirmed|min:5',
+            'password' => 'required|confirmed|min:6',
         ];
     }
 

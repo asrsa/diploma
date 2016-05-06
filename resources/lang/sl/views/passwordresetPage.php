@@ -8,9 +8,9 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'reset'     => 'Poenostavitev gesla',
+    'reset'     => 'Spremeni geslo',
     'email'     => 'Elektronski naslov',
     'password'  => 'Geslo',
     'password2' => 'Ponovi geslo',
-    'resetPassword' => 'Poenostavi geslo',
+    'resetPassword' => 'Spremeni geslo',
 ];
