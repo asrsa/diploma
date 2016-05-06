@@ -103,7 +103,10 @@ return [
             'required' => 'Izberi sliko.',
             'max' => 'Slika ne sme biti večja od :max kb.',
             'mimes' => 'Slika mora biti tipa: :values.',
-        ]
+        ],
+        'email' => [
+            'unique' => 'Ta uporabnik je že zaseden',
+        ],
     ],
 
     /*

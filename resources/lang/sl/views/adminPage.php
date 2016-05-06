@@ -7,11 +7,9 @@ return [
     | Sporocila uporabljena v viewih
     |--------------------------------------------------------------------------
     */
-    'siteName'  => 'Novice',
-    'home'      => 'Domov',
-    'login'     => 'Prijava',
-    'register'  => 'Registracija',
-    'logout'    => 'Odjava',
-    'accountPage' => 'Nastavitve',
-    'adminPage' => 'Nastavitve',
+
+    'title'   => 'Nastavitve',
+    'addAuthor' => 'Dodaj avtorja',
+    'addAuthorTitle' => 'Registriraj avtorja',
+    'addAuthorSuccess' => 'Avtor uspešno dodan.',
 ];

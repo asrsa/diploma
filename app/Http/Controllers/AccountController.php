@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 class AccountController extends Controller
 {
     public function __construct() {
-        $this->middleware('user');
+        $this->middleware(['auth', 'user']);
     }
 
     public function index() {

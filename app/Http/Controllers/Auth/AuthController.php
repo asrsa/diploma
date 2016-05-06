@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Role;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -70,7 +71,8 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        $roleId = Role::where('title', 'user')->first()->id;
+        //$roleId = Role::where('title', 'user')->first()->id;
+        $roleId = Config::get('constants.ROLE_USER');
         $secretCode = $data['email'] . rand(1,999999);
         $activateToken = hash('md5', $secretCode);
 
@@ -97,7 +99,7 @@ class AuthController extends Controller
         Mail::send('emails.activate', ['activationCode' => $activationCode], function($message) use ($email, $name, $activationCode){
             $message
                 ->to($email, $name)
-                ->subject('Aktiviraj račun');
+                ->subject(trans('emails\registerMail.activateAccount'));
         });
     }
 
@@ -114,6 +116,37 @@ class AuthController extends Controller
         }
         $user->active = 1;
         $user->activate_token = null;
+        $user->save();
+
+        return redirect(Config::get('paths.PATH_ROOT').'login')->withErrors(['success' => trans('errors.account_activated')]);
+    }
+
+
+    /**
+     * Poskrbi za aktivacijo avtorja
+     *
+     * @param $activationCode
+     */
+    public function activateAuthor($activationCode) {
+        $user = User::where('activate_token', $activationCode)->first();
+
+        if(!isset($user)) {
+            return redirect(Config::get('paths.PATH_ROOT').'login')->withErrors(['success' => trans('errors.account_activated_fail')]);
+        }
+
+        return view('author\activateAccount', ['code' => $activationCode]);
+    }
+
+    public function postActivateAuthor(Request $request, $activationCode) {
+        $this->validate($request, array(
+            'password' => 'required|min:6|confirmed',
+        ));
+
+        $user = User::where('activate_token', $activationCode)->first();
+
+        $user->active = 1;
+        $user->activate_token = null;
+        $user->password = bcrypt($request->input('password'));
         $user->save();
 
         return redirect(Config::get('paths.PATH_ROOT').'login')->withErrors(['success' => trans('errors.account_activated')]);

@@ -5,10 +5,10 @@
     </head>
 
     <body>
-        <h1>Aktivacija vašega računa</h1>
+        <h1>{{ trans('emails\registerMail.activateAccountTitle') }}</h1>
         <p>
-            Odprite to povezavo za aktivacijo računa:
-            {{ URL::to('account/activate/'. $activationCode) }}
+            {{ trans('emails\registerMail.activateAccountBody') }}
+            <a href="{{ URL::to('account/activate/'. $activationCode) }}" >{{ trans('emails\registerMail.activate') }}</a>
         </p>
     </body>
 </html>

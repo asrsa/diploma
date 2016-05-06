@@ -63,7 +63,14 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/account') }}"><i class="fa"></i>{{trans('views\layoutPage.accountPage')}}</a></li>
+                                @can('isUser')
+                                    <li><a href="{{ url('/account') }}"><i class="fa"></i>{{trans('views\layoutPage.accountPage')}}</a></li>
+                                @endcan
+
+                                @can('isAdmin')
+                                    <li><a href="{{ URL::route('adminIndex') }}"><i class="fa"></i>{{trans('views\layoutPage.adminPage')}}</a></li>
+                                @endcan
+
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>{{trans('views\layoutPage.logout')}}</a></li>
                             </ul>
                         </li>
