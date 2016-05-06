@@ -18,7 +18,18 @@ class AccountController extends Controller
 
     public function index() {
         $user = Auth::user();
-        $img  = isset($user->avatar)? $user->avatar : Config::get('constants.AVATAR_DEFAULT');
+
+        if(isset($user->avatar)) {
+            if(Storage::disk('avatars')->exists($user->avatar)) {
+                $img = $user->avatar;
+            }
+            else {
+                $img = Config::get('constants.AVATAR_DEFAULT');
+            }
+        }
+        else {
+            $img = Config::get('constants.AVATAR_DEFAULT');
+        }
 
         return view('account\settings', ['img_name' => $img]);
     }
@@ -39,14 +50,13 @@ class AccountController extends Controller
         $hashed = hash('md5', $user->email);
         $newName = $hashed.'.'.$imgExt;
 
-        $img->move('avatars', $newName);
+        //$img->move('avatars', $newName);
         //upload file
-        /*Storage::disk('public')->put(
-            $img->getClientOriginalName(),
+        Storage::disk('avatars')->put(
+            $newName,
             file_get_contents($img->getRealPath())
         );
 
-        dd(Storage::disk('public')->exists($img->getClientOriginalName()));*/
 
         $user->avatar = $newName;
         $user->save();
