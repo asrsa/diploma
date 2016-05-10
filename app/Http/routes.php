@@ -42,4 +42,5 @@ Route::group(['middlewareGroups' => ['web']], function() {
     //author account routes
     Route::get('/news/create', 'AuthorController@createNewsGet')->name('createNews');
     Route::post('/news/create', 'AuthorController@createNewsPost');
+    Route::post('/image/upload', 'AuthorController@uploadImage');
 });
