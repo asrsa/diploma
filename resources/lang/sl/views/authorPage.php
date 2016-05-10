@@ -12,4 +12,5 @@ return [
     'setPassword'   => 'Nastavi geslo',
     'createNewsMenu' => 'Dodaj novice',
     'createNews'    => 'Dodaj novice',
+    'createNewsSubmit' => 'Dodaj novico',
 ];

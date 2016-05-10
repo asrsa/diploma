@@ -11,11 +11,23 @@
                         <div class="form-group">
                             <form class="form-horizontal" role="form" method="POST" action="{{ URL::to('news/create') }}">
                                 {!! csrf_field() !!}
+
+                                <select name="category">
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                                    @endforeach
+                                </select>
+                                <select name="subcategory">
+                                    @foreach($subcategories as $subcategory)
+                                        <option value="{{ $subcategory['id'] }}">{{ $subcategory['name'] }}</option>
+                                    @endforeach
+                                </select>
+
                                 <textarea class="form-control" name="body" rows="20"></textarea>
                                 <br/>
                                     <div class="">
                                         <button type="submit" class="btn btn-primary">
-                                            <i class="fa fa-btn fa-refresh"></i>{{trans('views\authorPage.setPassword')}}
+                                            <i class="fa fa-btn fa-refresh"></i>{{trans('views\authorPage.createNewsSubmit')}}
                                         </button>
                                     </div>
                             </form>

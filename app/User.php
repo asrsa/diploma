@@ -44,4 +44,16 @@ class User extends Authenticatable
     public function role() {
         return $this->belongsTo('App\Role');
     }
+
+    public function news() {
+        return $this->hasMany('App\News');
+    }
+
+    public function comment() {
+        return $this->hasMany('App\Comment');
+    }
+
+    public function like() {
+        return $this->hasMany('App\Like');
+    }
 }
