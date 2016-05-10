@@ -38,4 +38,8 @@ Route::group(['middlewareGroups' => ['web']], function() {
     Route::get('/admin', 'AdminController@index')->name('adminIndex');
     Route::get('/admin/author/add', 'AdminController@addAuthor')->name('addAuthor');
     Route::post('/admin/author/add', 'AdminController@registerAuthor')->name('registerAuthor');
+
+    //author account routes
+    Route::get('/news/create', 'AuthorController@createNewsGet')->name('createNews');
+    Route::post('/news/create', 'AuthorController@createNewsPost');
 });
