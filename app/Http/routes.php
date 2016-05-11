@@ -22,11 +22,13 @@ Route::auth();
 
 Route::group(['middlewareGroups' => ['web']], function() {
 
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('index');
-
+    Route::get('/', 'NewsController@index')->name('index');
     Route::get('/home', 'HomeController@index')->name('home');
+
+
+    //news
+    Route::get('/news/{id}', 'NewsController@showNews')->name('individualNews');
+
 
     //user account routes
     Route::get('/account', 'AccountController@index')->name('account');
@@ -44,3 +46,6 @@ Route::group(['middlewareGroups' => ['web']], function() {
     Route::post('/news/create', 'AuthorController@createNewsPost');
     Route::post('/image/upload', 'AuthorController@uploadImage');
 });
+
+//AJAX routes
+Route::get('/ajax/subcategory', 'AuthorController@getSubcategories');

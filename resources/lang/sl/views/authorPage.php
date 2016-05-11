@@ -17,4 +17,8 @@ return [
     'newsTitle' => 'Naslov',
     'bodyEmpty' => 'Novica je prazna',
     'newsSuccess' => 'Novica uspešno ustvarjena.',
+    'chooseCat' => 'Izberi kategorijo',
+    'category' => 'Kategorija',
+    'subcategory' => 'Podkategorija',
+    'chooseImage' => 'Izberi sliko',
 ];

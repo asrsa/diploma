@@ -26,34 +26,53 @@
                                 <strong>{{ trans('views\authorPage.bodyEmpty') }}</strong>
                             </div>
                         @endif
-
+{{--feedback-------------------------------------------------------------------------------------------------------------------}}
                         <div class="form-group">
                             <form class="form-horizontal" role="form" method="POST" action="{{ URL::to('news/create') }}">
                                 {!! csrf_field() !!}
 
-                                <select name="category">
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
-                                    @endforeach
-                                </select>
-                                <select name="subcategory">
-                                    @foreach($subcategories as $subcategory)
-                                        <option value="{{ $subcategory['id'] }}">{{ $subcategory['name'] }}</option>
-                                    @endforeach
-                                </select>
-                                <br/>
-                                <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                                    <label class="col-xs-1 control-label">{{trans('views\authorPage.newsTitle')}}</label>
-                                    <div class="col-xs-6">
-                                        <input type="text" class="form-control" name="title">
-
-                                        @if ($errors->has('title'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('title') }}</strong>
-                                            </span>
-                                        @endif
+                                <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}">
+                                    <label class="col-sm-1 control-label">{{trans('views\authorPage.category')}}</label>
+                                    <div class="col-sm-2 col-sm-offset-1">
+                                        <select class="form-control" name="category" id="category">
+                                            <option value="">{{ trans('views\authorPage.chooseCat') }}</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
+
+
+                                <div class="form-group{{ $errors->has('subcategory') ? ' has-error' : '' }}">
+                                    <label class="col-sm-1 control-label">{{trans('views\authorPage.subcategory')}}</label>
+                                    <div class="col-sm-2 col-sm-offset-1">
+                                        <select class="form-control" name="subcategory" id="subcategory" style="width: 100px;">
+                                            {{--@foreach($subcategories as $subcategory)--}}
+                                            {{--<option value="{{ $subcategory['id'] }}">{{ $subcategory['name'] }}</option>--}}
+                                            {{--@endforeach--}}
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                                    <label class="col-sm-1 control-label">{{trans('views\authorPage.newsTitle')}}</label>
+                                    <div class="col-sm-6 col-sm-offset-1">
+                                        <input type="text" id="title" class="form-control" name="title">
+
+                                    </div>
+                                </div>
+
+                                <div class="input-group{{ $errors->has('image') ? ' has-error' : '' }}">
+                                    <span class="input-group-btn">
+                                        <a id="lfm" data-input="image" data-preview="holder" class="btn btn-primary">
+                                            <i class="fa fa-picture-o"></i> {{ trans('views\authorPage.chooseImage') }}
+                                        </a>
+                                    </span>
+                                    <input id="image" class="form-control" type="text" name="image">
+                                </div>
+                                <img id="holder" style="margin-top:15px;max-height:100px;">
 
                                 <textarea class="form-control" name="body" rows="20"></textarea>
                                 <br/>
@@ -108,5 +127,10 @@
 
         tinymce.init(editor_config);
     </script>
+@endsection
+
+@section('scripts')
+    <script type="text/javascript" src="{{ URL::asset('js/createNews.js') }}"></script>
+    <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
 @endsection
 

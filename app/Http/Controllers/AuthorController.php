@@ -8,9 +8,9 @@ use App\Subcategory;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Route;
 use Response;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
 
 class AuthorController extends Controller
 {
@@ -27,41 +27,35 @@ class AuthorController extends Controller
     public function createNewsPost(Request $request) {
         $this->validate($request, array(
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'category'=> 'required',
+            'subcategory'=> 'required',
+            'image' => 'required',
         ));
 
         $title = $request->Input('title');
         $body = $request->Input('body');
         $subcat = $request->Input('subcategory');
         $user = $request->user()->id;
+        $image = $request->Input('image');
 
         $news = new News();
         $news->title = $title;
         $news->body = $body;
         $news->user_id = $user;
         $news->subcategory_id = $subcat;
+        $news->image = $image;
 
         $news->save();
 
         return Redirect::route('index')->withErrors(['success' => trans('views\authorPage.newsSuccess')]);
     }
 
-    /*public function uploadImage(Request $request) {
-        $image = $request->file('image');
-        $ext = $image->getClientOriginalExtension();
-        $imageExtensions = array('jpg', 'bmp', 'png');
+    //ajax
+    public function getSubcategories(Request $request) {
+        $catId = (int) $request->query('catId');
+        $result = Subcategory::all()->where('category_id', $catId);
 
-        if(!in_array($ext, $imageExtensions)) {
-            return Redirect::back()->withErrors(['error' => trans('views\authorPage.wrongFileUpload')]);
-        }
-
-        $newName = hash('md5', $image->getClientOriginalName()) . '.' . $ext;
-
-        Storage::disk('images')->put(
-            $newName,
-            file_get_contents($image->getRealPath())
-        );
-
-        $newPath = 'media/images/' . $newName;
-    }*/
+        return response()->json($result);
+    }
 }
