@@ -92,24 +92,25 @@
                         </div>
 
 
-                            <div id="commentsContainer" class="container col-md-7 col-md-offset-0">
-                                @foreach($comments as $comment)
-                                    <div id="childRow" class="row">
-                                        <div class="panel">
-                                            <div class="col-md-2">
-                                                <img src="{{ Config::get('paths.PATH_PUBLIC_AVATARS') .'/'. $comment->avatar }}" style="width: 46px; height: 46px;">
-                                                <p>{{ $comment->firstName }}</p>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <p>{{ $comment->body }}</p>
-                                            </div>
-
+                        <div id="commentsContainer" class="container col-md-7 col-md-offset-0">
+                            <a name="comments"></a>
+                            @foreach($comments as $comment)
+                                <div id="childRow" class="row">
+                                    <div class="panel">
+                                        <div class="col-md-2">
+                                            <img src="{{ Config::get('paths.PATH_PUBLIC_AVATARS') .'/'. $comment->avatar }}" style="width: 46px; height: 46px;">
+                                            <p>{{ $comment->firstName }}</p>
                                         </div>
+                                        <div class="col-md-10">
+                                            <p>{{ $comment->body }}</p>
+                                        </div>
+
                                     </div>
-                                @endforeach
-                                <div id="ajaxAdd"></div>
-                                {{ $comments->links() }}
-                            </div>
+                                </div>
+                            @endforeach
+                            <div id="ajaxAdd"></div>
+                            {{ $comments->appends(Request::except('page'))->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

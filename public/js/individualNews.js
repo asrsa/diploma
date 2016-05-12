@@ -1,5 +1,19 @@
 $(document).ready(function() {
 
+    //dodaj anchor na konec ce je page=x
+    var splitUrls      = window.location.href.split('?');
+    var page = null;
+
+    splitUrls.forEach(function(el) {
+        if(el.substring(0,4) == 'page'){
+            page = el.split('=')[1];
+        }
+    })
+
+    if(page != null) {
+        window.location = window.location.href + '#comments';
+    }
+
     //klik na 'pokazi komentarje'
     $('#showComments').click(function() {
         $('#commentsContainer').removeClass('hidden');
