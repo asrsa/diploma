@@ -18,6 +18,14 @@ $(document).ready(function() {
     $('#postComments').click(function() {
         $('#postCommentContainer').removeClass('hidden');
         $('#postComments').addClass('hidden');
+        $('#closeCommentForm').removeClass('hidden');
+    });
+
+    //klik na 'krizec'
+    $('#closeCommentForm').click(function() {
+        $('#postCommentContainer').addClass('hidden');
+        $('#postComments').removeClass('hidden');
+        $('#closeCommentForm').addClass('hidden');
     });
 
     $('#postCommentForm').click(function() {
@@ -27,7 +35,6 @@ $(document).ready(function() {
         var newsId = window.location.href.split('/');
         newsId = newsId[newsId.length - 1];
 
-        console.log(newsId);
         //errors
         var emptyComment = $('#emptyComment').text();
         var addedCommentSuccess = $('#addedCommentSuccess').text();
@@ -50,7 +57,21 @@ $(document).ready(function() {
                             '</div>'
                     );
 
-                    console.log(data);
+
+                    $('#commentsContainer').append(
+                                '<div class="row">' +
+                                    '<div class="panel">' +
+                                    '<div class="col-md-2">' +
+                                    '<img src="'+ document.location.origin +'/avatars/'+ data['user'].avatar +'" style="width: 46px; height: 46px;">' +
+                                    '<p>'+ data['user'].firstName +'</p>' +
+                                '</div>' +
+                                '<div class="col-md-10">' +
+                                '<p>'+ data['comment'].body +'</p>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>'
+                    );
+
                 }
             });
         }

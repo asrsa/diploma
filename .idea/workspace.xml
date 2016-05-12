@@ -35,11 +35,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccountController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NewsController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/NewsController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-20.26923" vertical-offset="0" max-vertical-offset="714">
+              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding>
+                <element signature="e#40#56#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccountController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AccountController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.78541374" vertical-offset="1157" max-vertical-offset="1955">
-              <caret line="101" column="12" selection-start-line="101" selection-start-column="12" selection-end-line="101" selection-end-column="12" />
+            <state vertical-scroll-proportion="-21.538462" vertical-offset="1225" max-vertical-offset="1972">
+              <caret line="105" column="60" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
               <folding>
                 <element signature="e#40#56#0#PHP" expanded="true" />
               </folding>
@@ -57,17 +69,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="individualNews.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="individualNews.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/news/individualNews.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-30.692308" vertical-offset="1157" max-vertical-offset="2074">
-              <caret line="115" column="91" selection-start-line="115" selection-start-column="91" selection-end-line="115" selection-end-column="91" />
+            <state vertical-scroll-proportion="-0.074285716" vertical-offset="1259" max-vertical-offset="2142">
+              <caret line="71" column="41" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
               <folding>
-                <element signature="e#3039#3059#0#HTML" expanded="true" />
-                <element signature="e#3322#3342#0#HTML" expanded="true" />
-                <element signature="e#3645#3665#0#HTML" expanded="true" />
-                <element signature="e#4428#4449#0#HTML" expanded="true" />
-                <element signature="e#5271#5305#0#HTML" expanded="true" />
+                <element signature="e#3046#3066#0#HTML" expanded="true" />
+                <element signature="e#3329#3349#0#HTML" expanded="true" />
+                <element signature="e#3652#3672#0#HTML" expanded="true" />
+                <element signature="e#4435#4456#0#HTML" expanded="true" />
+                <element signature="e#4870#4890#0#HTML" expanded="true" />
+                <element signature="e#5646#5680#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,9 +89,11 @@
       <file leaf-file-name="individualNews.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/individualNews.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="1190">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1547">
+              <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+              <folding>
+                <marker date="1463061198628" expanded="true" signature="2555:2581" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -135,13 +150,13 @@
         <option value="$PROJECT_DIR$/resources/views/author/createNews.blade.php" />
         <option value="$PROJECT_DIR$/resources/lang/sl/views/authorPage.php" />
         <option value="$PROJECT_DIR$/resources/views/news/news.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/NewsController.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/resources/lang/sl/views/individualNews.php" />
-        <option value="$PROJECT_DIR$/resources/views/news/individualNews.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-        <option value="$PROJECT_DIR$/public/js/individualNews.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AccountController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/NewsController.php" />
+        <option value="$PROJECT_DIR$/public/js/individualNews.js" />
+        <option value="$PROJECT_DIR$/resources/views/news/individualNews.blade.php" />
       </list>
     </option>
   </component>
@@ -452,6 +467,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985657" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -461,7 +477,6 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985657" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -494,13 +509,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21458626" vertical-offset="0" max-vertical-offset="713">
-          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/lang/sl/validation.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.86395514" vertical-offset="1203" max-vertical-offset="2227">
@@ -802,16 +810,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/NewsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5245442" vertical-offset="0" max-vertical-offset="713">
-          <caret line="22" column="58" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
-          <folding>
-            <element signature="e#40#53#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AuthorController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5357644" vertical-offset="400" max-vertical-offset="1139">
@@ -830,16 +828,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/news/individualNews.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-30.692308" vertical-offset="1157" max-vertical-offset="2074">
-          <caret line="115" column="91" selection-start-line="115" selection-start-column="91" selection-end-line="115" selection-end-column="91" />
+        <state vertical-scroll-proportion="-0.12142857" vertical-offset="153" max-vertical-offset="1717">
+          <caret line="4" column="57" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/paths.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11921459" vertical-offset="0" max-vertical-offset="713">
+          <caret line="5" column="2" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/NewsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.26923" vertical-offset="0" max-vertical-offset="714">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
-            <element signature="e#3039#3059#0#HTML" expanded="true" />
-            <element signature="e#3322#3342#0#HTML" expanded="true" />
-            <element signature="e#3645#3665#0#HTML" expanded="true" />
-            <element signature="e#4428#4449#0#HTML" expanded="true" />
-            <element signature="e#5271#5305#0#HTML" expanded="true" />
+            <element signature="e#40#56#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -852,28 +862,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AccountController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.12142857" vertical-offset="153" max-vertical-offset="1717">
-          <caret line="4" column="57" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
-          <folding />
+        <state vertical-scroll-proportion="-21.538462" vertical-offset="1225" max-vertical-offset="1972">
+          <caret line="105" column="60" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
+          <folding>
+            <element signature="e#40#56#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/individualNews.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="1190">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1547">
+          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+          <folding>
+            <marker date="1463061198628" expanded="true" signature="2555:2581" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AccountController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/news/individualNews.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.78541374" vertical-offset="1157" max-vertical-offset="1955">
-          <caret line="101" column="12" selection-start-line="101" selection-start-column="12" selection-end-line="101" selection-end-column="12" />
+        <state vertical-scroll-proportion="-0.074285716" vertical-offset="1259" max-vertical-offset="2142">
+          <caret line="71" column="41" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
           <folding>
-            <element signature="e#40#56#0#PHP" expanded="true" />
+            <element signature="e#3046#3066#0#HTML" expanded="true" />
+            <element signature="e#3329#3349#0#HTML" expanded="true" />
+            <element signature="e#3652#3672#0#HTML" expanded="true" />
+            <element signature="e#4435#4456#0#HTML" expanded="true" />
+            <element signature="e#4870#4890#0#HTML" expanded="true" />
+            <element signature="e#5646#5680#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

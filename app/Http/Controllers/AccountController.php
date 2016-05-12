@@ -102,8 +102,9 @@ class AccountController extends Controller
             $comment->save();
 
             return response()->json(['return' => 'success',
-                                    'data' => $body]
-            );
+                                    'comment' => $comment,
+                                    'user' => $comment->user
+            ]);
         }
     }
 }

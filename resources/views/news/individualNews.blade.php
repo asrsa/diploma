@@ -60,7 +60,7 @@
 
                         {{--BUTTONS--}}
                         <div class="container row col-md-7">
-                            <button id="showComments" type="button" class="btn btn-default col-md-6" style="width:150px;">
+                            <button id="showComments" type="button" class="btn btn-default col-md-6 hidden" style="width:150px;">
                                 <i class="fa fa-btn fa-refresh"></i>{{trans('views\individualNews.showComments')}}
                             </button>
                             <button id="hideComments" type="button" class="btn btn-default col-md-6 hidden" style="width:150px;">
@@ -83,28 +83,32 @@
                                         <button id="postCommentForm" type="button" class="btn btn-default">
                                             <i class="fa fa-btn fa-comment-o"></i>{{trans('views\individualNews.postComment')}}
                                         </button>
+                                        <button id="closeCommentForm" type="button" class="btn btn-default hidden" style="width: 35px;">
+                                            <i class="fa fa-btn fa-close"></i>
+                                        </button>
                                     </form>
                                 </div>
                             </div>
                         </div>
 
-                        {{--@foreach--}}
-                            <div id="commentsContainer" class="container col-md-7 col-md-offset-0 hidden">
-                                <div class="row">
-                                    <div class="panel">
-                                        <div class="col-md-2">
-                                            <img src="" style="width: 46px; height: 46px;">
-                                            <p></p>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <h4></h4>
-                                            <p></p>
-                                        </div>
 
+                            <div id="commentsContainer" class="container col-md-7 col-md-offset-0">
+                                @foreach($comments as $comment)
+                                    <div class="row">
+                                        <div class="panel">
+                                            <div class="col-md-2">
+                                                <img src="{{ Config::get('paths.PATH_PUBLIC_AVATARS') .'/'. $comment->avatar }}" style="width: 46px; height: 46px;">
+                                                <p>{{ $comment->firstName }}</p>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <p>{{ $comment->body }}</p>
+                                            </div>
+
+                                        </div>
                                     </div>
-                                </div>
+                                @endforeach
+                                {{ $comments->links() }}
                             </div>
-                        {{--@endforeach--}}
                     </div>
                 </div>
             </div>
