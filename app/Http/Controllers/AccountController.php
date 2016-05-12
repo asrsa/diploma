@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
@@ -82,5 +84,26 @@ class AccountController extends Controller
         ))->save();
 
         return Redirect::route('account')->withErrors(['success' => trans('views\accountPage.passwordResetSuccess')]);
+    }
+
+    //post comment
+    public function postComment(Request $request) {
+
+        if($request->ajax()) {
+            $body = $request->input('body');
+            $news = $request->input('news');
+            $user = $request->user()->id;
+
+            $comment = new Comment();
+            $comment->body = $body;
+            $comment->user_id = $user;
+            $comment->news_id = $news;
+
+            $comment->save();
+
+            return response()->json(['return' => 'success',
+                                    'data' => $body]
+            );
+        }
     }
 }

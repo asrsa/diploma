@@ -27,7 +27,7 @@ Route::group(['middlewareGroups' => ['web']], function() {
 
 
     //news
-    Route::get('/news/{id}', 'NewsController@showNews')->name('individualNews');
+    Route::get('/news/view/{id}', 'NewsController@showNews')->name('individualNews');
 
 
     //user account routes
@@ -49,3 +49,4 @@ Route::group(['middlewareGroups' => ['web']], function() {
 
 //AJAX routes
 Route::get('/ajax/subcategory', 'AuthorController@getSubcategories');
+Route::post('/ajax/post/comment', 'AccountController@postComment')->name('postComment');
