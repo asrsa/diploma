@@ -39,6 +39,16 @@ $(document).ready(function() {
         var emptyComment = $('#emptyComment').text();
         var addedCommentSuccess = $('#addedCommentSuccess').text();
 
+        var commentCount = $('#commentsContainer > #childRow').length;
+        var splitUrls      = window.location.href.split('?');
+        var page = null;
+
+        splitUrls.forEach(function(el) {
+            if(el.substring(0,4) == 'page'){
+                page = el.split('=')[1];
+            }
+        })
+
         if(data != '') {
             $.ajax({
                 type: 'POST',
@@ -58,20 +68,40 @@ $(document).ready(function() {
                     );
 
 
-                    $('#commentsContainer').append(
-                                '<div class="row">' +
-                                    '<div class="panel">' +
-                                    '<div class="col-md-2">' +
-                                    '<img src="'+ document.location.origin +'/avatars/'+ data['user'].avatar +'" style="width: 46px; height: 46px;">' +
-                                    '<p>'+ data['user'].firstName +'</p>' +
-                                '</div>' +
-                                '<div class="col-md-10">' +
-                                '<p>'+ data['comment'].body +'</p>' +
+                    if(commentCount <= 4) {
+                        $('#ajaxAdd').append(
+                            '<div id="childRow" class="row">' +
+                            '<div class="panel">' +
+                            '<div class="col-md-2">' +
+                            '<img src="' + document.location.origin + '/avatars/' + data['user'].avatar + '" style="width: 46px; height: 46px;">' +
+                            '<p>' + data['user'].firstName + '</p>' +
+                            '</div>' +
+                            '<div class="col-md-10">' +
+                            '<p>' + data['comment'].body + '</p>' +
                             '</div>' +
                             '</div>' +
                             '</div>'
-                    );
+                        );
+                    }
+                    else if(commentCount == 5) {
+                        //check for page=
+                        page++;
+                        window.location = splitUrls[0] + '?page=' + page;
 
+                        $('#ajaxAdd').append(
+                            '<div id="childRow" class="row">' +
+                            '<div class="panel">' +
+                            '<div class="col-md-2">' +
+                            '<img src="' + document.location.origin + '/avatars/' + data['user'].avatar + '" style="width: 46px; height: 46px;">' +
+                            '<p>' + data['user'].firstName + '</p>' +
+                            '</div>' +
+                            '<div class="col-md-10">' +
+                            '<p>' + data['comment'].body + '</p>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>'
+                        );
+                    }
                 }
             });
         }

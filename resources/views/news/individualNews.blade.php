@@ -94,7 +94,7 @@
 
                             <div id="commentsContainer" class="container col-md-7 col-md-offset-0">
                                 @foreach($comments as $comment)
-                                    <div class="row">
+                                    <div id="childRow" class="row">
                                         <div class="panel">
                                             <div class="col-md-2">
                                                 <img src="{{ Config::get('paths.PATH_PUBLIC_AVATARS') .'/'. $comment->avatar }}" style="width: 46px; height: 46px;">
@@ -107,6 +107,7 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                <div id="ajaxAdd"></div>
                                 {{ $comments->links() }}
                             </div>
                     </div>
