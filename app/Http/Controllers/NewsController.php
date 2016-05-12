@@ -31,7 +31,6 @@ class NewsController extends Controller
             ->paginate(5);
 
 
-
         return view('news\individualNews', ['news' => $news, 'comments' => $comments]);
     }
 }

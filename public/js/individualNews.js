@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     //dodaj anchor na konec ce je page=x
-    var splitUrls      = window.location.href.split('?');
+    /*var splitUrls      = window.location.href.split('?');
     splitUrls = splitUrls[1].split('&');
     var page = null;
 
@@ -14,7 +14,7 @@ $(document).ready(function() {
 
     if(page != null) {
         window.location = window.location.href + '#comments';
-    }
+    }*/
 
     //klik na 'pokazi komentarje'
     $('#showComments').click(function() {
