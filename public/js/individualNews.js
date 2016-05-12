@@ -2,12 +2,14 @@ $(document).ready(function() {
 
     //dodaj anchor na konec ce je page=x
     var splitUrls      = window.location.href.split('?');
+    splitUrls = splitUrls[1].split('&');
     var page = null;
 
     splitUrls.forEach(function(el) {
         if(el.substring(0,4) == 'page'){
             page = el.split('=')[1];
         }
+        console.log(el);
     })
 
     if(page != null) {
@@ -55,6 +57,7 @@ $(document).ready(function() {
 
         var commentCount = $('#commentsContainer > #childRow').length;
         var splitUrls      = window.location.href.split('?');
+        splitUrls = splitUrls[1].split('&');
         var page = null;
 
         splitUrls.forEach(function(el) {
