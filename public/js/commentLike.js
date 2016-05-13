@@ -28,22 +28,28 @@ $(document).ready(function() {
                 var commentId = result['cid'];
                 var likesCurr = $('#likes'+ commentId).text() == '' ? '0' : $('#likes'+ commentId).text();
                 var newLikes = parseInt(likesCurr, 10) + result['value'];
-
+                console.log(result['return']);
                 if(result['return'] === 2) {
                     //TODO
+                    //LIKE
                     $('#likes'+ commentId).text(newLikes);
                     $('#downvote' + commentId).css('color', '');
                     $('#downvote' + commentId).css('pointer-events', '');
 
                     $('#downvotea' + commentId).removeClass('not-active');
+                    $('#upvote' + commentId).css('color', 'grey');
+                    $('#upvotea' + commentId).addClass('not-active');
                     event.preventDefault();
                 }
                 else if(result['return'] === 3) {
+                    //DISLIKE
                     $('#likes'+ commentId).text(newLikes);
                     $('#upvote' + commentId).css('color', '');
                     $('#upvote' + commentId).css('pointer-events', '');
 
                     $('#upvotea' + commentId).removeClass('not-active');
+                    $('#downvote' + commentId).css('color', 'grey');
+                    $('#downvotea' + commentId).addClass('not-active');
                     event.preventDefault();
                 }
                 else if(result['return'] === 4){

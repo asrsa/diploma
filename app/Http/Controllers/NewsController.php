@@ -88,7 +88,7 @@ class NewsController extends Controller
                 $likeNew->save();
 
                 $value = 1;
-                $return = 1;
+                $return = 2;
             }
         }
         else if($type == 'down') {
@@ -121,7 +121,7 @@ class NewsController extends Controller
                 $likeNew->save();
 
                 $value = -1;
-                $return = 1;
+                $return = 3;
             }
         }
 
