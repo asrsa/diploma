@@ -7,7 +7,10 @@ use App\News;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 class NewsController extends Controller
 {
@@ -25,12 +28,20 @@ class NewsController extends Controller
         $news = News::where('id', $newsId)->get()->first();
         //$comments = Comment::where('news_id', $newsId)->get();
         $comments = DB::table('comments')
-            ->select('*')
+            ->select('comments.*', 'users.firstName', 'users.avatar')
             ->join('users', 'comments.user_id', '=', 'users.id')
             ->where('news_id', '=', $newsId)
             ->paginate(5);
 
-
         return view('news\individualNews', ['news' => $news, 'comments' => $comments]);
+    }
+
+    public function deleteComment() {
+        $commentId  = Input::get('cid');
+
+        $comment = Comment::where('id', $commentId)->get()->first();
+        $comment->delete();
+
+        return Redirect::back()->withErrors(['success' => trans('views\individualNews.commentDeleted')]);
     }
 }

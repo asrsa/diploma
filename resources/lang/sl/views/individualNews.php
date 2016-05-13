@@ -15,4 +15,6 @@ return [
     'commentAddedSuccess' => 'Komentar uspešno dodan!',
     'commentEmptyFail' => 'Komentar je prazen!',
     'commentTooLong'  => 'Komentar ima lahko samo 255 znakov.',
+    'deleteComment' => 'Izbriši komentar',
+    'commentDeleted' => 'Komentar izbrisan uspešno.',
 ];

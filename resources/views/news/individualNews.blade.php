@@ -3,23 +3,23 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-1">
+            <div class="col-md-8 col-md-8 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">{{ $news->title }}</div>
 
                     <div class="panel-body container">
-                        @if ($errors->has('success'))
-                            <div class="alert alert-success">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <strong>{{ $errors->first('success') }}</strong>
-                            </div>
-                        @endif
-                        @if ($errors->has('error'))
-                            <div class="alert alert-danger">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <strong>{{ $errors->first('error') }}</strong>
-                            </div>
-                        @endif
+                        {{--@if ($errors->has('success'))--}}
+                            {{--<div class="alert alert-success">--}}
+                                {{--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>--}}
+                                {{--<strong>{{ $errors->first('success') }}</strong>--}}
+                            {{--</div>--}}
+                        {{--@endif--}}
+                        {{--@if ($errors->has('error'))--}}
+                            {{--<div class="alert alert-danger">--}}
+                                {{--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>--}}
+                                {{--<strong>{{ $errors->first('error') }}</strong>--}}
+                            {{--</div>--}}
+                        {{--@endif--}}
 
                         <h3>{{ $news->title }}</h3>
                         <small>{{ date('j.n.Y', $news->created_at->getTimestamp()) }}</small>
@@ -29,6 +29,33 @@
                     </div>
                 </div>
             </div>
+
+            {{--<div class="col-md-3 col-md-offset-9">--}}
+                {{--<div class="panel panel-default">--}}
+                    {{--<div class="panel-heading">{{ $news->title }}</div>--}}
+
+                    {{--<div class="panel-body container">--}}
+                        {{--@if ($errors->has('success'))--}}
+                            {{--<div class="alert alert-success">--}}
+                                {{--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>--}}
+                                {{--<strong>{{ $errors->first('success') }}</strong>--}}
+                            {{--</div>--}}
+                        {{--@endif--}}
+                        {{--@if ($errors->has('error'))--}}
+                            {{--<div class="alert alert-danger">--}}
+                                {{--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>--}}
+                                {{--<strong>{{ $errors->first('error') }}</strong>--}}
+                            {{--</div>--}}
+                        {{--@endif--}}
+
+                        {{--<h3>{{ $news->title }}</h3>--}}
+                        {{--<small>{{ date('j.n.Y', $news->created_at->getTimestamp()) }}</small>--}}
+                        {{--<div class="container">--}}
+                            {{--{!! $news->body !!}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
         </div>
     </div>
 
@@ -58,6 +85,8 @@
                         <p class="hidden" id="emptyComment">{{ trans('views\individualNews.commentEmptyFail') }}</p>
                         <p class="hidden" id="addedCommentSuccess">{{ trans('views\individualNews.commentAddedSuccess') }}</p>
                         <p class="hidden" id="commentTooLong">{{ trans('views\individualNews.commentTooLong') }}</p>
+                        <p class="hidden" id="commentDeleteTooltip">{{ trans('views\individualNews.deleteComment') }}</p>
+
 
                         {{--BUTTONS--}}
                         <div class="container row col-md-7">
@@ -99,16 +128,24 @@
                         <div id="commentsContainer" class="container col-md-7 col-md-offset-0">
                             <a name="comments"></a>
                             @foreach($comments as $comment)
-                                <div id="childRow" class="row">
+                                <div id="childRow" name="{{ $comment->id }}" class="row">
                                     <div class="panel">
-                                        <div class="col-md-2">
-                                            <img src="{{ Config::get('paths.PATH_PUBLIC_AVATARS') .'/'. $comment->avatar }}" style="width: 46px; height: 46px;">
-                                            <p>{{ $comment->firstName }}</p>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <p  style="width: 100%; height: 80px; word-wrap: break-word;">{{ $comment->body }}</p>
-                                        </div>
+                                        <div class="panel-body">
+                                            <div class="col-md-2">
+                                                <img src="{{ Config::get('paths.PATH_PUBLIC_AVATARS') .'/'. $comment->avatar }}" style="width: 46px; height: 46px;">
+                                                <p>{{ $comment->firstName }}</p>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <p  style="word-wrap: break-word;">{{ $comment->body }}</p>
+                                            </div>
 
+                                            {{--Buttons for delete and like--}}
+                                            <div class="col-md-1">
+                                                @can('isLoggedUser', $comment)
+                                                    <a href="{{ URL::route('deleteComment') .'?cid='.$comment->id}}" data-toggle="deleteComment" title="{{ trans('views\individualNews.deleteComment') }}"><i class="fa fa-btn fa-close"></i></a>
+                                                @endcan
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach

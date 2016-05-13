@@ -86,6 +86,8 @@ class AccountController extends Controller
         return Redirect::route('account')->withErrors(['success' => trans('views\accountPage.passwordResetSuccess')]);
     }
 
+
+
     //post comment
     public function postComment(Request $request) {
 

@@ -28,6 +28,9 @@ $(document).ready(function() {
         $('#closeCommentForm').addClass('hidden');
     });
 
+    //mouseover delete
+    $('[data-toggle="deleteComment"]').tooltip();
+
     $('#postCommentForm').click(function() {
         var url = document.location.origin + '/ajax/post/comment';
         var data = $('#comment').val();
@@ -39,6 +42,8 @@ $(document).ready(function() {
         var emptyComment = $('#emptyComment').text();
         var addedCommentSuccess = $('#addedCommentSuccess').text();
         var commentTooLong = $('#commentTooLong').text();
+
+        var deleteCommentTooltip = $('#commentDeleteTooltip').text();
 
         var commentCount = $('#commentsContainer > #childRow').length;
 
@@ -79,14 +84,19 @@ $(document).ready(function() {
 
                     if(commentCount <= 4) {
                         $('#ajaxAdd').append(
-                            '<div id="childRow" class="row">' +
+                            '<div id="childRow" name="'+ data['comment'].id +'" class="row">' +
                             '<div class="panel">' +
+                            '<div class="panel-body">' +
                             '<div class="col-md-2">' +
                             '<img src="' + document.location.origin + '/avatars/' + data['user'].avatar + '" style="width: 46px; height: 46px;">' +
                             '<p>' + data['user'].firstName + '</p>' +
                             '</div>' +
-                            '<div class="col-md-10">' +
-                            '<p  style="width: 100%; height: 80px; word-wrap: break-word;">' + data['comment'].body + '</p>' +
+                            '<div class="col-md-9">' +
+                            '<p  style="word-wrap: break-word;">' + data['comment'].body + '</p>' +
+                            '</div>' +
+                            '<div class="col-md-1">' +
+                            '<a href="'+document.location.origin+'/comment/delete'+'?cid='+ data['comment'].id +'" data-toggle="deleteComment" title="'+deleteCommentTooltip+'"><i class="fa fa-btn fa-close"></i></a>' +
+                            '</div>' +
                             '</div>' +
                             '</div>' +
                             '</div>'
@@ -97,14 +107,19 @@ $(document).ready(function() {
                         window.location = urlPage + '?page=' + commentsLastPage;
 
                         $('#ajaxAdd').append(
-                            '<div id="childRow" class="row">' +
+                            '<div id="childRow" name="'+ data['comment'].id +'" class="row">' +
                             '<div class="panel">' +
+                            '<div class="panel-body">' +
                             '<div class="col-md-2">' +
                             '<img src="' + document.location.origin + '/avatars/' + data['user'].avatar + '" style="width: 46px; height: 46px;">' +
                             '<p>' + data['user'].firstName + '</p>' +
                             '</div>' +
-                            '<div class="col-md-10">' +
-                            '<p  style="width: 100%; height: 80px; word-wrap: break-word;">' + data['comment'].body + '</p>' +
+                            '<div class="col-md-9">' +
+                            '<p  style="word-wrap: break-word;">' + data['comment'].body + '</p>' +
+                            '</div>' +
+                            '<div class="col-md-1">' +
+                            '<a href="'+document.location.origin+'/comment/delete'+'?cid='+ data['comment'].id +'" data-toggle="deleteComment" title="'+deleteCommentTooltip+'"><i class="fa fa-btn fa-close"></i></a>' +
+                            '</div>' +
                             '</div>' +
                             '</div>' +
                             '</div>'
