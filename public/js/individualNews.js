@@ -1,21 +1,5 @@
 $(document).ready(function() {
 
-    //dodaj anchor na konec ce je page=x
-    /*var splitUrls      = window.location.href.split('?');
-    splitUrls = splitUrls[1].split('&');
-    var page = null;
-
-    splitUrls.forEach(function(el) {
-        if(el.substring(0,4) == 'page'){
-            page = el.split('=')[1];
-        }
-        console.log(el);
-    })
-
-    if(page != null) {
-        window.location = window.location.href + '#comments';
-    }*/
-
     //klik na 'pokazi komentarje'
     $('#showComments').click(function() {
         $('#commentsContainer').removeClass('hidden');
@@ -32,14 +16,14 @@ $(document).ready(function() {
 
     //klik na 'objavi komentar'
     $('#postComments').click(function() {
-        $('#postCommentContainer').removeClass('hidden');
+        $('#formComment').removeClass('hidden');
         $('#postComments').addClass('hidden');
         $('#closeCommentForm').removeClass('hidden');
     });
 
     //klik na 'krizec'
     $('#closeCommentForm').click(function() {
-        $('#postCommentContainer').addClass('hidden');
+        $('#formComment').addClass('hidden');
         $('#postComments').removeClass('hidden');
         $('#closeCommentForm').addClass('hidden');
     });
@@ -56,17 +40,6 @@ $(document).ready(function() {
         var addedCommentSuccess = $('#addedCommentSuccess').text();
 
         var commentCount = $('#commentsContainer > #childRow').length;
-        /*var splitUrls      = window.location.href.split('?');
-        if(splitUrls.length > 1) {
-            splitUrls = splitUrls[1].split('&');
-            var page = null;
-
-            splitUrls.forEach(function (el) {
-                if (el.substring(0, 4) == 'page') {
-                    page = el.split('=')[1];
-                }
-            })
-        }*/
 
         var lastPage = parseInt($('#totalPages').val(), 10);
         var perPage = $('#perPage').val();

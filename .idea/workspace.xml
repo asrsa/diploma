@@ -60,8 +60,8 @@
       <file leaf-file-name="individualNews.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/news/individualNews.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.692307" vertical-offset="1259" max-vertical-offset="2227">
-              <caret line="95" column="87" selection-start-line="95" selection-start-column="87" selection-end-line="95" selection-end-column="87" />
+            <state vertical-scroll-proportion="-9.115385" vertical-offset="1106" max-vertical-offset="2227">
+              <caret line="79" column="57" selection-start-line="79" selection-start-column="46" selection-end-line="79" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -70,10 +70,10 @@
       <file leaf-file-name="individualNews.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/individualNews.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28687415" vertical-offset="1692" max-vertical-offset="2465">
-              <caret line="112" column="49" selection-start-line="112" selection-start-column="49" selection-end-line="112" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.5751015" vertical-offset="0" max-vertical-offset="2006">
+              <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
               <folding>
-                <marker date="1463138483861" expanded="true" signature="3781:3807" placeholder="..." />
+                <marker date="1463138641017" expanded="true" signature="2981:3007" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -841,18 +841,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/news/individualNews.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.692307" vertical-offset="1259" max-vertical-offset="2227">
-          <caret line="95" column="87" selection-start-line="95" selection-start-column="87" selection-end-line="95" selection-end-column="87" />
+        <state vertical-scroll-proportion="-9.115385" vertical-offset="1106" max-vertical-offset="2227">
+          <caret line="79" column="57" selection-start-line="79" selection-start-column="46" selection-end-line="79" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/individualNews.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28687415" vertical-offset="1692" max-vertical-offset="2465">
-          <caret line="112" column="49" selection-start-line="112" selection-start-column="49" selection-end-line="112" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.5751015" vertical-offset="0" max-vertical-offset="2006">
+          <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
           <folding>
-            <marker date="1463138483861" expanded="true" signature="3781:3807" placeholder="..." />
+            <marker date="1463138641017" expanded="true" signature="2981:3007" placeholder="..." />
           </folding>
         </state>
       </provider>

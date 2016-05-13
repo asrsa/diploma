@@ -74,10 +74,10 @@
                         </div>
 
                         {{--DODAJ KOMENTAR--}}
-                        <div id="postCommentContainer" class="container col-md-7 col-md-offset-0 hidden">
+                        <div id="postCommentContainer" class="container col-md-7 col-md-offset-0">
                             <div class="row">
                                 <div class="panel">
-                                    <form method="POST" action="{{ URL::route('postComment') }}" class="form-horizontal">
+                                    <form id="formComment" method="POST" action="{{ URL::route('postComment') }}" class="form-horizontal hidden">
                                         {!! csrf_field() !!}
                                         <textarea id="comment" name="comment"  rows="5" cols="80"  style="resize: none;"></textarea>
                                         <button id="postCommentForm" type="button" class="btn btn-default">
