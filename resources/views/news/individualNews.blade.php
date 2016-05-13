@@ -57,6 +57,7 @@
                         </div>
                         <p class="hidden" id="emptyComment">{{ trans('views\individualNews.commentEmptyFail') }}</p>
                         <p class="hidden" id="addedCommentSuccess">{{ trans('views\individualNews.commentAddedSuccess') }}</p>
+                        <p class="hidden" id="commentTooLong">{{ trans('views\individualNews.commentTooLong') }}</p>
 
                         {{--BUTTONS--}}
                         <div class="container row col-md-7">
@@ -105,7 +106,7 @@
                                             <p>{{ $comment->firstName }}</p>
                                         </div>
                                         <div class="col-md-10">
-                                            <p>{{ $comment->body }}</p>
+                                            <p  style="width: 100%; height: 80px; word-wrap: break-word;">{{ $comment->body }}</p>
                                         </div>
 
                                     </div>

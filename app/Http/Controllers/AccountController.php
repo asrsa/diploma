@@ -91,20 +91,28 @@ class AccountController extends Controller
 
         if($request->ajax()) {
             $body = $request->input('body');
-            $news = $request->input('news');
-            $user = $request->user()->id;
 
-            $comment = new Comment();
-            $comment->body = $body;
-            $comment->user_id = $user;
-            $comment->news_id = $news;
+            if(strlen($body) > 255) {
+                return response()->json(['return' => 'commentLong',
+                ]);
+            }
 
-            $comment->save();
+            else if(strlen($body) <= 255) {
+                $news = $request->input('news');
+                $user = $request->user()->id;
 
-            return response()->json(['return' => 'success',
-                                    'comment' => $comment,
-                                    'user' => $comment->user
-            ]);
+                $comment = new Comment();
+                $comment->body = $body;
+                $comment->user_id = $user;
+                $comment->news_id = $news;
+
+                $comment->save();
+
+                return response()->json(['return' => 'success',
+                    'comment' => $comment,
+                    'user' => $comment->user
+                ]);
+            }
         }
     }
 }

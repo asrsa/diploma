@@ -38,6 +38,7 @@ $(document).ready(function() {
         //errors
         var emptyComment = $('#emptyComment').text();
         var addedCommentSuccess = $('#addedCommentSuccess').text();
+        var commentTooLong = $('#commentTooLong').text();
 
         var commentCount = $('#commentsContainer > #childRow').length;
 
@@ -55,8 +56,18 @@ $(document).ready(function() {
                 data: {'_token':token, 'body':data, 'news':newsId},
                 success: function (data) {
 
+                    if(data['return'] == 'commentLong') {
+                        $('#feedback').append('<div id="commentAddAjaxFail" class="alert alert-danger col-md-7">' +
+                            '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                            '<strong id="emptyComment">' + commentTooLong + '</strong>' +
+                            '</div>'
+                        );
+
+                        return;
+                    }
+
                     $('#comment').val('');
-                    $('#postCommentContainer').addClass('hidden');
+                    $('#formComment').addClass('hidden');
                     $('#postComments').removeClass('hidden');
 
                     $('#feedback').append('<div id="commentAddAjaxSuccess" class="alert alert-success col-md-7">' +
@@ -75,7 +86,7 @@ $(document).ready(function() {
                             '<p>' + data['user'].firstName + '</p>' +
                             '</div>' +
                             '<div class="col-md-10">' +
-                            '<p>' + data['comment'].body + '</p>' +
+                            '<p  style="width: 100%; height: 80px; word-wrap: break-word;">' + data['comment'].body + '</p>' +
                             '</div>' +
                             '</div>' +
                             '</div>'
@@ -93,7 +104,7 @@ $(document).ready(function() {
                             '<p>' + data['user'].firstName + '</p>' +
                             '</div>' +
                             '<div class="col-md-10">' +
-                            '<p>' + data['comment'].body + '</p>' +
+                            '<p  style="width: 100%; height: 80px; word-wrap: break-word;">' + data['comment'].body + '</p>' +
                             '</div>' +
                             '</div>' +
                             '</div>'
