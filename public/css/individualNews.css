@@ -1,0 +1,25 @@
+.btn-link {
+    height: 20px;
+    outline: none !important;
+}
+
+#likes {
+    text-align: center;
+}
+
+#thumbs {
+    text-align: center;
+}
+
+#deleteClick {
+    text-align: center;
+}
+
+.not-active {
+    pointer-events: none;
+    cursor: default;
+}
+
+.tooltip-inner {
+    min-width: 150px;
+}

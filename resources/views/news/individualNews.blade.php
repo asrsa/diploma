@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('styles')
+    <link rel="stylesheet" href="{{ URL::asset('css/individualNews.css') }}">
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -142,8 +146,23 @@
                                             {{--Buttons for delete and like--}}
                                             <div class="col-md-1">
                                                 @can('isLoggedUser', $comment)
+                                                <div id="deleteClick">
                                                     <a href="{{ URL::route('deleteComment') .'?cid='.$comment->id}}" data-toggle="deleteComment" title="{{ trans('views\individualNews.deleteComment') }}"><i class="fa fa-btn fa-close"></i></a>
+                                                </div>
                                                 @endcan
+
+                                                <div class="row">
+                                                    <div id="likes{{ $comment->id }}">{{ $comment->likesSum }}</div>
+                                                    @can('isNotLoggedUser', $comment)
+                                                    <div class="thumbs" data-toggle="errorVoteTooltip{{ $comment->id }}" data-placement="right" title="{{ trans('views\individualNews.alreadyVoted') }}">
+                                                        <input value="{{ $comment->id }}" class="cid hidden">
+                                                        {{--<button class="btn btn-link disabled"><i class="fa fa-btn fa-thumbs-o-up"></i></button>--}}
+                                                        {{--<button class="btn btn-link"><i class="fa fa-btn fa-thumbs-o-down"></i></button>--}}
+                                                        <a class="upvote" href="{{ URL::route('likeComment') .'?cid='.$comment->id.'&type=up' }}"><i class="fa fa-btn fa-thumbs-o-up" id="upvote{{ $comment->id }}"></i></a>
+                                                        <a class="downvote" href="{{ URL::route('likeComment') .'?cid='.$comment->id.'&type=down' }}" ><i class="fa fa-btn fa-thumbs-o-down" id="downvote{{ $comment->id }}"></i></a>
+                                                    </div>
+                                                    @endcan
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -161,4 +180,5 @@
 
 @section('scripts')
     <script type="text/javascript" src="{{ URL::asset('js/individualNews.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/commentLike.js') }}"></script>
 @endsection

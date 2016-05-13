@@ -47,5 +47,9 @@ class AuthServiceProvider extends ServiceProvider
             else
                 return false;
         });
+
+        $gate->define('isNotLoggedUser', function($user, $comment) {
+            return $user->id !== $comment->user_id;
+        });
     }
 }

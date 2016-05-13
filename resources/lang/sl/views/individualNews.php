@@ -17,4 +17,5 @@ return [
     'commentTooLong'  => 'Komentar ima lahko samo 255 znakov.',
     'deleteComment' => 'Izbriši komentar',
     'commentDeleted' => 'Komentar izbrisan uspešno.',
+    'alreadyVoted'  => 'Ta glas ste že oddali.',
 ];

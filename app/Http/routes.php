@@ -29,6 +29,7 @@ Route::group(['middlewareGroups' => ['web']], function() {
     //news
     Route::get('/news/view/{id}', 'NewsController@showNews')->name('individualNews');
     Route::get('/comment/delete', 'NewsController@deleteComment')->name('deleteComment')->middleware('auth');
+    Route::get('/comment/like', 'NewsController@likeComment')->name('likeComment')->middleware('auth');
 
 
     //user account routes
