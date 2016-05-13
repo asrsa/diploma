@@ -56,15 +56,23 @@ $(document).ready(function() {
         var addedCommentSuccess = $('#addedCommentSuccess').text();
 
         var commentCount = $('#commentsContainer > #childRow').length;
-        var splitUrls      = window.location.href.split('?');
-        splitUrls = splitUrls[1].split('&');
-        var page = null;
+        /*var splitUrls      = window.location.href.split('?');
+        if(splitUrls.length > 1) {
+            splitUrls = splitUrls[1].split('&');
+            var page = null;
 
-        splitUrls.forEach(function(el) {
-            if(el.substring(0,4) == 'page'){
-                page = el.split('=')[1];
-            }
-        })
+            splitUrls.forEach(function (el) {
+                if (el.substring(0, 4) == 'page') {
+                    page = el.split('=')[1];
+                }
+            })
+        }*/
+
+        var lastPage = parseInt($('#totalPages').val(), 10);
+        var perPage = $('#perPage').val();
+        var totalComments = $('#totalComments').val();
+        var commentsLastPage =  (totalComments % perPage != 0) ? lastPage : (lastPage + 1);
+        var urlPage = [location.protocol, '//', location.host, location.pathname].join('');
 
         if(data != '') {
             $.ajax({
@@ -102,8 +110,7 @@ $(document).ready(function() {
                     }
                     else if(commentCount == 5) {
                         //check for page=
-                        page++;
-                        window.location = splitUrls[0] + '?page=' + page;
+                        window.location = urlPage + '?page=' + commentsLastPage;
 
                         $('#ajaxAdd').append(
                             '<div id="childRow" class="row">' +

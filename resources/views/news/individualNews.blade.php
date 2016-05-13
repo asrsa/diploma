@@ -91,6 +91,9 @@
                             </div>
                         </div>
 
+                        <input id="totalPages" class="hidden" value="{{ $comments->lastPage() }}">
+                        <input id="totalComments" class="hidden" value="{{ $comments->total() }}">
+                        <input id="perPage" class="hidden" value="{{ $comments->perPage() }}">
 
                         <div id="commentsContainer" class="container col-md-7 col-md-offset-0">
                             <a name="comments"></a>
