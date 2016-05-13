@@ -25,47 +25,39 @@ $(document).ready(function() {
             url:    url  + '?' + query[1],
             dataType: 'json',
             success: function(result) {
-                $commentId = result['cid'];
-                var likesCurr = $('#likes'+ $commentId).text() == '' ? '0' : $('#likes'+ $commentId).text();
+                var commentId = result['cid'];
+                var likesCurr = $('#likes'+ commentId).text() == '' ? '0' : $('#likes'+ commentId).text();
                 var newLikes = parseInt(likesCurr, 10) + result['value'];
 
                 if(result['return'] === 2) {
                     //TODO
-                    //$('[data-toggle="errorVoteTooltip'+ commentId +'"]').tooltip();
-                    //$('#error' + commentId).fadeOut(2000);
-                    $('#likes'+ $commentId).text(newLikes);
-                    $('#downvote' + $commentId).css('color', '');
-                    $('#downvote' + $commentId).css('pointer-events', '');
+                    $('#likes'+ commentId).text(newLikes);
+                    $('#downvote' + commentId).css('color', '');
+                    $('#downvote' + commentId).css('pointer-events', '');
 
-                    $('#upvote' + $commentId).css('color', 'grey');
-                    $('#upvote' + $commentId).css('pointer-events', 'none');
-                    $(this).css({cursor:"default"});
+                    $('#downvotea' + commentId).removeClass('not-active');
                     event.preventDefault();
                 }
                 else if(result['return'] === 3) {
-                    $('#likes'+ $commentId).text(newLikes);
-                    $('#upvote' + $commentId).css('color', '');
-                    $('#upvote' + $commentId).css('pointer-events', '');
+                    $('#likes'+ commentId).text(newLikes);
+                    $('#upvote' + commentId).css('color', '');
+                    $('#upvote' + commentId).css('pointer-events', '');
 
-                    $('#downvote' + $commentId).css('color', 'grey');
-                    $('#downvote' + $commentId).css('pointer-events', 'none');
-                    $(this).css({cursor:"default"});
+                    $('#upvotea' + commentId).removeClass('not-active');
                     event.preventDefault();
                 }
                 else if(result['return'] === 4){
                     //cannot like anymore
-                    console.log('you cannot like');
-                    $('#upvote' + $commentId).css('color', 'grey');
-                    $('#upvote' + $commentId).css('pointer-events', 'none');
+                    $('#upvote' + commentId).css('color', 'grey');
+                    $('#upvotea' + commentId).addClass('not-active');
                 }
                 else if(result['return'] === 5){
                     //cannot dislike anymore
-                    console.log('you cannot dislike');
-                    $('#downvote' + $commentId).css('color', 'grey');
-                    $('#downvote' + $commentId).css('pointer-events', 'none');
+                    $('#downvote' + commentId).css('color', 'grey');
+                    $('#downvotea' + commentId).addClass('not-active');
                 }
                 else {
-                    $('#likes'+ $commentId).text(newLikes);
+                    $('#likes'+ commentId).text(newLikes);
                 }
             }
         });

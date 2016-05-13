@@ -60,8 +60,8 @@
       <file leaf-file-name="individualNews.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/news/individualNews.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.884615" vertical-offset="2227" max-vertical-offset="3213">
-              <caret line="166" column="46" selection-start-line="166" selection-start-column="46" selection-end-line="166" selection-end-column="46" />
+            <state vertical-scroll-proportion="-19.615385" vertical-offset="2227" max-vertical-offset="3213">
+              <caret line="161" column="89" selection-start-line="161" selection-start-column="89" selection-end-line="161" selection-end-column="89" />
               <folding>
                 <element signature="e#6848#6868#0#HTML" expanded="true" />
                 <element signature="e#8345#8375#0#HTML" expanded="true" />
@@ -84,7 +84,7 @@
         <entry file="file://$PROJECT_DIR$/public/css/individualNews.css">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -93,8 +93,8 @@
       <file leaf-file-name="commentLike.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/commentLike.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.74695534" vertical-offset="434" max-vertical-offset="1343">
-              <caret line="58" column="76" selection-start-line="58" selection-start-column="76" selection-end-line="58" selection-end-column="76" />
+            <state vertical-scroll-proportion="0.4248985" vertical-offset="451" max-vertical-offset="1207">
+              <caret line="45" column="31" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -155,9 +155,9 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_05_10_122241_create_likes_table.php" />
         <option value="$PROJECT_DIR$/resources/lang/sl/views/individualNews.php" />
-        <option value="$PROJECT_DIR$/public/css/individualNews.css" />
-        <option value="$PROJECT_DIR$/resources/views/news/individualNews.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/NewsController.php" />
+        <option value="$PROJECT_DIR$/resources/views/news/individualNews.blade.php" />
+        <option value="$PROJECT_DIR$/public/css/individualNews.css" />
         <option value="$PROJECT_DIR$/public/js/commentLike.js" />
       </list>
     </option>
@@ -866,25 +866,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/individualNews.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/news/individualNews.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.884615" vertical-offset="2227" max-vertical-offset="3213">
-          <caret line="166" column="46" selection-start-line="166" selection-start-column="46" selection-end-line="166" selection-end-column="46" />
-          <folding>
-            <element signature="e#6848#6868#0#HTML" expanded="true" />
-            <element signature="e#8345#8375#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/lang/sl/views/individualNews.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.423077" vertical-offset="0" max-vertical-offset="459">
@@ -903,10 +884,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/news/individualNews.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.615385" vertical-offset="2227" max-vertical-offset="3213">
+          <caret line="161" column="89" selection-start-line="161" selection-start-column="89" selection-end-line="161" selection-end-column="89" />
+          <folding>
+            <element signature="e#6848#6868#0#HTML" expanded="true" />
+            <element signature="e#8345#8375#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/individualNews.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/commentLike.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74695534" vertical-offset="434" max-vertical-offset="1343">
-          <caret line="58" column="76" selection-start-line="58" selection-start-column="76" selection-end-line="58" selection-end-column="76" />
+        <state vertical-scroll-proportion="0.4248985" vertical-offset="451" max-vertical-offset="1207">
+          <caret line="45" column="31" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
           <folding />
         </state>
       </provider>

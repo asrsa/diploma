@@ -158,8 +158,8 @@
                                                         <input value="{{ $comment->id }}" class="cid hidden">
                                                         {{--<button class="btn btn-link disabled"><i class="fa fa-btn fa-thumbs-o-up"></i></button>--}}
                                                         {{--<button class="btn btn-link"><i class="fa fa-btn fa-thumbs-o-down"></i></button>--}}
-                                                        <a class="upvote" href="{{ URL::route('likeComment') .'?cid='.$comment->id.'&type=up' }}"><i class="fa fa-btn fa-thumbs-o-up" id="upvote{{ $comment->id }}"></i></a>
-                                                        <a class="downvote" href="{{ URL::route('likeComment') .'?cid='.$comment->id.'&type=down' }}" ><i class="fa fa-btn fa-thumbs-o-down" id="downvote{{ $comment->id }}"></i></a>
+                                                        <a class="upvote" id="upvotea{{ $comment->id }}" href="{{ URL::route('likeComment') .'?cid='.$comment->id.'&type=up' }}"><i class="fa fa-btn fa-thumbs-o-up" id="upvote{{ $comment->id }}"></i></a>
+                                                        <a class="downvote" id="downvotea{{ $comment->id }}" href="{{ URL::route('likeComment') .'?cid='.$comment->id.'&type=down' }}" ><i class="fa fa-btn fa-thumbs-o-down" id="downvote{{ $comment->id }}"></i></a>
                                                     </div>
                                                     @endcan
                                                 </div>
