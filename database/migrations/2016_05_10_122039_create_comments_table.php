@@ -20,6 +20,7 @@ class CreateCommentsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('news_id')->unsigned();
             $table->foreign('news_id')->references('id')->on('news');
+            $table->integer('deleted', 1)->default(0);
         });
     }
 

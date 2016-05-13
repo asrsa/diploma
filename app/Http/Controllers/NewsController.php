@@ -38,6 +38,7 @@ class NewsController extends Controller
                 DB::raw('('. $likeSubquery->toSql() .') as likesSum'))
             ->join('users', 'comments.user_id', '=', 'users.id')
             ->where('news_id', '=', $newsId)
+            ->where('deleted', '=', 0)
             ->paginate(5);
 
         return view('news\individualNews', ['news' => $news, 'comments' => $comments]);
@@ -47,7 +48,8 @@ class NewsController extends Controller
         $commentId  = Input::get('cid');
 
         $comment = Comment::where('id', $commentId)->get()->first();
-        $comment->delete();
+        $comment->deleted = 1;
+        $comment->save();
 
         return Redirect::back()->withErrors(['success' => trans('views\individualNews.commentDeleted')]);
     }
