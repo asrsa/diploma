@@ -37,7 +37,7 @@
                                         <select class="form-control" name="category" id="category">
                                             <option value="">{{ trans('views\authorPage.chooseCat') }}</option>
                                             @foreach($categories as $category)
-                                                <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                                                <option value="{{ $category['id'] }}">{{ $category['desc'] }}</option>
                                             @endforeach
                                         </select>
                                     </div>

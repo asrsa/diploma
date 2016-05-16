@@ -6,6 +6,7 @@ use App\Category;
 use App\Comment;
 use App\Like;
 use App\News;
+use App\Subcategory;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -139,14 +140,23 @@ class NewsController extends Controller
         $catId = (int) Category::where('name', '=', $category)->firstOrFail()->id;
         $catTitle = Category::where('name', '=', $category)->firstOrFail()->desc;
 
-        $newNews = DB::table('subcategories')
-            ->select('subcategories.name as subcategory', 'news.*')
-            ->join('news', 'subcategories.id', '=', 'news.subcategory_id')
-            ->where('subcategories.category_id', '=', $catId)
-            ->orderBy('news.created_at', 'desc')
-            ->take(5)
-            ->get();
+        $newNews = new News();
+        $newNews = $newNews->getSubcategoryNewNews($catId);
 
-        return view('news.category', ['panelTitle' => $catTitle, 'newNews' => $newNews]);
+        $subcatIds = News::getSubcategoryId($catId);
+
+        $mainNews = array();
+        foreach($subcatIds as $id) {
+            $news = News::getSubcategoryNews($id->id);
+            $subName = Subcategory::where('id', $id->id)->first()->desc;
+
+            if($news != []) {
+                $mainNews[$subName] = $news;
+            }
+        }
+
+        return view('news.category', ['panelTitle' => $catTitle, 'newNews' => $newNews, 'mainNews' => $mainNews]);
     }
+
+
 }

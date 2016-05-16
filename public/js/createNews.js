@@ -12,7 +12,7 @@ $(document).ready(function() {
             success: function(result) {
                 $('#subcategory option').remove();
                 $.each(result, function(i, subcat) {
-                   $('#subcategory').append('<option value="' + subcat.id + '">' + subcat.name + '</option>')
+                   $('#subcategory').append('<option value="' + subcat.id + '">' + subcat.desc + '</option>')
                 });
             }
         });
