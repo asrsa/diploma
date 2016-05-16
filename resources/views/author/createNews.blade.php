@@ -59,7 +59,7 @@
                                 <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                                     <label class="col-sm-1 control-label">{{trans('views\authorPage.newsTitle')}}</label>
                                     <div class="col-sm-6 col-sm-offset-1">
-                                        <input type="text" id="title" class="form-control" name="title">
+                                        <input type="text" id="title" class="form-control" name="title" value="{{ old('title') }}">
 
                                     </div>
                                 </div>
@@ -74,7 +74,7 @@
                                 </div>
                                 <img id="holder" style="margin-top:15px;max-height:100px;">
 
-                                <textarea class="form-control" name="body" rows="20"></textarea>
+                                <textarea class="form-control" name="body" rows="20">{{ old('body') }}</textarea>
                                 <br/>
                                     <div class="">
                                         <button type="submit" class="btn btn-primary">

@@ -1,0 +1,20 @@
+.sidebarImage {
+    height: 50px;
+    width: 50px;
+}
+
+.sidebarLink {
+    text-decoration: none;
+}
+
+.sidebarTitle {
+    word-wrap: break-word;
+}
+
+.sidebarRow {
+    width: 100px;
+}
+
+.catPanels {
+    min-height: 500px;
+}

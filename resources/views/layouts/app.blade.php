@@ -29,7 +29,7 @@
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
+        <div class="container ">
             <div class="navbar-header">
 
                 <!-- Branding Image -->
@@ -77,6 +77,21 @@
             </div>
         </div>
     </nav>
+
+
+
+    <div class="col-md-8 col-md-offset-2">
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url('/home') }}">{{trans('views\layoutPage.home')}}</a></li>
+                <li><a href="{{ url('/home') }}">{{trans('views\layoutPage.home')}}</a></li>
+                <li><a href="{{ url('/home') }}">{{trans('views\layoutPage.home')}}</a></li>
+                <li><a href="{{ url('/home') }}">{{trans('views\layoutPage.home')}}</a></li>
+            </ul>
+        </nav>
+    </div>
+
+
 
     @yield('content')
 

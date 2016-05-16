@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Comment;
 use App\Like;
 use App\News;
@@ -132,5 +133,20 @@ class NewsController extends Controller
             'cid'    => $commentId,
             'value'  => $value
         ]);
+    }
+
+    public function showCategory(Request $request, $category) {
+        $catId = (int) Category::where('name', '=', $category)->firstOrFail()->id;
+        $catTitle = Category::where('name', '=', $category)->firstOrFail()->desc;
+
+        $newNews = DB::table('subcategories')
+            ->select('subcategories.name as subcategory', 'news.*')
+            ->join('news', 'subcategories.id', '=', 'news.subcategory_id')
+            ->where('subcategories.category_id', '=', $catId)
+            ->orderBy('news.created_at', 'desc')
+            ->take(5)
+            ->get();
+
+        return view('news.category', ['panelTitle' => $catTitle, 'newNews' => $newNews]);
     }
 }
