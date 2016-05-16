@@ -34,6 +34,9 @@ Route::group(['middlewareGroups' => ['web']], function() {
     //categories
     Route::get('/cat/{catName}', 'NewsController@showCategory');
 
+    //subcategories
+    Route::get('/subcat/{subcatName}', 'NewsController@showSubcategory')->name('subcategory');
+
 
     //user account routes
     Route::get('/account', 'AccountController@index')->name('account');

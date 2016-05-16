@@ -158,5 +158,16 @@ class NewsController extends Controller
         return view('news.category', ['panelTitle' => $catTitle, 'newNews' => $newNews, 'mainNews' => $mainNews]);
     }
 
+    public function showSubcategory(Request $request, $subcategory) {
+
+        $subcatTitle = Subcategory::where('name', '=', $subcategory)->firstOrFail()->desc;
+        $subcatId = Subcategory::where('name', '=', $subcategory)->firstOrFail()->id;
+
+        $newNews = News::getFiveNewNews();
+
+        $mainNews = News::getSubcategoryNewsPaginate($subcatId);
+
+        return view('news.subcategory', ['panelTitle' => $subcatTitle, 'newNews' => $newNews, 'mainNews' => $mainNews]);
+    }
 
 }

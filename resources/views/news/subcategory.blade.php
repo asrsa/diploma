@@ -14,27 +14,20 @@
                     <div class="panel-heading">{{ $panelTitle }}</div>
 
                     <div class="panel-body container">
-                        @foreach($mainNews as $news)
+                        @foreach(array_chunk($mainNews->getCollection()->all(), 3) as $news)
                             <div class="row">
-                                <div class="container-fluid col-lg-7">
-                                    <div class="panel panel-default categoryPanel">
-                                        <div class="panel-heading mainNewsHead"><a href="{{ URL::route('subcategory', $news[0]->subcategory_name) }}">{{ $news[0]->subcategory }}</a></div>
-                                        <div class="panel-body container">
-                                            <div class="row">
-                                                @foreach($news as $new)
-                                                    <div class="container col-lg-2">
-                                                        <a href="{{ URL::route('individualNews', $new->id) }}"><img src="{{ $new->image }}" class="categoryImg"></a>
-                                                        <a href="{{ URL::route('individualNews', $new->id) }}"><h5>{{ $new->title }}</h5></a>
-                                                    </div>
-                                                @endforeach
+                                    <div class="panel-body container">
+                                        @foreach($news as $new)
+                                            <div class="container col-lg-2">
+                                                <a href="{{ URL::route('individualNews', $new->id) }}"><img src="{{ $new->image }}" class="categoryImg"></a>
+                                                <a href="{{ URL::route('individualNews', $new->id) }}"><h5>{{ $new->title }}</h5></a>
                                             </div>
-                                        </div>
+                                        @endforeach
                                     </div>
-                                </div>
-
                             </div>
                         @endforeach
                     </div>
+                    {!! $mainNews->appends(Request::except('page'))->links() !!}
                 </div>
             </div>
 

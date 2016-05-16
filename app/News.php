@@ -34,6 +34,18 @@ class News extends Model
         return $newNews;
     }
 
+    public function getSubcategoryNewsById($subcatId) {
+        $news = DB::table('subcategories')
+            ->select('subcategories.desc as subcategory', 'news.*')
+            ->join('news', 'subcategories.id', '=', 'news.subcategory_id')
+            ->where('subcategories.id', '=', $subcatId)
+            ->orderBy('news.created_at', 'desc')
+            ->take(5)
+            ->get();
+
+        return $news;
+    }
+
     static function getSubcategoryId($catId) {
         $subId = DB::table('subcategories')
             ->select('id')
@@ -45,11 +57,32 @@ class News extends Model
 
     static function getSubcategoryNews($subcatId) {
         $news = DB::table('news')
-            ->select('news.*', 'subcategories.desc as subcategory')
+            ->select('news.*', 'subcategories.desc as subcategory', 'subcategories.name as subcategory_name')
             ->join('subcategories', 'news.subcategory_id', '=', 'subcategories.id')
             ->where('news.subcategory_id', '=', $subcatId)
             ->orderBy('news.created_at', 'desc')
             ->take(3)
+            ->get();
+
+        return $news;
+    }
+
+    static function getSubcategoryNewsPaginate($subcatId) {
+        $news = DB::table('news')
+            ->select('news.*', 'subcategories.desc as subcategory', 'subcategories.name as subcategory_name')
+            ->join('subcategories', 'news.subcategory_id', '=', 'subcategories.id')
+            ->where('news.subcategory_id', '=', $subcatId)
+            ->orderBy('news.created_at', 'desc')
+            ->paginate(6);
+
+        return $news;
+    }
+
+    static function getFiveNewNews() {
+        $news = DB::table('news')
+            ->select('news.*')
+            ->orderBy('news.created_at', 'desc')
+            ->take(5)
             ->get();
 
         return $news;
