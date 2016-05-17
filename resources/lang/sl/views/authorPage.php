@@ -21,4 +21,8 @@ return [
     'category' => 'Kategorija',
     'subcategory' => 'Podkategorija',
     'chooseImage' => 'Izberi sliko',
+    'myNews' => 'Moje novice',
+    'theadTitle' => 'Naslov',
+    'theadCreated' => 'Objavljeno',
+    'theadOperations' => 'Operacije'
 ];

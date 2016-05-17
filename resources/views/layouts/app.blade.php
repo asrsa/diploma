@@ -68,6 +68,7 @@
 
                                 @can('isAuthor')
                                 <li><a href="{{ URL::route('createNews') }}"><i class="fa"></i>{{trans('views\authorPage.createNewsMenu')}}</a></li>
+                                <li><a href="{{ URL::route('authorNews') }}"><i class="fa"></i>{{trans('views\authorPage.myNews')}}</a></li>
                                 @endcan
 
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>{{trans('views\layoutPage.logout')}}</a></li>

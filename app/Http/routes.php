@@ -53,6 +53,7 @@ Route::group(['middlewareGroups' => ['web']], function() {
     Route::get('/news/create', 'AuthorController@createNewsGet')->name('createNews');
     Route::post('/news/create', 'AuthorController@createNewsPost');
     Route::post('/image/upload', 'AuthorController@uploadImage');
+    Route::get('/author/news', 'AuthorController@showNews')->name('authorNews');
 });
 
 //AJAX routes

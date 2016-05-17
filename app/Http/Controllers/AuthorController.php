@@ -58,4 +58,35 @@ class AuthorController extends Controller
 
         return response()->json($result);
     }
+
+    public function showNews(Request $request) {
+
+        $author = $request->user()->id;
+
+        $dateSort = $request->input('date');
+        $titleSort = $request->input('title');
+
+        if(isset($dateSort)) {
+            $sortIt = $dateSort;
+            $sort = 'created_at';
+        }
+        else if(isset($titleSort)) {
+            $sortIt = $titleSort;
+            $sort = 'title';
+        }
+        else {
+            $sortIt = '';
+            $sort = '';
+        }
+
+        $news = News::getAuthorNews($author, $sort, $sortIt);
+
+        foreach($news as $key => $new) {
+            $date = new \DateTime($new->created_at);
+            $news[$key]->created_at = $date->format('j.n.Y G:i');
+
+        }
+
+        return view('author\showNews', ['news' => $news]);
+    }
 }

@@ -1,0 +1,8 @@
+.tableContainer {
+    min-height: 250px;
+}
+
+.dateSort {
+    text-decoration: none !important;
+    color: #080808;
+}

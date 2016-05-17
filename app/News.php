@@ -87,4 +87,24 @@ class News extends Model
 
         return $news;
     }
+
+    static function getAuthorNews($author, $sort, $dateSort) {
+
+        if($sort === '') {
+            $news = DB::table('news')
+                ->select('*')
+                ->where('user_id', '=', $author)
+                ->orderBy('created_at', 'desc')
+                ->paginate(4);
+        }
+        else {
+            $news = DB::table('news')
+                ->select('*')
+                ->where('user_id', '=', $author)
+                ->orderBy($sort, $dateSort)
+                ->paginate(4);
+        }
+
+        return $news;
+    }
 }
