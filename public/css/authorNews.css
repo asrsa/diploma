@@ -10,3 +10,8 @@
 .tableNewsTitle {
     text-decoration: none !important;
 }
+
+.tdRight {
+    text-align: right;
+    width: 50px;
+}

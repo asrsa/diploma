@@ -27,6 +27,7 @@ class News extends Model
             ->select('subcategories.name as subcategory', 'news.*')
             ->join('news', 'subcategories.id', '=', 'news.subcategory_id')
             ->where('subcategories.category_id', '=', $catId)
+            ->where('news.deleted', '=', 0)
             ->orderBy('news.created_at', 'desc')
             ->take(5)
             ->get();
@@ -39,6 +40,7 @@ class News extends Model
             ->select('subcategories.desc as subcategory', 'news.*')
             ->join('news', 'subcategories.id', '=', 'news.subcategory_id')
             ->where('subcategories.id', '=', $subcatId)
+            ->where('news.deleted', '=', 0)
             ->orderBy('news.created_at', 'desc')
             ->take(5)
             ->get();
@@ -60,6 +62,7 @@ class News extends Model
             ->select('news.*', 'subcategories.desc as subcategory', 'subcategories.name as subcategory_name')
             ->join('subcategories', 'news.subcategory_id', '=', 'subcategories.id')
             ->where('news.subcategory_id', '=', $subcatId)
+            ->where('news.deleted', '=', 0)
             ->orderBy('news.created_at', 'desc')
             ->take(3)
             ->get();
@@ -72,6 +75,7 @@ class News extends Model
             ->select('news.*', 'subcategories.desc as subcategory', 'subcategories.name as subcategory_name')
             ->join('subcategories', 'news.subcategory_id', '=', 'subcategories.id')
             ->where('news.subcategory_id', '=', $subcatId)
+            ->where('news.deleted', '=', 0)
             ->orderBy('news.created_at', 'desc')
             ->paginate(6);
 
@@ -81,6 +85,7 @@ class News extends Model
     static function getFiveNewNews() {
         $news = DB::table('news')
             ->select('news.*')
+            ->where('news.deleted', '=', 0)
             ->orderBy('news.created_at', 'desc')
             ->take(5)
             ->get();
@@ -94,15 +99,17 @@ class News extends Model
             $news = DB::table('news')
                 ->select('*')
                 ->where('user_id', '=', $author)
+                ->where('news.deleted', '=', 0)
                 ->orderBy('created_at', 'desc')
-                ->paginate(4);
+                ->paginate(5);
         }
         else {
             $news = DB::table('news')
                 ->select('*')
                 ->where('user_id', '=', $author)
+                ->where('news.deleted', '=', 0)
                 ->orderBy($sort, $dateSort)
-                ->paginate(4);
+                ->paginate(5);
         }
 
         return $news;

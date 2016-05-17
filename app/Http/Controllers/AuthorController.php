@@ -137,6 +137,14 @@ class AuthorController extends Controller
 
         $news->save();
 
-        return Redirect::route('index')->withErrors(['success' => trans('views\authorPage.newsEdited')]);
+        return Redirect::route('authorNews')->withErrors(['success' => trans('views\authorPage.newsEdited')]);
+    }
+
+    public function deleteNews($newsId) {
+        $news = News::where('id', '=', $newsId)->first();
+        $news->deleted = 1;
+        $news->save();
+
+        return Redirect::route('authorNews')->withErrors(['success' => trans('views\authorPage.newsDeleted')]);
     }
 }

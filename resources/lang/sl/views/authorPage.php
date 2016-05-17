@@ -30,4 +30,5 @@ return [
     'deleteButton' => 'Izbriši',
     'editNews' => 'Spremeni novico',
     'newsEdited' => 'Novica spremenjena uspešno!',
+    'newsDeleted' => 'Novica izbrisana uspešno!',
 ];

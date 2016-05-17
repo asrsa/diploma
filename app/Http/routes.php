@@ -56,6 +56,7 @@ Route::group(['middlewareGroups' => ['web']], function() {
     Route::get('/author/news', 'AuthorController@showNews')->name('authorNews');
     Route::get('/news/edit/{id}', 'AuthorController@editNews')->name('editNews');
     Route::post('/news/edit/{id}', 'AuthorController@editNewsPost')->name('editNewsPost');
+    Route::get('/news/delete/{id}', 'AuthorController@deleteNews')->name('deleteNews');
 });
 
 //AJAX routes
