@@ -1,11 +1,15 @@
 @extends('layouts.app')
 
+@section('styles')
+    <link rel="stylesheet" href="{{ URL::asset('css/createNews.css') }}">
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{trans('views\authorPage.createNews')}}</div>
+                    <div class="panel-heading">{{trans('views\authorPage.editNews')}}</div>
 
                     <div class="panel-body">
                         @if ($errors->has('error'))
@@ -27,8 +31,13 @@
                             </div>
                         @endif
 {{--feedback-------------------------------------------------------------------------------------------------------------------}}
+
+                        {{--Variables to pass into js--}}
+                        <input class="hidden" id="cat" value="{{ $news->catId }}">
+                        <input class="hidden" id="subcat" value="{{ $news->subId }}">
+
                         <div class="form-group">
-                            <form class="form-horizontal" role="form" method="POST" action="{{ URL::to('news/create') }}">
+                            <form class="form-horizontal" role="form" method="POST" action="{{ URL::route('editNewsPost', $news->id) }}">
                                 {!! csrf_field() !!}
 
                                 <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}">
@@ -48,9 +57,9 @@
                                     <label class="col-sm-1 control-label">{{trans('views\authorPage.subcategory')}}</label>
                                     <div class="col-sm-6 col-sm-offset-1">
                                         <select class="form-control" name="subcategory" id="subcategory">
-                                            {{--@foreach($subcategories as $subcategory)--}}
-                                            {{--<option value="{{ $subcategory['id'] }}">{{ $subcategory['name'] }}</option>--}}
-                                            {{--@endforeach--}}
+                                            @foreach($subcategories as $subcategory)
+                                                <option value="{{ $subcategory['id'] }}">{{ $subcategory['desc'] }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -59,7 +68,7 @@
                                 <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                                     <label class="col-sm-1 control-label">{{trans('views\authorPage.newsTitle')}}</label>
                                     <div class="col-sm-10 col-sm-offset-1">
-                                        <input type="text" id="title" class="form-control" name="title" value="{{ old('title') }}">
+                                        <input type="text" id="title" class="form-control" name="title" value="{{ $news->title }}">
 
                                     </div>
                                 </div>
@@ -70,15 +79,15 @@
                                             <i class="fa fa-picture-o"></i> {{ trans('views\authorPage.chooseImage') }}
                                         </a>
                                     </span>
-                                    <input id="image" class="form-control" type="text" name="image">
+                                    <input id="image" class="form-control" type="text" name="image" value="{{ $news->image }}">
                                 </div>
                                 <img id="holder" style="margin-top:15px;max-height:100px;">
 
-                                <textarea class="form-control" name="body" rows="20">{{ old('body') }}</textarea>
+                                <textarea class="form-control" name="body" rows="20">{{ $news->body }}</textarea>
                                 <br/>
                                     <div class="">
                                         <button type="submit" class="btn btn-primary">
-                                            <i class="fa fa-btn fa-refresh"></i>{{trans('views\authorPage.createNewsSubmit')}}
+                                            <i class="fa fa-btn fa-refresh"></i>{{trans('views\authorPage.updateButton')}}
                                         </button>
                                     </div>
                             </form>
@@ -131,6 +140,7 @@
 
 @section('scripts')
     <script type="text/javascript" src="{{ URL::asset('js/createNews.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/editNews.js') }}"></script>
     <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
 @endsection
 

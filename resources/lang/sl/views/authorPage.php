@@ -24,5 +24,10 @@ return [
     'myNews' => 'Moje novice',
     'theadTitle' => 'Naslov',
     'theadCreated' => 'Objavljeno',
-    'theadOperations' => 'Operacije'
+    'theadUpdated' => 'Spremenjeno',
+    'theadOperations' => 'Operacije',
+    'updateButton' => 'Spremeni',
+    'deleteButton' => 'Izbriši',
+    'editNews' => 'Spremeni novico',
+    'newsEdited' => 'Novica spremenjena uspešno!',
 ];
