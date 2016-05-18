@@ -82,15 +82,29 @@
 
 
 
-    <div class="col-md-8 col-md-offset-2">
-        <nav class="navbar navbar-default">
-            <ul class="nav navbar-nav">
-                <li><a href="{{ url('/home') }}">{{trans('views\layoutPage.home')}}</a></li>
-                <li><a href="{{ url('/home') }}">{{trans('views\layoutPage.home')}}</a></li>
-                <li><a href="{{ url('/home') }}">{{trans('views\layoutPage.home')}}</a></li>
-                <li><a href="{{ url('/home') }}">{{trans('views\layoutPage.home')}}</a></li>
-            </ul>
-        </nav>
+    <div class="col-lg-8 col-lg-offset-2">
+            <nav class="navbar navbar-default">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/home') }}">{{trans('views\layoutPage.home')}}</a></li>
+                    <li><a href="{{ url('/home') }}">{{trans('views\layoutPage.home')}}</a></li>
+                    <li><a href="{{ url('/home') }}">{{trans('views\layoutPage.home')}}</a></li>
+                    <li><a href="{{ url('/home') }}">{{trans('views\layoutPage.home')}}</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right" id="searchNav">
+                    <li>
+                        <div class="form-group">
+                            <form class="form-horizontal" role="form" method="GET" action="{{ URL::route('searchNews')}}">
+                                {{--{!! csrf_field() !!}--}}
+                                <div class="">
+                                    <input type="text" id="searchText" class="form-control" name="search" autocomplete="off">
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                    <li><a class="btn btn-link" href="#" id="searchButton"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                </ul>
+            </nav>
     </div>
 
 
@@ -107,6 +121,7 @@
             {{--}--}}
         {{--});--}}
     {{--</script>--}}
+    <script type="text/javascript" src="{{ URL::asset('js/searchNews.js') }}"></script>
     @yield('scripts')
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>

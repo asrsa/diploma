@@ -114,4 +114,36 @@ class News extends Model
 
         return $news;
     }
+
+    static function searchNews($query, $pages, $category = null) {
+        if($category == null || $category == 'All') {
+            $result = DB::table('news')
+                ->select('news.*', 'categories.name as catName', 'categories.desc as catDesc')
+                ->join('subcategories', 'news.subcategory_id', '=', 'subcategories.id')
+                ->join('categories', 'subcategories.category_id', '=', 'categories.id')
+                ->where('news.deleted', '=', 0)
+                ->where(function($q) use ($query) {
+                    $q->where('news.title', 'like', '%' . $query . '%');
+                    $q->orWhere('news.body', 'like', '%' . $query . '%');
+                })
+                ->orderBy('news.created_at', 'desc')
+                ->paginate($pages);
+        }
+        else if($category != null) {
+            $result = DB::table('news')
+                ->select('news.*', 'categories.name as catName', 'categories.desc as catDesc')
+                ->join('subcategories', 'news.subcategory_id', '=', 'subcategories.id')
+                ->join('categories', 'subcategories.category_id', '=', 'categories.id')
+                ->where('news.deleted', '=', 0)
+                ->where(function($q) use ($query) {
+                    $q->where('news.title', 'like', '%' . $query . '%');
+                    $q->orWhere('news.body', 'like', '%' . $query . '%');
+                })
+                ->where('categories.name', '=', $category)
+                ->orderBy('news.created_at', 'desc')
+                ->paginate($pages);
+        }
+
+        return $result;
+    }
 }

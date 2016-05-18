@@ -1,0 +1,5 @@
+.categoryClicked {
+    color: grey;
+    pointer-events: none;
+    cursor: default;
+}

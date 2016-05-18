@@ -170,4 +170,31 @@ class NewsController extends Controller
         return view('news.subcategory', ['panelTitle' => $subcatTitle, 'newNews' => $newNews, 'mainNews' => $mainNews]);
     }
 
+    public function searchNews(Request $request) {
+        $search = $request->input('search');
+        if(!isset($search) || $search == '') {
+            return Redirect::back();
+        }
+
+        $category = $request->input('cat');
+
+        if(isset($category)) {
+            $result = News::searchNews($search, 8, ucfirst($category));
+        }
+        else {
+            $result = News::searchNews($search, 8);
+        }
+
+        $catCount = array();
+        $tmp = News::searchNews($search, 8);
+        $catCount['all'] = array('count' => '', 'desc' => 'Vse kategorije');
+        foreach($tmp as $news) {
+            $catCount[$news->catName] = array('count' => 0, 'desc' => $news->catDesc);
+        }
+        foreach($tmp as $news) {
+            $catCount[$news->catName]['count'] = $catCount[$news->catName]['count'] + 1;
+        }
+
+        return view('news.searchNews', ['result' => $result, 'categories' => $catCount]);
+    }
 }
