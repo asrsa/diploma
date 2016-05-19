@@ -27,7 +27,8 @@
                             </div>
                         @endforeach
                     </div>
-                    {!! $mainNews->appends(Request::except('page'))->links() !!}
+                    {{--{!! $mainNews->appends(Request::except('page'))->links() !!}--}}
+                    @include('paginators.customPaginator', ['data' => $mainNews])
                 </div>
             </div>
 

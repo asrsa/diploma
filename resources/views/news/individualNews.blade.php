@@ -153,7 +153,8 @@
                                 </div>
                             @endforeach
                             <div id="ajaxAdd"></div>
-                            {{ $comments->appends(Request::except('page'))->links() }}
+                            {{--{{ $comments->appends(Request::except('page'))->links() }}--}}
+                            @include('paginators.customPaginator', ['data' => $comments, 'append' => '#comments'])
                         </div>
                     </div>
                 </div>

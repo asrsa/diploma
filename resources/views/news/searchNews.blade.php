@@ -65,7 +65,7 @@
                                     <div class="row">
                                         @foreach($row as $new)
                                             <a href="{{ URL::route('individualNews', $new->id) }}">
-                                                <article class="col-md-6">
+                                                <article class="col-lg-4">
                                                     <h5>{{ $new->title }}</h5>
                                                     <img src="{{ $new->image }}" style="height: 96px; width: 130px;">
                                                 </article>
@@ -76,7 +76,8 @@
                             @endforeach
                         @endif
 
-                        {!! $result->appends(Request::except('page'))->links() !!}
+                        {{--{!! $result->appends(Request::except('page'))->links() !!}--}}
+                        @include('paginators.customPaginator', ['data' => $result])
                     </div>
                 </div>
             </div>

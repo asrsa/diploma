@@ -34,7 +34,8 @@
                             </div>
                         @endforeach
 
-                        {!! $news->appends(Request::except('page'))->links() !!}
+                        {{--{!! $news->appends(Request::except('page'))->links() !!}--}}
+                        @include('paginators.customPaginator', ['data' => $news])
                     </div>
                 </div>
             </div>
