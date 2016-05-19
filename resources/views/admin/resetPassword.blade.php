@@ -8,7 +8,7 @@
                     <div class="panel-heading">{{trans('views\passwordresetPage.reset')}}</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ URL::route('authorResetPasswordPost') }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ URL::route('adminResetPasswordPost') }}">
                             {!! csrf_field() !!}
 
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">

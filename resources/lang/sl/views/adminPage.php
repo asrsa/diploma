@@ -12,4 +12,5 @@ return [
     'addAuthor' => 'Dodaj avtorja',
     'addAuthorTitle' => 'Registriraj avtorja',
     'addAuthorSuccess' => 'Avtor uspešno dodan.',
+    'changePassword' => 'Spremeni geslo',
 ];

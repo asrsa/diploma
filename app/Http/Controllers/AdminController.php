@@ -54,7 +54,7 @@ class AdminController extends Controller
 
         $this->sendActivation($data['email'], $data['firstName'], $activateToken);
 
-        return Redirect::route('adminIndex')->withErrors(['success' => trans('views\adminPage.addAuthorSuccess')]);
+        return Redirect::route('index')->withErrors(['success' => trans('views\adminPage.addAuthorSuccess')]);
     }
 
     public function sendActivation($email, $name, $activationCode) {
@@ -63,5 +63,9 @@ class AdminController extends Controller
                 ->to($email, $name)
                 ->subject(trans('emails\authorActivateMail.activateAuthorAccount'));
         });
+    }
+
+    public function showResetPassword() {
+        return view('admin.resetPassword');
     }
 }

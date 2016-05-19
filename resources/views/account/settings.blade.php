@@ -43,7 +43,7 @@
                     </div>
 
                     <div class="col-xs-4">
-                        <a href="{{ URL::route('resetPassword') }}">{{ trans('views\accountPage.resetPasswordLink') }}</a>
+                        {{--<a href="{{ URL::route('resetPassword') }}">{{ trans('views\accountPage.resetPasswordLink') }}</a>--}}
                     </div>
                 </div>
             </div>

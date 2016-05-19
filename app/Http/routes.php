@@ -39,11 +39,15 @@ Route::group(['middlewareGroups' => ['web']], function() {
     Route::get('/subcat/{subcatName}', 'NewsController@showSubcategory')->name('subcategory');
 
 
+    //all users routes
+    Route::get('/password/change', 'UserController@changePasswordGet')->name('changePasswordGet');
+    Route::post('/password/change', 'UserController@changePasswordPost')->name('changePasswordPost');
+
     //user account routes
     Route::get('/account', 'AccountController@index')->name('account');
     Route::post('/avatar/change', 'AccountController@avatarChange');
-    Route::get('/account/password', 'AccountController@showReset')->name('resetPassword');
-    Route::post('/account/password/reset', 'AccountController@resetPassword');
+//    Route::get('/account/password', 'AccountController@showReset')->name('resetPassword');
+//    Route::post('/account/password/reset', 'AccountController@resetPassword');
     Route::get('/avatar/change', 'AccountController@avatarChangeGet')->name('changeAvatar');
 
     //admin account routes
@@ -59,8 +63,6 @@ Route::group(['middlewareGroups' => ['web']], function() {
     Route::get('/news/edit/{id}', 'AuthorController@editNews')->name('editNews');
     Route::post('/news/edit/{id}', 'AuthorController@editNewsPost')->name('editNewsPost');
     Route::get('/news/delete/{id}', 'AuthorController@deleteNews')->name('deleteNews');
-    Route::get('/author/password', 'AuthorController@showResetPassword')->name('authorChangePassword');
-    Route::post('/author/password', 'AuthorController@resetPassword')->name('authorResetPasswordPost');
 });
 
 //AJAX routes
