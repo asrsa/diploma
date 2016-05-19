@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
 class NewsController extends Controller
 {
@@ -48,14 +49,14 @@ class NewsController extends Controller
         return view('news\individualNews', ['news' => $news, 'comments' => $comments]);
     }
 
-    public function deleteComment() {
+    public function deleteComment(Request $request) {
         $commentId  = Input::get('cid');
 
         $comment = Comment::where('id', $commentId)->get()->first();
         $comment->deleted = 1;
         $comment->save();
 
-        return Redirect::back()->withErrors(['success' => trans('views\individualNews.commentDeleted')]);
+        return redirect(explode('?', URL::previous())[0])->withErrors(['success' => trans('views\individualNews.commentDeleted')]);
     }
 
     public function likeComment(Request $request) {
