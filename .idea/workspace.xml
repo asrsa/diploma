@@ -35,21 +35,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewsController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NewsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/NewsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40532959" vertical-offset="2618" max-vertical-offset="3366">
+            <state vertical-scroll-proportion="-9.769231" vertical-offset="2653" max-vertical-offset="3366">
               <caret line="183" column="18" selection-start-line="183" selection-start-column="18" selection-end-line="183" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="News.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/News.php">
+      <file leaf-file-name="news.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/news/news.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.576923" vertical-offset="1888" max-vertical-offset="2839">
-              <caret line="142" column="24" selection-start-line="142" selection-start-column="24" selection-end-line="142" selection-end-column="24" />
+            <state vertical-scroll-proportion="-9.192307" vertical-offset="390" max-vertical-offset="850">
+              <caret line="37" column="113" selection-start-line="37" selection-start-column="113" selection-end-line="37" selection-end-column="113" />
               <folding />
             </state>
           </provider>
@@ -58,31 +58,38 @@
       <file leaf-file-name="searchNews.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/news/searchNews.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.576923" vertical-offset="851" max-vertical-offset="1564">
-              <caret line="80" column="26" selection-start-line="80" selection-start-column="26" selection-end-line="80" selection-end-column="26" />
+            <state vertical-scroll-proportion="-9.538462" vertical-offset="1078" max-vertical-offset="1564">
+              <caret line="78" column="73" selection-start-line="78" selection-start-column="73" selection-end-line="78" selection-end-column="73" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="individualNews.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/individualNews.js">
+      <file leaf-file-name="subcategory.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/news/subcategory.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1063" max-vertical-offset="2567">
-              <caret line="132" column="75" selection-start-line="132" selection-start-column="75" selection-end-line="132" selection-end-column="75" />
-              <folding>
-                <marker date="1463690776125" expanded="true" signature="4191:4213" placeholder="..." />
-                <marker date="1463690776125" expanded="true" signature="5674:5696" placeholder="..." />
-              </folding>
+            <state vertical-scroll-proportion="0.57363254" vertical-offset="237" max-vertical-offset="1105">
+              <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="individualNews.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/individualNews.css">
+      <file leaf-file-name="showNews.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/author/showNews.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="179" max-vertical-offset="918">
-              <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+            <state vertical-scroll-proportion="-6.6923075" vertical-offset="1339" max-vertical-offset="1853">
+              <caret line="89" column="113" selection-start-line="89" selection-start-column="113" selection-end-line="89" selection-end-column="113" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="individualNews.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/news/individualNews.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.6923075" vertical-offset="3107" max-vertical-offset="3587">
+              <caret line="193" column="121" selection-start-line="193" selection-start-column="121" selection-end-line="193" selection-end-column="121" />
               <folding />
             </state>
           </provider>
@@ -112,10 +119,7 @@
         <option value="$PROJECT_DIR$/resources/views/paginators/commentPaginator.blade.php" />
         <option value="$PROJECT_DIR$/resources/lang/sl/views/pagination.php" />
         <option value="$PROJECT_DIR$/resources/views/paginators/customPaginator.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/news/news.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/news/category.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/news/subcategory.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/author/showNews.blade.php" />
         <option value="$PROJECT_DIR$/public/js/authorAllnews.js" />
         <option value="$PROJECT_DIR$/public/css/authorNews.css" />
         <option value="$PROJECT_DIR$/resources/lang/sl/views/individualNews.php" />
@@ -142,11 +146,14 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/AccountController.php" />
         <option value="$PROJECT_DIR$/resources/views/account/changeAvatar.blade.php" />
         <option value="$PROJECT_DIR$/public/css/individualNews.css" />
-        <option value="$PROJECT_DIR$/resources/views/news/individualNews.blade.php" />
         <option value="$PROJECT_DIR$/public/js/individualNews.js" />
         <option value="$PROJECT_DIR$/resources/views/news/searchNews.blade.php" />
         <option value="$PROJECT_DIR$/app/News.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/NewsController.php" />
+        <option value="$PROJECT_DIR$/resources/views/author/showNews.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/news/individualNews.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/news/news.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/news/subcategory.blade.php" />
       </list>
     </option>
   </component>
@@ -547,14 +554,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/news/subcategory.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16690043" vertical-offset="0" max-vertical-offset="1105">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/layout.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20703654" vertical-offset="0" max-vertical-offset="739">
@@ -749,14 +748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/news/news.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="850">
-          <caret line="37" column="79" selection-start-line="37" selection-start-column="79" selection-end-line="37" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8807854" vertical-offset="426" max-vertical-offset="1207">
@@ -813,33 +804,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/individualNews.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1063" max-vertical-offset="2567">
-          <caret line="132" column="75" selection-start-line="132" selection-start-column="75" selection-end-line="132" selection-end-column="75" />
-          <folding>
-            <marker date="1463690776125" expanded="true" signature="4191:4213" placeholder="..." />
-            <marker date="1463690776125" expanded="true" signature="5674:5696" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AccountController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.2692307" vertical-offset="1242" max-vertical-offset="2312">
           <caret line="83" column="46" selection-start-line="83" selection-start-column="46" selection-end-line="83" selection-end-column="46" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/news/individualNews.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="15.038462" vertical-offset="2499" max-vertical-offset="3587">
-          <caret line="124" column="64" selection-start-line="124" selection-start-column="64" selection-end-line="124" selection-end-column="64" />
-          <folding>
-            <element signature="e#7533#7553#0#HTML" expanded="true" />
-            <element signature="e#11040#11060#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -851,25 +820,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/author/showNews.blade.php">
+    <entry file="file://$PROJECT_DIR$/public/js/individualNews.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49" vertical-offset="1153" max-vertical-offset="1853">
-          <caret line="88" column="71" selection-start-line="88" selection-start-column="71" selection-end-line="88" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/news/searchNews.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.576923" vertical-offset="851" max-vertical-offset="1564">
-          <caret line="80" column="26" selection-start-line="80" selection-start-column="26" selection-end-line="80" selection-end-column="26" />
-          <folding />
+        <state vertical-scroll-proportion="1.6267217" vertical-offset="1063" max-vertical-offset="2567">
+          <caret line="132" column="75" selection-start-line="132" selection-start-column="75" selection-end-line="132" selection-end-column="75" />
+          <folding>
+            <marker date="1463690776125" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1463690776125" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/News.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.576923" vertical-offset="1888" max-vertical-offset="2839">
+        <state vertical-scroll-proportion="0.713885" vertical-offset="1888" max-vertical-offset="2839">
           <caret line="142" column="24" selection-start-line="142" selection-start-column="24" selection-end-line="142" selection-end-column="24" />
           <folding />
         </state>
@@ -877,8 +841,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/NewsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40532959" vertical-offset="2618" max-vertical-offset="3366">
+        <state vertical-scroll-proportion="-9.769231" vertical-offset="2653" max-vertical-offset="3366">
           <caret line="183" column="18" selection-start-line="183" selection-start-column="18" selection-end-line="183" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/author/showNews.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.6923075" vertical-offset="1339" max-vertical-offset="1853">
+          <caret line="89" column="113" selection-start-line="89" selection-start-column="113" selection-end-line="89" selection-end-column="113" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/news/individualNews.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.6923075" vertical-offset="3107" max-vertical-offset="3587">
+          <caret line="193" column="121" selection-start-line="193" selection-start-column="121" selection-end-line="193" selection-end-column="121" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/news/news.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.192307" vertical-offset="390" max-vertical-offset="850">
+          <caret line="37" column="113" selection-start-line="37" selection-start-column="113" selection-end-line="37" selection-end-column="113" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/news/searchNews.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.538462" vertical-offset="1078" max-vertical-offset="1564">
+          <caret line="78" column="73" selection-start-line="78" selection-start-column="73" selection-end-line="78" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/news/subcategory.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57363254" vertical-offset="237" max-vertical-offset="1105">
+          <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
           <folding />
         </state>
       </provider>

@@ -191,7 +191,7 @@
 
                             <div id="ajaxAdd"></div>
                             {{--{{ $comments->appends(Request::except('page'))->links() }}--}}
-                            @include('paginators.customPaginator', ['data' => $comments, 'append' => '#comments'])
+                            @include('paginators.customPaginator', ['data' => $comments->appends(Request::except('page')), 'append' => '#comments'])
                         </div>
                     </div>
                 </div>
