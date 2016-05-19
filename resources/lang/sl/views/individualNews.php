@@ -18,4 +18,7 @@ return [
     'deleteComment' => 'Izbriši komentar',
     'commentDeleted' => 'Komentar izbrisan uspešno.',
     'alreadyVoted'  => 'Ta glas ste že oddali.',
+    'confirmDelete' => 'Želite izbrisati komentar?',
+    'cancelDelete' => 'Prekliči',
+    'deleteButton' => 'Izbriši',
 ];

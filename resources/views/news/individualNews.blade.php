@@ -117,11 +117,11 @@
                         <input id="totalComments" class="hidden" value="{{ $comments->total() }}">
                         <input id="perPage" class="hidden" value="{{ $comments->perPage() }}">
 
-                        <div id="commentsContainer" class="container col-md-7 col-md-offset-0">
+                        <div id="commentsContainer" class="container col-md-7">
                             <a name="comments"></a>
                             @foreach($comments as $comment)
                                 <div id="childRow" name="{{ $comment->id }}" class="row">
-                                    <div class="panel">
+                                    <div class="panel panel-default">
                                         <div class="panel-body">
                                             <div class="col-md-2">
                                                 <img src="{{ Config::get('paths.PATH_PUBLIC_AVATARS') .'/'. $comment->avatar }}" style="width: 46px; height: 46px;">
@@ -132,23 +132,34 @@
                                             </div>
 
                                             {{--Buttons for delete and like--}}
-                                            <div class="col-md-1">
+                                            <div class="pull-right" style="width: 50px;">
                                                 @can('isLoggedUser', $comment)
-                                                <div id="deleteClick">
-                                                    <a href="{{ URL::route('deleteComment') .'?cid='.$comment->id}}" data-toggle="deleteComment" title="{{ trans('views\individualNews.deleteComment') }}"><i class="fa fa-btn fa-close"></i></a>
+                                                <div class="row" style="width: 50px;">
+                                                    <div id="deleteClick">
+{{--                                                        <a href="{{ URL::route('deleteComment') .'?cid='.$comment->id}}" data-toggle="deleteComment" title="{{ trans('views\individualNews.deleteComment') }}"><i class="fa fa-btn fa-close"></i></a>--}}
+                                                        <a href="#" data-href="{{ URL::route('deleteComment') .'?cid='.$comment->id}}" data-toggle="modal" data-target="#confirmDelete" title="{{ trans('views\individualNews.deleteComment') }}"><i class="fa fa-btn fa-close"></i></a>
+                                                    </div>
                                                 </div>
                                                 @endcan
 
-                                                <div class="row">
-                                                    <div id="likes{{ $comment->id }}">{{ $comment->likesSum }}</div>
+                                                <div class="row pull-right" style="width: 50px;">
+                                                    <div class="likesCount" id="likes{{ $comment->id }}">{{ $comment->likesSum }}</div>
                                                     @can('isNotLoggedUser', $comment)
-                                                    <div class="thumbs" data-toggle="errorVoteTooltip{{ $comment->id }}" data-placement="right" title="{{ trans('views\individualNews.alreadyVoted') }}">
+                                                    <div class="thumbs pull-right" data-toggle="errorVoteTooltip{{ $comment->id }}" data-placement="right" title="{{ trans('views\individualNews.alreadyVoted') }}">
                                                         <input value="{{ $comment->id }}" class="cid hidden">
                                                         {{--<button class="btn btn-link disabled"><i class="fa fa-btn fa-thumbs-o-up"></i></button>--}}
                                                         {{--<button class="btn btn-link"><i class="fa fa-btn fa-thumbs-o-down"></i></button>--}}
-                                                        <a class="upvote" id="upvotea{{ $comment->id }}" href="{{ URL::route('likeComment') .'?cid='.$comment->id.'&type=up' }}"><i class="fa fa-btn fa-thumbs-o-up" id="upvote{{ $comment->id }}"></i></a>
-                                                        <a class="downvote" id="downvotea{{ $comment->id }}" href="{{ URL::route('likeComment') .'?cid='.$comment->id.'&type=down' }}" ><i class="fa fa-btn fa-thumbs-o-down" id="downvote{{ $comment->id }}"></i></a>
+                                                        <a class="upvote thumb" id="upvotea{{ $comment->id }}" href="{{ URL::route('likeComment') .'?cid='.$comment->id.'&type=up' }}"><i class="fa fa-btn fa-thumbs-o-up" id="upvote{{ $comment->id }}"></i></a>
+                                                        <a class="downvote thumb" id="downvotea{{ $comment->id }}" href="{{ URL::route('likeComment') .'?cid='.$comment->id.'&type=down' }}" ><i class="fa fa-btn fa-thumbs-o-down" id="downvote{{ $comment->id }}"></i></a>
                                                     </div>
+                                                    @endcan
+
+                                                    @can('isLoggedUser', $comment)
+                                                        <div class="thumbs pull-right" data-toggle="errorVoteTooltip{{ $comment->id }}" data-placement="right" title="{{ trans('views\individualNews.alreadyVoted') }}">
+                                                            <input value="{{ $comment->id }}" class="cid hidden">
+                                                            <a class="noComment thumb" href="#"><i class="fa fa-btn fa-thumbs-o-up"></i></a>
+                                                            <a class="noComment thumb" href="#"><i class="fa fa-btn fa-thumbs-o-down"></i></a>
+                                                        </div>
                                                     @endcan
                                                 </div>
                                             </div>
@@ -156,6 +167,21 @@
                                     </div>
                                 </div>
                             @endforeach
+
+                            <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            {{ trans('views\individualNews.confirmDelete') }}
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('views\individualNews.cancelDelete') }}</button>
+                                            <a class="btn btn-danger btnDelete">{{ trans('views\individualNews.deleteButton') }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div id="ajaxAdd"></div>
                             {{--{{ $comments->appends(Request::except('page'))->links() }}--}}
                             @include('paginators.customPaginator', ['data' => $comments, 'append' => '#comments'])

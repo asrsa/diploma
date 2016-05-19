@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+    //delete koment
+    $('#confirmDelete').on('show.bs.modal', function(e) {
+        $(this).find('.btnDelete').attr('href', $(e.relatedTarget).data('href'));
+    });
+
     //klik na 'pokazi komentarje'
     $('#showComments').click(function() {
         $('#commentsContainer').removeClass('hidden');
