@@ -17,5 +17,6 @@ return [
     'gender'    => 'Spol',
     'password2' => 'Ponovi geslo',
     'male'      => 'Moški',
-    'female'    => 'Ženski'
+    'female'    => 'Ženski',
+    'username'  => 'Prikazno ime',
 ];

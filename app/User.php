@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'name', 'firstName', 'lastName', 'gender', 'birthday', 'role_id', 'password', 'avatar', 'activate_token'
+        'email', 'name', 'firstName', 'lastName', 'username', 'gender', 'birthday', 'role_id', 'password', 'avatar', 'activate_token'
     ];
 
     protected $hidden = [
@@ -55,5 +55,20 @@ class User extends Authenticatable
 
     public function like() {
         return $this->hasMany('App\Like');
+    }
+
+    public function setFirstNameAttribute($value)
+    {
+        $this->attributes['firstName'] = ucfirst(strtolower($value));
+    }
+
+    public function setLastNameAttribute($value)
+    {
+        $this->attributes['lastName'] = ucfirst(strtolower($value));
+    }
+
+    public function setUsernameAttribute($value)
+    {
+        $this->attributes['username'] = ucfirst(strtolower($value));
     }
 }

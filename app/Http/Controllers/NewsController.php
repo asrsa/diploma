@@ -36,7 +36,7 @@ class NewsController extends Controller
             ->whereRaw('likes.comment_id = comments.id');
 
         $comments = DB::table('comments')
-            ->select('comments.*', 'users.firstName', 'users.avatar',
+            ->select('comments.*', 'users.username', 'users.avatar',
                 DB::raw('('. $likeSubquery->toSql() .') as likesSum'))
             ->join('users', 'comments.user_id', '=', 'users.id')
             ->where('news_id', '=', $newsId)

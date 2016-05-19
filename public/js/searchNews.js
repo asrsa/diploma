@@ -4,6 +4,7 @@ $(document).ready(function() {
 
     $('#searchButton').click(function() {
         event.preventDefault();
+        $('#searchText').removeClass('hidden');
         $('#searchText').animate({width: 'toggle'}, 200);
         $('#searchText').focus();
 

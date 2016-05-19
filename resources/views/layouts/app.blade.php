@@ -103,7 +103,7 @@
                             <form class="form-horizontal" role="form" method="GET" action="{{ URL::route('searchNews')}}">
                                 {{--{!! csrf_field() !!}--}}
                                 <div class="">
-                                    <input type="text" id="searchText" class="form-control" name="search" autocomplete="off">
+                                    <input type="text" id="searchText" class="form-control hidden" name="search" autocomplete="off">
                                 </div>
                             </form>
                         </div>

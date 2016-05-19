@@ -125,7 +125,7 @@
                                         <div class="panel-body">
                                             <div class="col-md-2">
                                                 <img src="{{ Config::get('paths.PATH_PUBLIC_AVATARS') .'/'. $comment->avatar }}" style="width: 46px; height: 46px;">
-                                                <p>{{ $comment->firstName }}</p>
+                                                <p>{{ $comment->username }}</p>
                                             </div>
                                             <div class="col-md-9">
                                                 <p  style="word-wrap: break-word;">{{ $comment->body }}</p>
@@ -161,6 +161,13 @@
                                                             <a class="noComment thumb" href="#"><i class="fa fa-btn fa-thumbs-o-down"></i></a>
                                                         </div>
                                                     @endcan
+                                                    @if(!Auth::check())
+                                                        <div class="thumbs pull-right" data-toggle="errorVoteTooltip{{ $comment->id }}" data-placement="right" title="{{ trans('views\individualNews.alreadyVoted') }}">
+                                                            <input value="{{ $comment->id }}" class="cid hidden">
+                                                            <a class="noComment thumb" href="#"><i class="fa fa-btn fa-thumbs-o-up"></i></a>
+                                                            <a class="noComment thumb" href="#"><i class="fa fa-btn fa-thumbs-o-down"></i></a>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
