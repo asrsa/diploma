@@ -4,6 +4,10 @@
     <link rel="stylesheet" href="{{ URL::asset('css/individualNews.css') }}">
 @endsection
 
+@section('title')
+    {{ $news->title }}
+@endsection
+
 @section('content')
     <div class="container-fluid">
         <div class="row">
