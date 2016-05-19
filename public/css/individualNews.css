@@ -9,10 +9,7 @@
 
 .likesCount {
     text-align: center;
-}
-
-.thumb {
-    /*width: 16px;*/
+    border-bottom: 1px double #c2c0c2;
 }
 
 #deleteClick {
@@ -36,4 +33,16 @@
 
 #confirmDelete{
     padding-top: 15%;
+}
+
+.likesDiv {
+    position:absolute;
+    top:0;
+    right:0;
+}
+
+.deleteComment {
+    position: absolute;
+    bottom: 5px;
+    right: 12px;
 }

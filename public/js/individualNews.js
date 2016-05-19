@@ -67,7 +67,7 @@ $(document).ready(function() {
                 success: function (data) {
 
                     if(data['return'] == 'commentLong') {
-                        $('#feedback').append('<div id="commentAddAjaxFail" class="alert alert-danger col-md-7">' +
+                        $('#feedback').append('<div id="commentAddAjaxFail" class="alert alert-danger col-lg-11">' +
                             '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
                             '<strong id="emptyComment">' + commentTooLong + '</strong>' +
                             '</div>'
@@ -80,7 +80,7 @@ $(document).ready(function() {
                     $('#formComment').addClass('hidden');
                     $('#postComments').removeClass('hidden');
 
-                    $('#feedback').append('<div id="commentAddAjaxSuccess" class="alert alert-success col-md-7">' +
+                    $('#feedback').append('<div id="commentAddAjaxSuccess" class="alert alert-success col-lg-11">' +
                             '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
                             '<strong>' + addedCommentSuccess + '</strong>' +
                             '</div>'
@@ -88,9 +88,9 @@ $(document).ready(function() {
 
 
                     if(commentCount <= 4) {
-                        $('#ajaxAdd').append(
+                        /*$('#ajaxAdd').append(
                             '<div id="childRow" name="'+ data['comment'].id +'" class="row">' +
-                            '<div class="panel">' +
+                            '<div class="panel panel-default col-lg-12">' +
                             '<div class="panel-body">' +
                             '<div class="col-md-2">' +
                             '<img src="' + document.location.origin + '/avatars/' + data['user'].avatar + '" style="width: 46px; height: 46px;">' +
@@ -99,21 +99,22 @@ $(document).ready(function() {
                             '<div class="col-md-9">' +
                             '<p  style="word-wrap: break-word;">' + data['comment'].body + '</p>' +
                             '</div>' +
-                            '<div class="col-md-1">' +
-                            '<a href="'+document.location.origin+'/comment/delete'+'?cid='+ data['comment'].id +'" data-toggle="deleteComment" title="'+deleteCommentTooltip+'"><i class="fa fa-btn fa-close"></i></a>' +
-                            '</div>' +
+                            //'<div class="col-md-1">' +
+                            //'<a href="'+document.location.origin+'/comment/delete'+'?cid='+ data['comment'].id +'" data-toggle="deleteComment" title="'+deleteCommentTooltip+'"><i class="fa fa-btn fa-close"></i></a>' +
+                            //'</div>' +
                             '</div>' +
                             '</div>' +
                             '</div>'
-                        );
+                        );*/
+                        location.reload();
                     }
                     else if(commentCount == 5) {
                         //check for page=
                         window.location = urlPage + '?page=' + commentsLastPage;
 
-                        $('#ajaxAdd').append(
+                        /*$('#ajaxAdd').append(
                             '<div id="childRow" name="'+ data['comment'].id +'" class="row">' +
-                            '<div class="panel">' +
+                            '<div class="panel panel-default col-lg-12">' +
                             '<div class="panel-body">' +
                             '<div class="col-md-2">' +
                             '<img src="' + document.location.origin + '/avatars/' + data['user'].avatar + '" style="width: 46px; height: 46px;">' +
@@ -122,19 +123,20 @@ $(document).ready(function() {
                             '<div class="col-md-9">' +
                             '<p  style="word-wrap: break-word;">' + data['comment'].body + '</p>' +
                             '</div>' +
-                            '<div class="col-md-1">' +
-                            '<a href="'+document.location.origin+'/comment/delete'+'?cid='+ data['comment'].id +'" data-toggle="deleteComment" title="'+deleteCommentTooltip+'"><i class="fa fa-btn fa-close"></i></a>' +
-                            '</div>' +
+                            //'<div class="col-md-1">' +
+                            //'<a href="'+document.location.origin+'/comment/delete'+'?cid='+ data['comment'].id +'" data-toggle="deleteComment" title="'+deleteCommentTooltip+'"><i class="fa fa-btn fa-close"></i></a>' +
+                            //'</div>' +
                             '</div>' +
                             '</div>' +
                             '</div>'
-                        );
+                        );*/
+                        location.href(urlPage + '?page=' + commentsLastPage);
                     }
                 }
             });
         }
         else {
-            $('#feedback').append('<div id="commentAddAjaxFail" class="alert alert-danger col-md-7">' +
+            $('#feedback').append('<div id="commentAddAjaxFail" class="alert alert-danger col-lg-11">' +
                     '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
                     '<strong id="emptyComment">' + emptyComment + '</strong>' +
                     '</div>'

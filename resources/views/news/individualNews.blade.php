@@ -57,15 +57,15 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">{{ trans('views\individualNews.commentsTitle')  }}</div>
 
-                    <div class="panel-body container">
+                    <div class="panel-body container-fluid">
                         @if ($errors->has('success'))
-                            <div class="alert alert-success  col-md-7">
+                            <div class="alert alert-success  col-lg-11">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                 <strong>{{ $errors->first('success') }}</strong>
                             </div>
                         @endif
                         @if ($errors->has('error'))
-                            <div class="alert alert-danger  col-md-7">
+                            <div class="alert alert-danger  col-lg-11">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                 <strong>{{ $errors->first('error') }}</strong>
                             </div>
@@ -81,7 +81,7 @@
 
 
                         {{--BUTTONS--}}
-                        <div class="container row col-md-7">
+                        <div class="container row col-lg-12">
                             <button id="showComments" type="button" class="btn btn-default col-md-6 hidden" style="width:150px;">
                                 <i class="fa fa-btn fa-refresh"></i>{{trans('views\individualNews.showComments')}}
                             </button>
@@ -96,7 +96,7 @@
                         </div>
 
                         {{--DODAJ KOMENTAR--}}
-                        <div id="postCommentContainer" class="container col-md-7 col-md-offset-0">
+                        <div id="postCommentContainer" class="container col-lg-11">
                             <div class="row">
                                 <div class="panel">
                                     <form id="formComment" method="POST" action="{{ URL::route('postComment') }}" class="form-horizontal hidden">
@@ -117,11 +117,11 @@
                         <input id="totalComments" class="hidden" value="{{ $comments->total() }}">
                         <input id="perPage" class="hidden" value="{{ $comments->perPage() }}">
 
-                        <div id="commentsContainer" class="container col-md-7">
+                        <div id="commentsContainer" class="container col-lg-11">
                             <a name="comments"></a>
                             @foreach($comments as $comment)
                                 <div id="childRow" name="{{ $comment->id }}" class="row">
-                                    <div class="panel panel-default">
+                                    <div class="panel panel-default col-lg-12">
                                         <div class="panel-body">
                                             <div class="col-md-2">
                                                 <img src="{{ Config::get('paths.PATH_PUBLIC_AVATARS') .'/'. $comment->avatar }}" style="width: 46px; height: 46px;">
@@ -132,18 +132,10 @@
                                             </div>
 
                                             {{--Buttons for delete and like--}}
-                                            <div class="pull-right" style="width: 50px;">
-                                                @can('isLoggedUser', $comment)
-                                                <div class="row" style="width: 50px;">
-                                                    <div id="deleteClick">
-{{--                                                        <a href="{{ URL::route('deleteComment') .'?cid='.$comment->id}}" data-toggle="deleteComment" title="{{ trans('views\individualNews.deleteComment') }}"><i class="fa fa-btn fa-close"></i></a>--}}
-                                                        <a href="#" data-href="{{ URL::route('deleteComment') .'?cid='.$comment->id}}" data-toggle="modal" data-target="#confirmDelete" title="{{ trans('views\individualNews.deleteComment') }}"><i class="fa fa-btn fa-close"></i></a>
-                                                    </div>
-                                                </div>
-                                                @endcan
+                                            <div class="col-md-1 pull-right likesDiv" style="width: 50px;">
 
                                                 <div class="row pull-right" style="width: 50px;">
-                                                    <div class="likesCount" id="likes{{ $comment->id }}">{{ $comment->likesSum }}</div>
+                                                    <div class="likesCount" id="likes{{ $comment->id }}">{{ $comment->likesSum or 0}}</div>
                                                     @can('isNotLoggedUser', $comment)
                                                     <div class="thumbs pull-right" data-toggle="errorVoteTooltip{{ $comment->id }}" data-placement="right" title="{{ trans('views\individualNews.alreadyVoted') }}">
                                                         <input value="{{ $comment->id }}" class="cid hidden">
@@ -170,6 +162,14 @@
                                                     @endif
                                                 </div>
                                             </div>
+                                            @can('isLoggedUser', $comment)
+                                            <div class="pull-right deleteComment" style="width: 50px;">
+                                                <div id="deleteClick">
+                                                    {{--                                                        <a href="{{ URL::route('deleteComment') .'?cid='.$comment->id}}" data-toggle="deleteComment" title="{{ trans('views\individualNews.deleteComment') }}"><i class="fa fa-btn fa-close"></i></a>--}}
+                                                    <a class="btn btn-xs btn-default" href="#" data-href="{{ URL::route('deleteComment') .'?cid='.$comment->id}}" data-toggle="modal" data-target="#confirmDelete" title="{{ trans('views\individualNews.deleteComment') }}"><i class="fa fa-btn fa-close"></i>{{ trans('views\individualNews.deleteButton') }}</a>
+                                                </div>
+                                            </div>
+                                            @endcan
                                         </div>
                                     </div>
                                 </div>
