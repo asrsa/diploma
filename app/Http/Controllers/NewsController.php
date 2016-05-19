@@ -22,13 +22,15 @@ class NewsController extends Controller
     }
 
     public function index() {
-        $news = News::paginate(6);
+        $news = News::where('deleted', '=', 0)->paginate(6);
 
         return view('news\news', ['news' => $news]);
     }
 
     public function showNews($newsId) {
-        $news = News::where('id', $newsId)->get()->first();
+        $news = News::where('id', $newsId)
+            ->where('deleted', '=', 0)
+            ->firstOrFail();
 
         $likeSubquery = DB::table('likes')
             ->select(DB::raw('sum(likes.value)'))
