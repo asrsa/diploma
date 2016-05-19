@@ -129,6 +129,19 @@ class News extends Model
                 ->orderBy('news.created_at', 'desc')
                 ->paginate($pages);
         }
+        else if($category == 'tmp') {
+            $result = DB::table('news')
+                ->select('news.*', 'categories.name as catName', 'categories.desc as catDesc')
+                ->join('subcategories', 'news.subcategory_id', '=', 'subcategories.id')
+                ->join('categories', 'subcategories.category_id', '=', 'categories.id')
+                ->where('news.deleted', '=', 0)
+                ->where(function($q) use ($query) {
+                    $q->where('news.title', 'like', '%' . $query . '%');
+                    $q->orWhere('news.body', 'like', '%' . $query . '%');
+                })
+                ->orderBy('news.created_at', 'desc')
+                ->get();
+        }
         else if($category != null) {
             $result = DB::table('news')
                 ->select('news.*', 'categories.name as catName', 'categories.desc as catDesc')

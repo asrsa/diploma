@@ -181,15 +181,16 @@ class NewsController extends Controller
 
         $category = $request->input('cat');
 
+        $pages = 8;
         if(isset($category)) {
-            $result = News::searchNews($search, 8, ucfirst($category));
+            $result = News::searchNews($search, $pages, ucfirst($category));
         }
         else {
-            $result = News::searchNews($search, 8);
+            $result = News::searchNews($search, $pages);
         }
 
         $catCount = array();
-        $tmp = News::searchNews($search, 8);
+        $tmp = News::searchNews($search, $pages, 'tmp');
         $catCount['all'] = array('count' => '', 'desc' => 'Vse kategorije');
         foreach($tmp as $news) {
             $catCount[$news->catName] = array('count' => 0, 'desc' => $news->catDesc);

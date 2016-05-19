@@ -77,7 +77,7 @@
                         @endif
 
                         {{--{!! $result->appends(Request::except('page'))->links() !!}--}}
-                        @include('paginators.customPaginator', ['data' => $result])
+                        @include('paginators.customPaginator', ['data' => $result->appends(Request::except('page'))])
                     </div>
                 </div>
             </div>
