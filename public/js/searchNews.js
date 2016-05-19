@@ -6,10 +6,14 @@ $(document).ready(function() {
         event.preventDefault();
         $('#searchText').animate({width: 'toggle'}, 200);
         $('#searchText').focus();
+
+        $('#searchButton').css('pointer-events', 'none');
     });
 
     $('#searchText').focusout(function() {
         $('#searchText').animate({width: 'toggle'}, 200);
+        $('#searchText').val('');
+        $('#searchButton').css('pointer-events', '');
     });
 
 
