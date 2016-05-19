@@ -31,4 +31,6 @@ return [
     'editNews' => 'Spremeni novico',
     'newsEdited' => 'Novica spremenjena uspešno!',
     'newsDeleted' => 'Novica izbrisana uspešno!',
+    'confirmDelete' => 'Želite izbrisati novico?',
+    'cancelDelete' => 'Prekliči',
 ];
