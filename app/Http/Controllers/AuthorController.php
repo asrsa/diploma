@@ -147,4 +147,22 @@ class AuthorController extends Controller
 
         return Redirect::route('authorNews')->withErrors(['success' => trans('views\authorPage.newsDeleted')]);
     }
+
+    public function showResetPassword() {
+        return view('author.resetPassword');
+    }
+
+    public function resetPassword(Request $request) {
+        $user = $request->user();
+
+        $this->validate($request, array(
+            'password' => 'required|min:6|confirmed',
+        ));
+
+        $user->forceFill(array(
+            'password' => bcrypt($request->input('password'))
+        ))->save();
+
+        return Redirect::route('index')->withErrors(['success' => trans('views\accountPage.passwordResetSuccess')]);
+    }
 }

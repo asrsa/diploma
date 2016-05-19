@@ -59,6 +59,8 @@ Route::group(['middlewareGroups' => ['web']], function() {
     Route::get('/news/edit/{id}', 'AuthorController@editNews')->name('editNews');
     Route::post('/news/edit/{id}', 'AuthorController@editNewsPost')->name('editNewsPost');
     Route::get('/news/delete/{id}', 'AuthorController@deleteNews')->name('deleteNews');
+    Route::get('/author/password', 'AuthorController@showResetPassword')->name('authorChangePassword');
+    Route::post('/author/password', 'AuthorController@resetPassword')->name('authorResetPasswordPost');
 });
 
 //AJAX routes

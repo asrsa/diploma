@@ -33,4 +33,5 @@ return [
     'newsDeleted' => 'Novica izbrisana uspešno!',
     'confirmDelete' => 'Želite izbrisati novico?',
     'cancelDelete' => 'Prekliči',
+    'changePassword' => 'Spremeni geslo',
 ];
