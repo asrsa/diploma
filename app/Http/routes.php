@@ -44,11 +44,12 @@ Route::group(['middlewareGroups' => ['web']], function() {
     Route::post('/password/change', 'UserController@changePasswordPost')->name('changePasswordPost');
 
     //user account routes
-    Route::get('/account', 'AccountController@index')->name('account');
+    //Route::get('/account', 'AccountController@index')->name('account');
+    Route::get('/avatar/change', 'AccountController@avatarChangeGet')->name('changeAvatar');
     Route::post('/avatar/change', 'AccountController@avatarChange');
 //    Route::get('/account/password', 'AccountController@showReset')->name('resetPassword');
 //    Route::post('/account/password/reset', 'AccountController@resetPassword');
-    Route::get('/avatar/change', 'AccountController@avatarChangeGet')->name('changeAvatar');
+
 
     //admin account routes
     Route::get('/admin', 'AdminController@index')->name('adminIndex');

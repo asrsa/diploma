@@ -37,7 +37,21 @@ class AccountController extends Controller
     }
 
     public function avatarChangeGet() {
-        return view('account\changeAvatar');
+        $user = Auth::user();
+
+        if(isset($user->avatar)) {
+            if(Storage::disk('avatars')->exists($user->avatar)) {
+                $img = $user->avatar;
+            }
+            else {
+                $img = Config::get('constants.AVATAR_DEFAULT');
+            }
+        }
+        else {
+            $img = Config::get('constants.AVATAR_DEFAULT');
+        }
+
+        return view('account\changeAvatar', ['img_name' => $img]);
     }
 
     //upload nove avatar slike
@@ -67,7 +81,7 @@ class AccountController extends Controller
         $user->avatar = $newName;
         $user->save();
 
-        return redirect()->route('account')->withErrors(['success' => trans('views\accountPage.avatarChanged')]);
+        return redirect()->route('changeAvatar')->withErrors(['success' => trans('views\accountPage.avatarChanged')]);
     }
 
     //password resets

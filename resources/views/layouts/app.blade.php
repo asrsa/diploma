@@ -65,7 +65,7 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 @can('isUser')
-                                    <li><a href="{{ url('/account') }}"><i class="fa"></i>{{trans('views\layoutPage.accountPage')}}</a></li>
+                                    <li><a href="{{ URL::route('changeAvatar') }}"><i class="fa"></i>{{trans('views\accountPage.changeAvatar')}}</a></li>
                                     <li><a href="{{ URL::route('changePasswordGet') }}"><i class="fa"></i>{{trans('views\authorPage.changePassword')}}</a></li>
                                     <li role="separator" class="divider"></li>
                                 @endcan
