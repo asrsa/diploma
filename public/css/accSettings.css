@@ -1,0 +1,9 @@
+#imgUpload {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    opacity: 0;
+    cursor: inherit;
+}

@@ -36,12 +36,16 @@ class AccountController extends Controller
         return view('account\settings', ['img_name' => $img]);
     }
 
+    public function avatarChangeGet() {
+        return view('account\changeAvatar');
+    }
+
     //upload nove avatar slike
     public function avatarChange(Request $request) {
         $user = Auth::user();
 
         $this->validate($request, array(
-            'image' => 'required|mimes:jpeg,png,bmp|max:100'
+            'image' => 'required|mimes:jpeg,png,bmp,gif|max:100'
         ));
 
         $img = $request->file('image');
@@ -63,7 +67,7 @@ class AccountController extends Controller
         $user->avatar = $newName;
         $user->save();
 
-        return Redirect::back()->withErrors(['success' => trans('views\accountPage.avatarChanged')]);
+        return redirect()->route('account')->withErrors(['success' => trans('views\accountPage.avatarChanged')]);
     }
 
     //password resets
