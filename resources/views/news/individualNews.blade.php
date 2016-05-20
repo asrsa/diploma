@@ -101,7 +101,7 @@
                                 <div class="panel">
                                     <form id="formComment" method="POST" action="{{ URL::route('postComment') }}" class="form-horizontal hidden">
                                         {!! csrf_field() !!}
-                                        <textarea id="comment" name="comment"  rows="5" cols="80"  style="resize: none;"></textarea>
+                                        <textarea id="comment" name="comment"  rows="5"></textarea>
                                         <button id="postCommentForm" type="button" class="btn btn-default">
                                             <i class="fa fa-btn fa-comment-o"></i>{{trans('views\individualNews.postComment')}}
                                         </button>

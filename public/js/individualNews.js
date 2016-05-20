@@ -66,6 +66,10 @@ $(document).ready(function() {
                 data: {'_token':token, 'body':data, 'news':newsId},
                 success: function (data) {
 
+                    if($('#commentAddAjaxFail').length) {
+                        $('#commentAddAjaxFail').remove();
+                    }
+
                     if(data['return'] == 'commentLong') {
                         $('#feedback').append('<div id="commentAddAjaxFail" class="alert alert-danger col-lg-11">' +
                             '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
