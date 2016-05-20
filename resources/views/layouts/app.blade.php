@@ -35,25 +35,20 @@
     </style>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container ">
+    <nav class="navbar navbar-default  navbar-static-top navbarTop-sm">
+        <div class="container">
             <div class="navbar-header">
-
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{trans('views\layoutPage.siteName')}}
-                </a>
+                <ul class="nav navbar-nav">
+                    <li>
+                    <a class="brand" href="{{ url('/') }}">
+                        {{trans('views\layoutPage.siteName')}}
+                    </a>
+                    </li>
+                </ul>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">{{trans('views\layoutPage.home')}}</a></li>
-                </ul>
-
-                <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">{{trans('views\layoutPage.login')}}</a></li>
                         <li><a href="{{ url('/register') }}">{{trans('views\layoutPage.register')}}</a></li>

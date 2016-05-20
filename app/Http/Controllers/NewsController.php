@@ -33,6 +33,8 @@ class NewsController extends Controller
             ->where('deleted', '=', 0)
             ->firstOrFail();
 
+        $catId = $news->subcategory->category->id;
+
         $likeSubquery = DB::table('likes')
             ->select(DB::raw('sum(likes.value)'))
             ->from('likes')
@@ -51,7 +53,14 @@ class NewsController extends Controller
             $comments[$key]->created_at = $date->format('j.n.Y G:i');
         }
 
-        return view('news\individualNews', ['news' => $news, 'comments' => $comments]);
+        $subcatIds = News::getSubcategoryId($catId);
+
+        $subcats = array();
+        foreach($subcatIds as $id) {
+            $subcats[Subcategory::where('id', $id->id)->first()->name] = Subcategory::where('id', $id->id)->first()->desc;
+        }
+
+        return view('news\individualNews', ['news' => $news, 'comments' => $comments, 'catId' => $catId, 'subcats' => $subcats, 'panelTitle' => $news->subcategory->desc]);
     }
 
     public function deleteComment(Request $request) {
