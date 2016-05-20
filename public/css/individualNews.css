@@ -54,3 +54,13 @@
     bottom: 5px;
     right: 12px;
 }
+
+.commentCreated hr{
+    position: relative;
+    top: 20px;
+}
+
+.commentCreated p {
+    font-size: 10px;
+    font-style: italic;
+}

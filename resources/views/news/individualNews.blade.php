@@ -129,6 +129,11 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <p  style="word-wrap: break-word;">{{ $comment->body }}</p>
+
+                                                <div class="commentCreated ">
+                                                    <hr/>
+                                                    <p>{{ trans('views\individualNews.commentPosted') . $comment->created_at }}</p>
+                                                </div>
                                             </div>
 
                                             {{--Buttons for delete and like--}}

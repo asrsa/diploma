@@ -46,6 +46,11 @@ class NewsController extends Controller
             ->where('deleted', '=', 0)
             ->paginate(5);
 
+        foreach($comments as $key => $comment) {
+            $date = new \DateTime($comment->created_at);
+            $comments[$key]->created_at = $date->format('j.n.Y G:i');
+        }
+
         return view('news\individualNews', ['news' => $news, 'comments' => $comments]);
     }
 

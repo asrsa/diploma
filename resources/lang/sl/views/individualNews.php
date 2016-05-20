@@ -21,4 +21,5 @@ return [
     'confirmDelete' => 'Želite izbrisati komentar?',
     'cancelDelete' => 'Prekliči',
     'deleteButton' => 'Izbriši',
+    'commentPosted' => 'Objavljeno ',
 ];
