@@ -14,4 +14,8 @@ return [
     'logout'    => 'Odjava',
     'accountPage' => 'Nastavitve',
     'adminPage' => 'Nastavitve',
+    'frontPage' => 'Naslovnica',
+    'politics' => 'Politika',
+    'sports' => 'Šport',
+    'entertainment' => 'Zabava',
 ];

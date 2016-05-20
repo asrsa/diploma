@@ -154,28 +154,37 @@ class NewsController extends Controller
         $subcatIds = News::getSubcategoryId($catId);
 
         $mainNews = array();
+        $subcats = array();
         foreach($subcatIds as $id) {
             $news = News::getSubcategoryNews($id->id);
             $subName = Subcategory::where('id', $id->id)->first()->desc;
 
+            $subcats[Subcategory::where('id', $id->id)->first()->name] = Subcategory::where('id', $id->id)->first()->desc;
             if($news != []) {
                 $mainNews[$subName] = $news;
             }
         }
 
-        return view('news.category', ['panelTitle' => $catTitle, 'newNews' => $newNews, 'mainNews' => $mainNews]);
+        return view('news.category', ['panelTitle' => $catTitle, 'newNews' => $newNews, 'mainNews' => $mainNews, 'catId' => $catId, 'subcats' => $subcats]);
     }
 
     public function showSubcategory(Request $request, $subcategory) {
-
+        $catId = Subcategory::where('name', '=', $subcategory)->firstOrFail()->category_id;
         $subcatTitle = Subcategory::where('name', '=', $subcategory)->firstOrFail()->desc;
         $subcatId = Subcategory::where('name', '=', $subcategory)->firstOrFail()->id;
 
         $newNews = News::getFiveNewNews();
 
+        $subcatIds = News::getSubcategoryId($catId);
+
+        $subcats = array();
+        foreach($subcatIds as $id) {
+            $subcats[Subcategory::where('id', $id->id)->first()->name] = Subcategory::where('id', $id->id)->first()->desc;
+        }
+
         $mainNews = News::getSubcategoryNewsPaginate($subcatId);
 
-        return view('news.subcategory', ['panelTitle' => $subcatTitle, 'newNews' => $newNews, 'mainNews' => $mainNews]);
+        return view('news.subcategory', ['panelTitle' => $subcatTitle, 'newNews' => $newNews, 'mainNews' => $mainNews, 'catId' => $catId, 'subcats' => $subcats]);
     }
 
     public function searchNews(Request $request) {

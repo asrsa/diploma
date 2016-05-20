@@ -10,4 +10,46 @@ body {
 #searchNav input {
     position: relative;
     top: 8px;
+    height: 25px;
+}
+
+.navbar-sm li:hover {
+    color: #3b3c3b;
+}
+
+.navbar-selected {
+    background-color: #edf0ed;
+    border-radius: 15px 15px 0px 0px;
+    -moz-border-radius: 15px 15px 0px 0px;
+    -webkit-border-radius: 15px 15px 0px 0px;
+    border: 0px solid #000000;
+}
+
+.navbar-sm > ul > li > a {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.navbar-sm {
+    min-height: 20px !important;
+}
+
+#subnav {
+    position: relative;
+    bottom: 25px;
+    border-top: none;
+    padding-bottom: 1px !important;
+}
+
+#subnav > ul {
+    width: 100%;
+    background-color: #edf0ed;
+    /*border-radius: 30px 30px 30px 30px;*/
+    /*-moz-border-radius: 30px 30px 30px 30px;*/
+    /*-webkit-border-radius: 30px 30px 30px 30px;*/
+    /*border: 0px solid #000000;*/
+}
+
+.subnav-selected > a {
+    text-decoration: underline;
 }

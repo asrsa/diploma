@@ -8,6 +8,30 @@
     {{ $panelTitle }}
 @endsection
 
+@if($catId == 2)
+@section('navPolitics')
+    navbar-selected
+@endsection
+@elseif($catId == 1)
+@section('navSport')
+    navbar-selected
+@endsection
+@elseif($catId == 3)
+@section('navEntertainment')
+    navbar-selected
+@endsection
+@endif
+
+@section('subnav')
+    <nav class="navbar navbar-default navbar-sm" id="subnav">
+        <ul class="nav navbar-nav">
+            @foreach($subcats as $key => $subcat)
+                <li><a href="{{ url('/subcat/') .'/'. $key }}">{{ $subcat }}</a></li>
+            @endforeach
+        </ul>
+    </nav>
+@endsection
+
 @section('content')
     <div class="container-fluid">
         <div class="row">
