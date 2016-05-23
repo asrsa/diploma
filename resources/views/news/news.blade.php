@@ -54,8 +54,8 @@
                                 @foreach($row as $new)
                                     <a href="{{ URL::route('individualNews', $new->id) }}">
                                         <article class="col-md-4">
-                                            <h5>{{ $new->title }}</h5>
                                             <img src="{{ $new->image }}" style="height: 96px; width: 130px;">
+                                            <h5>{{ $new->title }}</h5>
                                         </article>
                                     </a>
                                 @endforeach
