@@ -48,3 +48,8 @@
     position: absolute;
     bottom: 0px;
 }
+
+.article > img {
+    width: 100px;
+    height: 100px;
+}
