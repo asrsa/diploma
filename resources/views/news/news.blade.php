@@ -8,7 +8,7 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
+            <div class="col-lg-6 col-lg-offset-2">
                 <div class="panel panel-default">
                     @if ($errors->has('success'))
                         <div class="alert alert-success">
@@ -44,7 +44,7 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
+            <div class="col-lg-6 col-lg-offset-2">
                 <div class="panel panel-default newsContainer">
                     <div class="panel-heading">{{trans('views\welcomePage.welcome')}}</div>
 
@@ -53,7 +53,7 @@
                             <div class="row">
                                 @foreach($row as $new)
                                     <a href="{{ URL::route('individualNews', $new->id) }}">
-                                        <article class="col-md-4">
+                                        <article class="col-md-6">
                                             <img src="{{ $new->image }}" style="height: 96px; width: 130px;">
                                             <h5>{{ $new->title }}</h5>
                                         </article>
