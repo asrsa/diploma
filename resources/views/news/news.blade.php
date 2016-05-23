@@ -45,7 +45,7 @@
 
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <div class="panel panel-default">
+                <div class="panel panel-default newsContainer">
                     <div class="panel-heading">{{trans('views\welcomePage.welcome')}}</div>
 
                     <div class="panel-body container-fluid">
@@ -62,8 +62,10 @@
                             </div>
                         @endforeach
 
+                    <div class="bot">
                         {{--{!! $news->appends(Request::except('page'))->links() !!}--}}
                         @include('paginators.customPaginator', ['data' => $news->appends(Request::except('page'))])
+                    </div>
                     </div>
                 </div>
             </div>

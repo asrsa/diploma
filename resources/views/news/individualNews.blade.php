@@ -59,8 +59,9 @@
                             {{--</div>--}}
                         {{--@endif--}}
 
-                        <h3>{{ $news->title }}</h3>
-                        <small>{{ date('j.n.Y', $news->created_at->getTimestamp()) }}</small>
+                        <h3 class="col-lg-12">{{ $news->title }}</h3>
+                        <small class="col-lg-12 author">{{ $createdBy .', '. date('j.n.Y', $news->created_at->getTimestamp()) }}</small>
+
                         <div class="container">
                             {!! $news->body !!}
                         </div>

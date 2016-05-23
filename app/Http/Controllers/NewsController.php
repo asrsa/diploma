@@ -7,6 +7,7 @@ use App\Comment;
 use App\Like;
 use App\News;
 use App\Subcategory;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -34,6 +35,10 @@ class NewsController extends Controller
         $news = News::where('id', $newsId)
             ->where('deleted', '=', 0)
             ->firstOrFail();
+
+        $user = User::where('id', '=', $news->user_id)->first();
+
+        $createdBy = $user->firstName[0] . '.' . ' ' . $user->lastName;
 
         $catId = $news->subcategory->category->id;
 
@@ -64,7 +69,17 @@ class NewsController extends Controller
 
         $newNews = News::getFiveNewNews();
 
-        return view('news\individualNews', ['news' => $news, 'comments' => $comments, 'catId' => $catId, 'subcats' => $subcats, 'panelTitle' => $news->subcategory->desc, 'newNews' => $newNews]);
+        $data = array(
+            'news' => $news,
+            'comments' => $comments,
+            'catId' => $catId,
+            'subcats' => $subcats,
+            'panelTitle' => $news->subcategory->desc,
+            'newNews' => $newNews,
+            'createdBy' => $createdBy
+        );
+
+        return view('news\individualNews', $data);
     }
 
     public function deleteComment(Request $request) {

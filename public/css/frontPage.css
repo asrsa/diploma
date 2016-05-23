@@ -38,3 +38,13 @@
 .dark:hover {
     text-decoration: underline;
 }
+
+.newsContainer {
+    position: relative;
+    min-height: 550px;
+}
+
+.bot {
+    position: absolute;
+    bottom: 0px;
+}
