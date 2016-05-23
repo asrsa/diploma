@@ -68,6 +68,7 @@ class AuthorController extends Controller
 
         $author = $request->user()->id;
 
+        $search = $request->input('search');
         $dateSort = $request->input('date');
         $titleSort = $request->input('title');
         $editSort = $request->input('edit');
@@ -89,7 +90,7 @@ class AuthorController extends Controller
             $sort = '';
         }
 
-        $news = News::getAuthorNews($author, $sort, $sortIt);
+        $news = News::getAuthorNews($author, $sort, $sortIt, $search);
 
         foreach($news as $key => $new) {
             $date = new \DateTime($new->created_at);
@@ -170,5 +171,11 @@ class AuthorController extends Controller
         ))->save();
 
         return Redirect::route('index')->withErrors(['success' => trans('views\accountPage.passwordResetSuccess')]);
+    }
+
+    public function ajaxSearchNews(Request $request) {
+        $result = News::searchNews($request->input('query'), 5);
+
+        return response()->json($result);
     }
 }

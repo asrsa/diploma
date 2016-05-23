@@ -93,23 +93,43 @@ class News extends Model
         return $news;
     }
 
-    static function getAuthorNews($author, $sort, $dateSort) {
+    static function getAuthorNews($author, $sort, $dateSort, $search = null) {
 
-        if($sort === '') {
-            $news = DB::table('news')
-                ->select('*')
-                ->where('user_id', '=', $author)
-                ->where('news.deleted', '=', 0)
-                ->orderBy('created_at', 'desc')
-                ->paginate(5);
+        if($search === '') {
+            if ($sort === '') {
+                $news = DB::table('news')
+                    ->select('*')
+                    ->where('user_id', '=', $author)
+                    ->where('news.deleted', '=', 0)
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(5);
+            } else {
+                $news = DB::table('news')
+                    ->select('*')
+                    ->where('user_id', '=', $author)
+                    ->where('news.deleted', '=', 0)
+                    ->orderBy($sort, $dateSort)
+                    ->paginate(5);
+            }
         }
         else {
-            $news = DB::table('news')
-                ->select('*')
-                ->where('user_id', '=', $author)
-                ->where('news.deleted', '=', 0)
-                ->orderBy($sort, $dateSort)
-                ->paginate(5);
+            if ($sort === '') {
+                $news = DB::table('news')
+                    ->select('*')
+                    ->where('user_id', '=', $author)
+                    ->where('news.deleted', '=', 0)
+                    ->where('news.title', 'like', '%' . $search . '%')
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(5);
+            } else {
+                $news = DB::table('news')
+                    ->select('*')
+                    ->where('user_id', '=', $author)
+                    ->where('news.deleted', '=', 0)
+                    ->where('news.title', 'like', '%' . $search . '%')
+                    ->orderBy($sort, $dateSort)
+                    ->paginate(5);
+            }
         }
 
         return $news;

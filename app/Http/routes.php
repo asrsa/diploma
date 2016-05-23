@@ -69,3 +69,4 @@ Route::group(['middlewareGroups' => ['web']], function() {
 //AJAX routes
 Route::get('/ajax/subcategory', 'AuthorController@getSubcategories');
 Route::post('/ajax/post/comment', 'AccountController@postComment')->name('postComment');
+Route::get('/ajax/search/news', 'AuthorController@ajaxSearchNews');
