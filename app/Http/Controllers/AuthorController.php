@@ -39,6 +39,7 @@ class AuthorController extends Controller
         $subcat = $request->Input('subcategory');
         $user = $request->user()->id;
         $image = $request->Input('image');
+        $hot = $request->Input('hot');
 
         $news = new News();
         $news->title = $title;
@@ -46,6 +47,9 @@ class AuthorController extends Controller
         $news->user_id = $user;
         $news->subcategory_id = $subcat;
         $news->image = $image;
+        if(isset($hot)) {
+            $news->hot = 1;
+        }
 
         $news->save();
 
@@ -127,6 +131,7 @@ class AuthorController extends Controller
         $subcat = $request->Input('subcategory');
         $user = $request->user()->id;
         $image = $request->Input('image');
+        $hot = $request->Input('hot');
 
         $news = News::where('id', '=', $newsId)->first();
         $news->title = $title;
@@ -134,6 +139,7 @@ class AuthorController extends Controller
         $news->user_id = $user;
         $news->subcategory_id = $subcat;
         $news->image = $image;
+        isset($hot)? $news->hot = 1: $news->hot = 0;
 
         $news->save();
 

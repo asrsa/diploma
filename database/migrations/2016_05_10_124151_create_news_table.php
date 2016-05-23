@@ -22,6 +22,8 @@ class CreateNewsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('subcategory_id')->unsigned();
             $table->foreign('subcategory_id')->references('id')->on('subcategories');
+            $table->integer('hot', 1)->default(0);
+            $table->integer('deleted', 1)->default(0);
         });
     }
 

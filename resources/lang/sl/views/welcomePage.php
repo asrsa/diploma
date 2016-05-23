@@ -8,5 +8,6 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'welcome'   => 'Dobrodošli'
+    'welcome'   => 'Novice',
+    'hotNews' => 'Vroče novice',
 ];

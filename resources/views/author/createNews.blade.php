@@ -64,6 +64,13 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label">{{trans('views\authorPage.hotNews')}}</label>
+                                    <div class="col-sm-1 col-sm-offset-1">
+                                        <input type="checkbox" id="hot" class="form-control" name="hot" value="1">
+                                    </div>
+                                </div>
+
                                 <div class="input-group{{ $errors->has('image') ? ' has-error' : '' }}">
                                     <span class="input-group-btn">
                                         <a id="lfm" data-input="image" data-preview="holder" class="btn btn-primary">

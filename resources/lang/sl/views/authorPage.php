@@ -34,4 +34,5 @@ return [
     'confirmDelete' => 'Želite izbrisati novico?',
     'cancelDelete' => 'Prekliči',
     'changePassword' => 'Spremeni geslo',
+    'hotNews' => 'Vroča novica',
 ];

@@ -159,4 +159,25 @@ class News extends Model
 
         return $result;
     }
+
+    static function getHotNews($limit) {
+        $hotNews = DB::table('news')
+            ->select('news.*')
+            ->where('news.deleted', '=', 0)
+            ->where('news.hot', '=', 1)
+            ->orderBy('news.created_at', 'desc')
+            ->take($limit)
+            ->get();
+
+        return $hotNews;
+    }
+
+    static function getAllNews($pages) {
+        $news = DB::table('news')
+            ->select('news.*')
+            ->where('news.deleted', '=', 0)
+            ->paginate($pages);
+
+        return $news;
+    }
 }

@@ -23,9 +23,11 @@ class NewsController extends Controller
     }
 
     public function index() {
-        $news = News::where('deleted', '=', 0)->paginate(6);
+        $news = News::getAllNews(6);
 
-        return view('news\news', ['news' => $news]);
+        $hotNews = News::getHotNews(3);
+
+        return view('news\news', ['news' => $news, 'hotNews' => $hotNews]);
     }
 
     public function showNews($newsId) {

@@ -1,27 +1,55 @@
 @extends('layouts.app')
 
+@section('styles')
+    <link rel="stylesheet" href="{{ URL::asset('css/frontPage.css') }}">
+@endsection
+
 @section('content')
     <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="panel panel-default">
+                    @if ($errors->has('success'))
+                        <div class="alert alert-success">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>{{ $errors->first('success') }}</strong>
+                        </div>
+                    @endif
+                    @if ($errors->has('error'))
+                        <div class="alert alert-danger">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>{{ $errors->first('error') }}</strong>
+                        </div>
+                    @endif
+                    <div class="panel-heading">{{trans('views\welcomePage.hotNews')}}</div>
+                    <div class="panel-body container-fluid">
+                        <div class="container-fluid hotPanel col-lg-12">
+                            @foreach($hotNews as $hot)
+                                <div class="panel hotDiv">
+                                    <a href="{{ URL::route('individualNews', $hot->id) }}">
+                                        <img class="hotImg" src="{{ $hot->image }}">
+                                    </a>
+                                    <a class="titleLink" href="{{ URL::route('individualNews', $hot->id) }}">
+                                        <span class="dark">
+                                            <h3 class="hotTitle">{{ $hot->title }}</h3>
+                                        </span>
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">{{trans('views\welcomePage.welcome')}}</div>
 
                     <div class="panel-body container-fluid">
-                        @if ($errors->has('success'))
-                            <div class="alert alert-success">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <strong>{{ $errors->first('success') }}</strong>
-                            </div>
-                        @endif
-                        @if ($errors->has('error'))
-                            <div class="alert alert-danger">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <strong>{{ $errors->first('error') }}</strong>
-                            </div>
-                        @endif
-
-                        @foreach(array_chunk($news->getCollection()->all(), 2) as $row)
+                        @foreach(array_chunk($news->all(), 2) as $row)
                             <div class="row">
                                 @foreach($row as $new)
                                     <a href="{{ URL::route('individualNews', $new->id) }}">
@@ -41,4 +69,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script type="text/javascript" src="{{ URL::asset('js/hotNews.js') }}"></script>
 @endsection
