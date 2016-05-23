@@ -143,7 +143,7 @@ class AuthorController extends Controller
         $news = News::where('id', '=', $newsId)->first();
         $news->title = $title;
         $news->body = $body;
-        $news->user_id = $user;
+        //$news->user_id = $user;
         $news->subcategory_id = $subcat;
         $news->image = $image;
         isset($hot)? $news->hot = 1: $news->hot = 0;
