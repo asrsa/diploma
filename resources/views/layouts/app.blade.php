@@ -67,6 +67,7 @@
 
                                 @can('isAdmin')
                                     <li><a href="{{ URL::route('addAuthor') }}"><i class="fa"></i>{{trans('views\adminPage.addAuthor')}}</a></li>
+                                    <li><a href="{{ URL::route('authorNews') }}"><i class="fa"></i>{{trans('views\adminPage.allNews')}}</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="{{ URL::route('changePasswordGet') }}"><i class="fa"></i>{{trans('views\adminPage.changePassword')}}</a></li>
                                     <li role="separator" class="divider"></li>

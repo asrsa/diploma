@@ -13,4 +13,5 @@ return [
     'addAuthorTitle' => 'Registriraj avtorja',
     'addAuthorSuccess' => 'Avtor uspešno dodan.',
     'changePassword' => 'Spremeni geslo',
+    'allNews' => 'Vse novice',
 ];

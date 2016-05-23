@@ -65,8 +65,9 @@ class AuthorController extends Controller
     }
 
     public function showNews(Request $request) {
-
         $author = $request->user()->id;
+
+        $request->user()->isAdmin()? $author = -1: $author;
 
         $search = $request->input('search');
         $dateSort = $request->input('date');
@@ -90,7 +91,12 @@ class AuthorController extends Controller
             $sort = '';
         }
 
-        $news = News::getAuthorNews($author, $sort, $sortIt, $search);
+        if($author != -1) {
+            $news = News::getAuthorNews($author, $sort, $sortIt, $search);
+        }
+        else {
+            $news = News::getAdminNews($sort, $sortIt, $search);
+        }
 
         foreach($news as $key => $new) {
             $date = new \DateTime($new->created_at);
