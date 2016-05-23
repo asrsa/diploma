@@ -1,0 +1,17 @@
+.sidebarRow {
+    border-bottom: 1px;
+    padding-bottom: 20px;
+}
+
+.sidebarImg {
+    float: left;
+}
+
+.sidebarImage {
+    width: 75px !important;
+    height: 75px !important;
+}
+
+.sidebarLinkTitle {
+
+}

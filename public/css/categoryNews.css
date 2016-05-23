@@ -16,7 +16,7 @@
 }
 
 .catPanels {
-    min-height: 500px;
+    min-height: 550px !important;
 }
 
 .mainNewsHead {

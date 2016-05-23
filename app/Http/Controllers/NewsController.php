@@ -60,7 +60,9 @@ class NewsController extends Controller
             $subcats[Subcategory::where('id', $id->id)->first()->name] = Subcategory::where('id', $id->id)->first()->desc;
         }
 
-        return view('news\individualNews', ['news' => $news, 'comments' => $comments, 'catId' => $catId, 'subcats' => $subcats, 'panelTitle' => $news->subcategory->desc]);
+        $newNews = News::getFiveNewNews();
+
+        return view('news\individualNews', ['news' => $news, 'comments' => $comments, 'catId' => $catId, 'subcats' => $subcats, 'panelTitle' => $news->subcategory->desc, 'newNews' => $newNews]);
     }
 
     public function deleteComment(Request $request) {

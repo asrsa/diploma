@@ -2,6 +2,7 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ URL::asset('css/categoryNews.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/sidebar.css') }}">
 @endsection
 
 @section('title')
@@ -73,8 +74,8 @@
                     <div class="panel-body container col-lg-offset-1">
                         @foreach($newNews as $news)
                             <div class="row sidebarRow">
-                                <a href="{{ URL::route('individualNews', $news->id) }}" class="sidebarLink"><img src="{{ $news->image }}" class="sidebarImage"></a>
-                                <a href="{{ URL::route('individualNews', $news->id) }}" class="sidebarLink"><p class="sidebarTitle">{{ $news->title }}</p></a>
+                                <a href="{{ URL::route('individualNews', $news->id) }}" class="sidebarLink sidebarImg"><img src="{{ $news->image }}" class="sidebarImage"></a>
+                                <a href="{{ URL::route('individualNews', $news->id) }}" class="sidebarLink sidebarLinkTitle"><p class="sidebarTitle">{{ $news->title }}</p></a>
                             </div>
                         @endforeach
                     </div>

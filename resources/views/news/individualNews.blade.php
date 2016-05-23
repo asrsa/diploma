@@ -2,6 +2,8 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ URL::asset('css/individualNews.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/categoryNews.css') }}">
 @endsection
 
 @section('title')
@@ -40,7 +42,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 col-lg-offset-2">
-                <div class="panel panel-default">
+                <div class="panel panel-default catPanels">
                     <div class="panel-heading">{{ $news->title }}</div>
 
                     <div class="panel-body container">
@@ -70,9 +72,14 @@
             <div class="col-md-2">
                 <div class="panel panel-default catPanels">
                     <div class="panel-heading">{{ trans('views\categoryNews.newNews') }}</div>
-
-                    <div class="panel-body container col-lg-offset-1">
-                    </div>
+                        <div class="panel-body container col-lg-offset-1">
+                            @foreach($newNews as $news)
+                                <div class="row sidebarRow">
+                                    <a href="{{ URL::route('individualNews', $news->id) }}" class="sidebarLink sidebarImg"><img src="{{ $news->image }}" class="sidebarImage"></a>
+                                    <a href="{{ URL::route('individualNews', $news->id) }}" class="sidebarLink sidebarLinkTitle"><p class="sidebarTitle">{{ $news->title }}</p></a>
+                                </div>
+                            @endforeach
+                        </div>
                 </div>
             </div>
 
