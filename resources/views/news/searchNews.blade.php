@@ -65,9 +65,9 @@
                                     <div class="row">
                                         @foreach($row as $new)
                                             <a href="{{ URL::route('individualNews', $new->id) }}">
-                                                <article class="col-lg-4">
+                                                <article class="col-lg-4 searchArticle">
+                                                    <img src="{{ $new->image }}">
                                                     <h5>{{ $new->title }}</h5>
-                                                    <img src="{{ $new->image }}" style="height: 96px; width: 130px;">
                                                 </article>
                                             </a>
                                         @endforeach

@@ -3,3 +3,12 @@
     pointer-events: none;
     cursor: default;
 }
+
+.searchArticle {
+    padding-bottom: 20px;
+}
+
+.searchArticle > img {
+    width: 100px;
+    height: 100px;
+}
