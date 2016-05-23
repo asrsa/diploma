@@ -49,6 +49,10 @@
     bottom: 0px;
 }
 
+.article {
+    padding-bottom: 20px;
+}
+
 .article > img {
     width: 100px;
     height: 100px;
