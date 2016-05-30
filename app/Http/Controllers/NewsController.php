@@ -28,7 +28,7 @@ class NewsController extends Controller
 
         $hotNews = News::getHotNews(3);
 
-        return view('news\news', ['news' => $news, 'hotNews' => $hotNews]);
+        return view('news.news', ['news' => $news, 'hotNews' => $hotNews]);
     }
 
     public function showNews($newsId) {
@@ -79,7 +79,7 @@ class NewsController extends Controller
             'createdBy' => $createdBy
         );
 
-        return view('news\individualNews', $data);
+        return view('news.individualNews', $data);
     }
 
     public function deleteComment(Request $request) {

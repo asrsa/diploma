@@ -234,6 +234,7 @@ class News extends Model
         $news = DB::table('news')
             ->select('news.*')
             ->where('news.deleted', '=', 0)
+            ->orderBy('news.created_at', 'desc')
             ->paginate($pages);
 
         return $news;
