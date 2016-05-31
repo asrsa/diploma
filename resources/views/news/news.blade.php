@@ -76,7 +76,12 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">{{ trans('views\welcomePage.weather') }}</div>
                     <div class="panel-body container-fluid">
+                        <div id="currWeather">
 
+                        </div>
+                        <table class="table" id="fourWeather">
+
+                        </table>
                     </div>
                 </div>
             </div>
