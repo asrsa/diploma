@@ -75,4 +75,5 @@
 
 @section('scripts')
     <script type="text/javascript" src="{{ URL::asset('js/hotNews.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/weather.js') }}"></script>
 @endsection
