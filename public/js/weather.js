@@ -1,70 +1,101 @@
+var geoUrl = 'http://ip-api.com/json';
+var weatherUrl = 'http://api.openweathermap.org/data/2.5/forecast';
+var weatherCurrUrl = 'http://api.openweathermap.org/data/2.5/weather';
+var weatherApiKey = 'eee3ab31c9c085c141cca5f5047dcf76';
+
+var currWeatherGlobal = '';
+var fourWeatherGlobal = '';
+var fullWeatherUrl = '';
+var fullWeatherCurrUrl = '';
+
 $(document).ready(function() {
-
-    var geoUrl = 'http://ip-api.com/json';
-    var weatherUrl = 'http://api.openweathermap.org/data/2.5/forecast';
-    var weatherApiKey = 'eee3ab31c9c085c141cca5f5047dcf76';
-
-    if(sessionStorage.getItem('lat') === null || sessionStorage.getItem('lon') === null) {
+    $.when( //get Geo data first
         $.get(geoUrl, function(data) {
-            var lat = data['lat'];
-            var lon = data['lon'];
-            var city = data['city'];
-
-            sessionStorage['lat'] = lat;
-            sessionStorage['lon'] = lon;
-            sessionStorage['city'] = city;
-        });
-    }
-
-    var fullWeatherUrl = weatherUrl + '?lat=' + sessionStorage['lat'] + '&lon=' + sessionStorage['lon'] + '&units=metric' + '&appid=' + weatherApiKey;
-
-    if(true) {
-        $.get(fullWeatherUrl, function (data) {
-            sessionStorage['time'] = new Date();
-            var nextMidday = getNextMidday();
-
-            var currWeather = {};
-            currWeather['temp'] = data['list'][0]['main']['temp'];
-            currWeather['date'] = data['list'][0]['dt_txt'];
-            currWeather['icon'] = data['list'][0]['weather'][0]['icon'];
-            sessionStorage.setItem('currWeather', JSON.stringify(currWeather));
-
-            var nextDayKey;
-            $.each(data['list'], function(key, value) {
-                var dateTime = new Date(value['dt_txt']);
-                if(nextMidday.getTime() == dateTime.getTime()) {
-                    nextDayKey = key;
-                }
-            });
-
-            var fourWeather = [];
-            var tmp = {};
-            tmp['tempMorning'] = data['list'][nextDayKey]['main']['temp'];
-            tmp['tempAfternoon'] = data['list'][nextDayKey + 2]['main']['temp'];
-            tmp['date'] = data['list'][nextDayKey]['dt_txt'];
-            tmp['icon'] = data['list'][nextDayKey ]['weather'][0]['icon'];
-            fourWeather.push(tmp);
-
-            for(i=0; i<3; i++) {
-                var tmp = {};
-                tmp['tempMorning'] = data['list'][nextDayKey + 8]['main']['temp'];
-                tmp['tempAfternoon'] = data['list'][nextDayKey + 8 + 2]['main']['temp'];
-                tmp['date'] = data['list'][nextDayKey + 8]['dt_txt'];
-                tmp['icon'] = data['list'][nextDayKey + 8 + 1]['weather'][0]['icon'];
-                fourWeather.push(tmp);
-                nextDayKey += 8;
-            }
-            sessionStorage.setItem('fourWeather', JSON.stringify(fourWeather));
-        });
-    }
-
-    setCurrWeather();
-    setFourWeather();
+                setGeoData(data);
+        })
+    ).then(function(){
+        if(minutesPassed(10)) {
+            $.when( //here you get weather data
+                $.get(fullWeatherCurrUrl, function (data) {
+                    setCurrData(data);
+                }),
+                $.get(fullWeatherUrl, function (data) {
+                    setFourData(data);
+                })
+            ).then(function () { //and here you render it all
+                    setCurrWeather();
+                    setFourWeather();
+            })
+        }
+        else {
+            setCurrWeather();
+            setFourWeather();
+        }
+    });
 });
 
+function setGeoData(data) {
+    if(localStorage.getItem('lat') == null || localStorage.getItem('lon') == null || localStorage.length == 0) {
+        var lat = data['lat'];
+        var lon = data['lon'];
+        var city = data['city'];
+
+        localStorage['lat'] = lat;
+        localStorage['lon'] = lon;
+        localStorage['city'] = city;
+
+        fullWeatherUrl = weatherUrl + '?lat=' + lat + '&lon=' + lon + '&units=metric' + '&appid=' + weatherApiKey;
+        fullWeatherCurrUrl = weatherCurrUrl + '?lat=' + lat + '&lon=' + lon + '&units=metric' + '&appid=' + weatherApiKey;
+    }
+    fullWeatherUrl = weatherUrl + '?lat=' + localStorage['lat'] + '&lon=' + localStorage['lon'] + '&units=metric' + '&appid=' + weatherApiKey;
+    fullWeatherCurrUrl = weatherCurrUrl + '?lat=' + localStorage['lat'] + '&lon=' + localStorage['lon'] + '&units=metric' + '&appid=' + weatherApiKey;
+}
+
+function setCurrData(data) {
+    localStorage['time'] = new Date();
+
+    var currWeather = {};
+    currWeather['temp'] = data['main']['temp'];
+    currWeather['icon'] = data['weather'][0]['icon'];
+    localStorage['currWeather'] = JSON.stringify(currWeather);
+    currWeatherGlobal = currWeather;
+}
+
+function setFourData(data) {
+    var nextMidday = getNextMidday();
+
+    var nextDayKey;
+    $.each(data['list'], function (key, value) {
+        var dateTime = new Date(value['dt_txt']);
+        if (nextMidday.getTime() == dateTime.getTime()) {
+            nextDayKey = key;
+        }
+    });
+
+    var fourWeather = [];
+    var tmp = {};
+    tmp['tempMorning'] = data['list'][nextDayKey]['main']['temp'];
+    tmp['tempAfternoon'] = data['list'][nextDayKey + 2]['main']['temp'];
+    tmp['date'] = data['list'][nextDayKey]['dt_txt'];
+    tmp['icon'] = data['list'][nextDayKey]['weather'][0]['icon'];
+    fourWeather.push(tmp);
+
+    for (i = 0; i < 3; i++) {
+        var tmp = {};
+        tmp['tempMorning'] = data['list'][nextDayKey + 8]['main']['temp'];
+        tmp['tempAfternoon'] = data['list'][nextDayKey + 8 + 2]['main']['temp'];
+        tmp['date'] = data['list'][nextDayKey + 8]['dt_txt'];
+        tmp['icon'] = data['list'][nextDayKey + 8 + 1]['weather'][0]['icon'];
+        fourWeather.push(tmp);
+        nextDayKey += 8;
+    }
+    localStorage['fourWeather'] = JSON.stringify(fourWeather);
+    fourWeatherGlobal = fourWeather;
+}
+
 function minutesPassed(minutes) {
-    var originTime = sessionStorage['time'];
-    if(originTime == null) {
+    var originTime = localStorage['time'];
+    if(originTime == null || localStorage['currWeather'] == null || localStorage['fourWeather'] == null) {
         return true;
     }
     var currTime = new Date();
@@ -88,13 +119,25 @@ function getNextMidday() {
 }
 
 function setCurrWeather() {
-    var currWeather = JSON.parse(sessionStorage['currWeather']);
-    var text = sessionStorage['city'] + '<br/>' + '<i class="wi ' + getWeatherIcon(currWeather['icon']) + ' curr"></i>' + '<br/>' + Math.round(currWeather['temp']) + '°C';
+    if(localStorage['currWeather'] == null) {
+        var currWeather = currWeatherGlobal;
+    }
+    else {
+        var currWeather = JSON.parse(localStorage['currWeather']);
+    }
+
+    var text = localStorage['city'] + '<br/>' + '<i class="wi ' + getWeatherIcon(currWeather['icon']) + ' curr"></i>' + '<br/>' + Math.round(currWeather['temp']) + '°C';
     $('#currWeather').append(text);
 }
 
 function setFourWeather() {
-    var fourWeather = JSON.parse(sessionStorage['fourWeather']); console.log(fourWeather);
+    if(localStorage['fourWeather'] == null) {
+        var fourWeather = fourWeatherGlobal;
+    }
+    else {
+        var fourWeather = JSON.parse(localStorage['fourWeather']);
+    }
+
     $.each(fourWeather, function(key, value) {
         var day = new Date(value['date']);
         var text = '<tr>' +
