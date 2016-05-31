@@ -16,7 +16,6 @@ $(document).ready(function() {
 
     var fullWeatherUrl = weatherUrl + '?lat=' + sessionStorage['lat'] + '&lon=' + sessionStorage['lon'] + '&units=metric' + '&appid=' + weatherApiKey;
 
-    console.log(sessionStorage);
     if(minutesPassed(10)) {
         $.get(fullWeatherUrl, function (data) {
             sessionStorage['time'] = new Date();
@@ -76,4 +75,12 @@ function getNextMidday() {
     currTime.setDate(currTime.getDate() + 1);
 
     return currTime;
+}
+
+function setCurrWeather() {
+
+}
+
+function setFourWeather() {
+
 }

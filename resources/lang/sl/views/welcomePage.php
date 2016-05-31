@@ -10,4 +10,5 @@ return [
 
     'welcome'   => 'Novice',
     'hotNews' => 'Vroče novice',
+    'weather' => 'Vreme',
 ];
