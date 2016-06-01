@@ -55,7 +55,7 @@ class AdminController extends Controller
         ]);
 
         $this->sendActivation($user);
-        
+
         return Redirect::route('index')->withErrors(['success' => trans('views\adminPage.addAuthorSuccess')]);
     }
 

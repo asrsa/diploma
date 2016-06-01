@@ -57,6 +57,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Like');
     }
 
+    public function subscription() {
+        return $this->hasMany('App\Subscription');
+    }
+
     public function setFirstNameAttribute($value)
     {
         $this->attributes['firstName'] = ucfirst(strtolower($value));

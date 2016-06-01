@@ -9,5 +9,7 @@ return [
     */
 
     'newNews' => 'Novejše novice',
-
+    'subscribe' => 'Naroči se',
+    'subscribed' => 'Naročen',
+    'unsubscribe' => 'Odjavi se',
 ];

@@ -7,6 +7,7 @@ use App\Comment;
 use App\Like;
 use App\News;
 use App\Subcategory;
+use App\Subscription;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -193,7 +194,24 @@ class NewsController extends Controller
             }
         }
 
-        return view('news.category', ['panelTitle' => $catTitle, 'newNews' => $newNews, 'mainNews' => $mainNews, 'catId' => $catId, 'subcats' => $subcats]);
+        if(Auth::check()) {
+            $subbed = $this->checkIfSubbed($catId);
+        }
+
+        return view('news.category', ['panelTitle' => $catTitle, 'newNews' => $newNews, 'mainNews' => $mainNews, 'catId' => $catId, 'subcats' => $subcats, 'subbed' => $subbed]);
+    }
+
+    public function checkIfSubbed($catId) {
+        $sub = Subscription::where('user_id', '=', Auth::user()->id)
+            ->where('category_id', '=', $catId)
+            ->first();
+
+        if($sub == null) {
+            return 0;
+        }
+        else {
+            return $sub->subscribed;
+        }
     }
 
     public function showSubcategory(Request $request, $subcategory) {

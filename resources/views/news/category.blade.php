@@ -40,14 +40,29 @@
             {{--MAIN PANEL--}}
             <div class="col-lg-6 col-lg-offset-2">
                 <div class="panel panel-default catPanels">
-                    <div class="panel-heading">{{ $panelTitle }}</div>
+                    <div class="panel-heading">
+                        {{ $panelTitle }}
+                        @can('isUser')
+                            <div class="pull-right">
+                                <input id="unsubText" class="hidden" value="{{ trans('views\categoryNews.unsubscribe') }}">
+                                <input id="catId" class="hidden" value="{{ $catId }}">
 
-                    <div class="panel-body container">
+                                <button id="subscribe" class="btn btn-xs btn-danger {{ $subbed == 0? '': 'hidden' }}">{{ trans('views\categoryNews.subscribe') }}</button>
+
+                                <button id="unsubscribe" class="btn btn-xs btn-success {{ $subbed == 1? '': 'hidden' }}">{{ trans('views\categoryNews.subscribed') }}</button>
+
+                            </div>
+                        @endcan
+                    </div>
+
+                    <div class="panel-body container-fluid">
                         @foreach($mainNews as $news)
                             <div class="row">
-                                <div class="container-fluid col-lg-7">
+                                <div class="container col-lg-12">
                                     <div class="panel panel-default categoryPanel">
-                                        <div class="panel-heading mainNewsHead"><a href="{{ URL::route('subcategory', $news[0]->subcategory_name) }}">{{ $news[0]->subcategory }}</a></div>
+                                        <div class="panel-heading mainNewsHead">
+                                            <a href="{{ URL::route('subcategory', $news[0]->subcategory_name) }}">{{ $news[0]->subcategory }}</a>
+                                        </div>
                                         <div class="panel-body container">
                                             <div class="row">
                                                 @foreach($news as $new)
@@ -88,4 +103,5 @@
 @endsection
 
 @section('scripts')
+    <script type="text/javascript" src="{{ URL::asset('js/subscribe.js') }}"></script>
 @endsection

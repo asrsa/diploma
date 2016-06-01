@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Subscription;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -134,6 +135,48 @@ class AccountController extends Controller
                     'user' => $comment->user
                 ]);
             }
+        }
+    }
+
+    public function ajaxSubscribe(Request $request) {
+        if($request->ajax()) {
+            $user = Auth::user();
+            $catId = intval($request->input('cat'));
+            $subVal = intval($request->input('sub'));
+
+            $sub = Subscription::where('user_id', '=', $user->id)
+                ->where('category_id', '=', $catId)
+                ->first();
+
+            if($sub == null) {
+                $sub = new Subscription();
+                $sub->user_id = $user->id;
+                $sub->category_id = $catId;
+                $sub->subscribed = $subVal;
+
+                $save = $sub->save();
+
+                if($save) {
+                    $result = array('success');
+                }
+                else {
+                    $result = array('fail');
+                }
+            }
+            else {
+                $sub->subscribed = $subVal;
+                $save = $sub->save();
+
+                if($save) {
+                    $result = array('success');
+                }
+                else {
+                    $result = array('fail');
+                }
+            }
+
+
+            return response()->json($result);
         }
     }
 }
