@@ -136,20 +136,4 @@ class AccountController extends Controller
             }
         }
     }
-
-    //test!!!!
-    public function sendQueuedMail(Request $request) {
-        $user = $request->user();
-        $email = $user->email;
-
-        for($i=0; $i<5; $i++) {
-            Mail::queue('emails.subscription', [], function ($message) use ($email, $user) {
-                $message
-                    ->to($email, $user->firstName)
-                    ->subject('Queue test');
-            });
-        }
-
-        echo "Mail has been queued!";
-    }
 }
