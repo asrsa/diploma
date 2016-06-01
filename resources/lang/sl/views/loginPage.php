@@ -13,4 +13,6 @@ return [
     'password'  => 'Geslo',
     'remember'  => 'Zapomni si',
     'forgottenPassword'  => 'Pozabljeno geslo',
+    'resendActivation' => 'Ponovno pošlji aktivacijski email.',
+    'activationSent' => 'Email za aktivacijo poslan.',
 ];

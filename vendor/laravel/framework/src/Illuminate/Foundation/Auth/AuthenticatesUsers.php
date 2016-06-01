@@ -204,6 +204,7 @@ trait AuthenticatesUsers
                 ->withCookie(cookie(Config::get('constants.REMEMBER_COOKIE_NAME'), $this->remember, Config::get('constants.REMEMBER_COOKIE_MINUTES')))
                 ->withErrors([
                     'active' => $this->getNonActiveMessage(),
+                    'emailLink'  => $request->input('email'),
                 ]);
         }
         else {
@@ -211,6 +212,7 @@ trait AuthenticatesUsers
                 ->withInput($request->only($this->loginUsername(), 'remember'))
                 ->withErrors([
                     'active' => $this->getNonActiveMessage(),
+                    'emailLink'  => $request->input('email'),
                 ]);
         }
     }

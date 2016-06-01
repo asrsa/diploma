@@ -70,8 +70,9 @@ trait RegistersUsers
         $email  = $request->email;
         $name   = $request->firstName;
         $code   = User::where('email', $email)->first()->activate_token;
+        $user = User::where('email', $email)->first();
 
-        $this->sendActivation($email, $name, $code);
+        $this->sendActivation($user);
 
         return redirect(Config::get('paths.PATH_ROOT'))->withErrors(['success' => 'Registracija uspešna!']);
     }

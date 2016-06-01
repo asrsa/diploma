@@ -13,6 +13,8 @@
 
 //user activate
 Route::get('account/activate/{activationCode}', 'Auth\AuthController@activate');
+//resend activation
+Route::get('account/resend/activate/{email}', 'Auth\AuthController@resendActivation')->name('resendActivation');
 
 //author activate
 Route::get('/author/activate/{activationCode}', 'Auth\AuthController@activateAuthor');
@@ -47,8 +49,6 @@ Route::group(['middlewareGroups' => ['web']], function() {
     //Route::get('/account', 'AccountController@index')->name('account');
     Route::get('/avatar/change', 'AccountController@avatarChangeGet')->name('changeAvatar');
     Route::post('/avatar/change', 'AccountController@avatarChange');
-//    Route::get('/account/password', 'AccountController@showReset')->name('resetPassword');
-//    Route::post('/account/password/reset', 'AccountController@resetPassword');
 
 
     //admin account routes
@@ -64,6 +64,9 @@ Route::group(['middlewareGroups' => ['web']], function() {
     Route::get('/news/edit/{id}', 'AuthorController@editNews')->name('editNews');
     Route::post('/news/edit/{id}', 'AuthorController@editNewsPost')->name('editNewsPost');
     Route::get('/news/delete/{id}', 'AuthorController@deleteNews')->name('deleteNews');
+
+    //queue test route
+    Route::get('/queue/mail', 'AccountController@sendQueuedMail');
 });
 
 //AJAX routes

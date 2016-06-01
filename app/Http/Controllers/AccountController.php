@@ -9,6 +9,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
@@ -134,5 +135,21 @@ class AccountController extends Controller
                 ]);
             }
         }
+    }
+
+    //test!!!!
+    public function sendQueuedMail(Request $request) {
+        $user = $request->user();
+        $email = $user->email;
+
+        for($i=0; $i<5; $i++) {
+            Mail::queue('emails.subscription', [], function ($message) use ($email, $user) {
+                $message
+                    ->to($email, $user->firstName)
+                    ->subject('Queue test');
+            });
+        }
+
+        echo "Mail has been queued!";
     }
 }

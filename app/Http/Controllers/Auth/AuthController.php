@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Jobs\SendUserActivationEmail;
 use App\User;
 use App\Role;
 use Illuminate\Http\Request;
@@ -97,12 +98,14 @@ class AuthController extends Controller
      *
      * @param $activationCode
      */
-    protected function sendActivation($email, $name, $activationCode) {
-        Mail::send('emails.activate', ['activationCode' => $activationCode], function($message) use ($email, $name, $activationCode){
+    protected function sendActivation($user) {
+        /*Mail::send('emails.activate', ['activationCode' => $activationCode], function($message) use ($email, $name, $activationCode){
             $message
                 ->to($email, $name)
                 ->subject(trans('emails\registerMail.activateAccount'));
-        });
+        });*/
+
+        $this->dispatch(new SendUserActivationEmail($user));
     }
 
     /**
@@ -123,6 +126,15 @@ class AuthController extends Controller
         return redirect(Config::get('paths.PATH_ROOT').'login')->withErrors(['success' => trans('errors.account_activated')]);
     }
 
+    public function resendActivation(Request $request, $email) {
+        $user = User::where('email', '=', $email)->first();
+        $name = $user->firstName;
+        $activationCode = $user->activate_code;
+
+        $this->sendActivation($user);
+
+        return redirect('login')->withErrors(['success' => trans('views\loginPage.activationSent')]);
+    }
 
     /**
      * Poskrbi za aktivacijo avtorja

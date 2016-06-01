@@ -17,7 +17,7 @@
                     @if ($errors->has('active'))
                         <div class="alert alert-warning">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <strong>{{ $errors->first('active') }}</strong>
+                            <strong>{{ $errors->first('active') }} <a href="{{ URL::route('resendActivation', $errors->first('emailLink')) }}">{{ trans('views\loginPage.resendActivation') }}</a></strong>
                         </div>
                     @endif
 
