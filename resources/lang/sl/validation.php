@@ -107,6 +107,9 @@ return [
         'email' => [
             'unique' => 'Ta uporabnik je že zaseden',
         ],
+        'birthday' => [
+            'before' => 'Dan rojstva mora biti starejši od :date.'
+        ],
     ],
 
     /*
