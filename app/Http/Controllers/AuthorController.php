@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Events\NewsWasCreated;
 use App\News;
+use Event;
 use App\Subcategory;
 use Illuminate\Http\Request;
 
@@ -52,6 +54,9 @@ class AuthorController extends Controller
         }
 
         $news->save();
+
+        //fire event for subscribers
+        Event::fire(new NewsWasCreated($news));
 
         return Redirect::route('index')->withErrors(['success' => trans('views\authorPage.newsSuccess')]);
     }

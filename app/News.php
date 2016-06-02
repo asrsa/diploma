@@ -239,4 +239,16 @@ class News extends Model
 
         return $news;
     }
+
+    static function getCatForNews($newsId) {
+        $cat = DB::table('news')
+            ->select('categories.*')
+            ->join('subcategories', 'news.subcategory_id', '=', 'subcategories.id')
+            ->join('categories', 'subcategories.category_id', '=', 'categories.id')
+            ->where('news.id', '=', $newsId)
+            ->where('news.deleted', '=', 0)
+            ->first();
+
+        return $cat;
+    }
 }

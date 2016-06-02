@@ -75,7 +75,7 @@ function setFourData(data) {
     var fourWeather = [];
     var tmp = {};
     tmp['tempMorning'] = data['list'][nextDayKey]['main']['temp'];
-    tmp['tempAfternoon'] = data['list'][nextDayKey + 2]['main']['temp'];
+    tmp['tempAfternoon'] = data['list'][nextDayKey + 3]['main']['temp'];
     tmp['date'] = data['list'][nextDayKey]['dt_txt'];
     tmp['icon'] = data['list'][nextDayKey]['weather'][0]['icon'];
     fourWeather.push(tmp);
@@ -83,9 +83,9 @@ function setFourData(data) {
     for (i = 0; i < 3; i++) {
         var tmp = {};
         tmp['tempMorning'] = data['list'][nextDayKey + 8]['main']['temp'];
-        tmp['tempAfternoon'] = data['list'][nextDayKey + 8 + 2]['main']['temp'];
+        tmp['tempAfternoon'] = data['list'][nextDayKey + 8 + 3]['main']['temp'];
         tmp['date'] = data['list'][nextDayKey + 8]['dt_txt'];
-        tmp['icon'] = data['list'][nextDayKey + 8 + 1]['weather'][0]['icon'];
+        tmp['icon'] = data['list'][nextDayKey + 8 + 2]['weather'][0]['icon'];
         fourWeather.push(tmp);
         nextDayKey += 8;
     }
@@ -109,7 +109,7 @@ function minutesPassed(minutes) {
 
 function getNextMidday() {
     var currTime = new Date();
-    currTime.setHours(9);
+    currTime.setHours(6);
     currTime.setMinutes(0);
     currTime.setSeconds(0);
     currTime.setMilliseconds(0);
@@ -153,19 +153,19 @@ function setFourWeather() {
 function getDaySlo(day) {
     switch(day) {
         case 0:
-            return 'Nedelja';
+            return 'Ned';
         case 1:
-            return 'Ponedeljek';
+            return 'Pon';
         case 2:
-            return 'Torek';
+            return 'Tor';
         case 3:
-            return 'Sreda';
+            return 'Sre';
         case 4:
-            return 'Četrtek';
+            return 'Čet';
         case 5:
-            return 'Petek';
+            return 'Pet';
         case 6:
-            return 'Sobota';
+            return 'Sob';
     }
 }
 

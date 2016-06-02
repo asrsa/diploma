@@ -5,9 +5,9 @@
 </head>
 
 <body>
-<h1>Test queue mail</h1>
+<h1>{{ $newsTitle }}</h1>
 <p>
-    <a href="{{ URL::route('index') }}">To je link za na stran</a>
+    <a href="{{ URL::route('individualNews', $newsId) }}" >{{ trans('emails\subscriptions.visitNews') }}</a>
 </p>
 </body>
 </html>
