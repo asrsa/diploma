@@ -73,9 +73,9 @@
             <div class="col-md-2">
                 <div class="panel panel-default catPanels">
                     <div class="panel-heading">{{ trans('views\categoryNews.newNews') }}</div>
-                        <div class="panel-body container col-lg-offset-1">
+                        <div class="panel-body container col-lg-12 sidebarPanel">
                             @foreach($newNews as $news)
-                                <div class="row sidebarRow">
+                                <div class="row">
                                     <a href="{{ URL::route('individualNews', $news->id) }}" class="sidebarLink sidebarImg"><img src="{{ $news->image }}" class="sidebarImage"></a>
                                     <a href="{{ URL::route('individualNews', $news->id) }}" class="sidebarLink sidebarLinkTitle"><p class="sidebarTitle">{{ $news->title }}</p></a>
                                 </div>

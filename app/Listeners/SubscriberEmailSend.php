@@ -25,7 +25,7 @@ class SubscriberEmailSend implements ShouldQueue
     }
 
     /**
-     * Handle the event.
+     * Send emails to all subscribed users for this news' category
      *
      * @param  NewsWasCreated  $event
      * @return void
