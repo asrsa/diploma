@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\URL;
 class NewsController extends Controller
 {
     public function __construct() {
-        //$this->middleware('web');
+        $this->middleware('web');
     }
 
     public function index() {
@@ -81,16 +81,20 @@ class NewsController extends Controller
             'createdBy' => $createdBy
         );
 
-        //$this->setRecentlyViewed($request, $newsId);
+        $this->setRecentlyViewed($request, $newsId);
 
         return view('news.individualNews', $data);
     }
 
     public function setRecentlyViewed(Request $request, $newsId) {
-        var_dump($request->session()->get('recent'));
+        $this->pushToRecent($newsId);
+    }
 
-        $request->session()->put('recent', array($newsId));
-        dd($request->session()->all());
+    public function pushToRecent($newsId) {
+        //TODO
+        $recent = session()->get('recent', []);
+        array_push($recent, $newsId);
+        session()->put('recent', $recent);
     }
 
     public function deleteComment(Request $request) {
