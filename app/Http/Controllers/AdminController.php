@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Mail;
 class AdminController extends Controller
 {
     public function __construct() {
-        $this->middleware(['web', 'auth', 'admin']);
+        $this->middleware(['', 'auth', 'admin']);
     }
 
     public function index() {

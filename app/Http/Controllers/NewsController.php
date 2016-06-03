@@ -16,12 +16,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
 
 class NewsController extends Controller
 {
     public function __construct() {
-        $this->middleware('web');
+        //$this->middleware('web');
     }
 
     public function index() {
@@ -32,7 +33,7 @@ class NewsController extends Controller
         return view('news.news', ['news' => $news, 'hotNews' => $hotNews]);
     }
 
-    public function showNews($newsId) {
+    public function showNews(Request $request, $newsId) {
         $news = News::where('id', $newsId)
             ->where('deleted', '=', 0)
             ->firstOrFail();
@@ -80,7 +81,16 @@ class NewsController extends Controller
             'createdBy' => $createdBy
         );
 
+        //$this->setRecentlyViewed($request, $newsId);
+
         return view('news.individualNews', $data);
+    }
+
+    public function setRecentlyViewed(Request $request, $newsId) {
+        var_dump($request->session()->get('recent'));
+
+        $request->session()->put('recent', array($newsId));
+        dd($request->session()->all());
     }
 
     public function deleteComment(Request $request) {

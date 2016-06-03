@@ -72,34 +72,38 @@
                 </div>
             </div>
 
-            <div class="col-lg-2" id="sidebar">
-                <div class="panel panel-default">
-                    <div class="panel-heading">{{ trans('views\welcomePage.weather') }}</div>
-                    <div class="panel-body container-fluid">
 
-                            <div id="currWeather">
+            <div class="col-lg-2">
+                <div class="row">
+                    {{--WEATHER--}}
+                    <div class="col-lg-12" id="sidebar">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">{{ trans('views\welcomePage.weather') }}</div>
+                            <div class="panel-body container-fluid">
 
-                            </div>
-                            <table class="table table-condensed" id="fourWeather">
+                                    <div id="currWeather">
 
-                            </table>
+                                    </div>
+                                    <table class="table table-condensed" id="fourWeather">
+
+                                    </table>
+                                </div>
+
                         </div>
+                    </div>
 
+                    <div class="col-lg-12" id="sidebar2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">{{ trans('views\welcomePage.weather') }}</div>
+                            <div class="panel-body container-fluid">
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
 
-        {{--<div class="row">--}}
-            {{--<div class="col-lg-2" id="sidebar">--}}
-                {{--<div class="panel panel-default">--}}
-                    {{--<div class="panel-heading">{{ trans('views\welcomePage.weather') }}</div>--}}
-                    {{--<div class="panel-body container-fluid">--}}
-                    {{--</div>--}}
-
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
     </div>
 @endsection
 
