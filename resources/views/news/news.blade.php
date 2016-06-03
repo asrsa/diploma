@@ -48,7 +48,7 @@
                     <div class="panel panel-default newsContainer">
                         <div class="panel-heading">{{trans('views\welcomePage.welcome')}}</div>
 
-                        <div class="panel-body container-fluid">
+                        <div class="panel-body container-fluid" style="padding-bottom: 10px">
                             @foreach(array_chunk($news->all(), 2) as $row)
                                 <div class="row">
                                     @foreach($row as $new)
@@ -87,11 +87,19 @@
 
                 </div>
             </div>
-            </div>
 
-        {{--</div>--}}
+        </div>
 
         {{--<div class="row">--}}
+            {{--<div class="col-lg-2" id="sidebar">--}}
+                {{--<div class="panel panel-default">--}}
+                    {{--<div class="panel-heading">{{ trans('views\welcomePage.weather') }}</div>--}}
+                    {{--<div class="panel-body container-fluid">--}}
+                    {{--</div>--}}
+
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </div>
 @endsection
 

@@ -46,6 +46,7 @@
 
 .bot {
     position: absolute;
+    height: 55px;
     bottom: 0px;
 }
 
@@ -67,6 +68,7 @@
 .curr {
     font-size: 50px;
     padding-bottom: 10px;
+    padding-top: 15px;
 }
 
 #fourWeather {
