@@ -193,7 +193,7 @@ class NewsController extends Controller
                 $mainNews[$subName] = $news;
             }
         }
-
+        $subbed = -1;
         if(Auth::check()) {
             $subbed = $this->checkIfSubbed($catId);
         }
