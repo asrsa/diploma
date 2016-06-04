@@ -203,7 +203,7 @@
                                                     @endif
                                                 </div>
                                             </div>
-                                            @can('isLoggedUser', $comment)
+                                            @can('isLoggedUserAndAdmin', $comment)
                                             <div class="pull-right deleteComment" style="width: 50px;">
                                                 <div id="deleteClick">
                                                     {{--                                                        <a href="{{ URL::route('deleteComment') .'?cid='.$comment->id}}" data-toggle="deleteComment" title="{{ trans('views\individualNews.deleteComment') }}"><i class="fa fa-btn fa-close"></i></a>--}}

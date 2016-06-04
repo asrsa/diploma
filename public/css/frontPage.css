@@ -81,5 +81,6 @@
 
 .recentNews {
     padding-left: 20px;
+    display: inline-block;
     color: #000000;
 }

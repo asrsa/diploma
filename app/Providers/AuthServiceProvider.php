@@ -43,6 +43,15 @@ class AuthServiceProvider extends ServiceProvider
             if($user->id === $comment->user_id)
                 return true;
             else if($user->isAdmin())
+                return false;
+            else
+                return false;
+        });
+
+        $gate->define('isLoggedUserAndAdmin', function($user, $comment){
+            if($user->id === $comment->user_id)
+                return true;
+            else if($user->isAdmin())
                 return true;
             else
                 return false;
