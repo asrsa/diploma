@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\URL;
 class NewsController extends Controller
 {
     public function __construct() {
-        $this->middleware('web');
+        //$this->middleware('web');
     }
 
     public function index() {
@@ -30,7 +30,14 @@ class NewsController extends Controller
 
         $hotNews = News::getHotNews(3);
 
-        return view('news.news', ['news' => $news, 'hotNews' => $hotNews]);
+        $recentSession = session()->get('recent');
+        $recentNews = array();
+
+        foreach($recentSession as $key => $recent) {
+            $recentNews[$key] = News::find($recent);
+        }
+
+        return view('news.news', ['news' => $news, 'hotNews' => $hotNews, 'recentNews' => $recentNews]);
     }
 
     public function showNews(Request $request, $newsId) {
@@ -91,9 +98,37 @@ class NewsController extends Controller
     }
 
     public function pushToRecent($newsId) {
-        //TODO
+        $set = true;
+
         $recent = session()->get('recent', []);
-        array_push($recent, $newsId);
+
+        if(count($recent) >= 5) {
+            foreach($recent as $key => $el) {
+                if($el == $newsId) {
+                    unset($recent[$key]);
+                    array_unshift($recent, $newsId);
+                    $set = false;
+                }
+            }
+            if($set) {
+                array_pop($recent);
+                array_unshift($recent, $newsId);
+            }
+        }
+        else {
+            foreach($recent as $key => $el) {
+                if($el == $newsId) {
+                    unset($recent[$key]);
+                    array_unshift($recent, $newsId);
+                    $set = false;
+                }
+            }
+
+            if($set) {
+                array_unshift($recent, $newsId);
+            }
+        }
+
         session()->put('recent', $recent);
     }
 

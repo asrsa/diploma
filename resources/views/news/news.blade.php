@@ -91,15 +91,25 @@
 
                         </div>
                     </div>
-
-                    <div class="col-lg-12" id="sidebar2">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">{{ trans('views\welcomePage.weather') }}</div>
-                            <div class="panel-body container-fluid">
+                    {{--RECENT NEWS--}}
+                    @if(isset($recentNews))
+                        <div class="col-lg-12" id="sidebar2">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">{{ trans('views\welcomePage.recentNews') }}</div>
+                                <div class="panel-body container-fluid">
+                                    @foreach($recentNews as $news)
+                                        <div class="row recentRow">
+                                            <a href="{{ URL::route('individualNews', $news->id) }}" class="recentNews">
+                                                <span>
+                                                    {{ $news->title }}
+                                                </span>
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
-
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>

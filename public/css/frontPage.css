@@ -74,3 +74,12 @@
 #fourWeather {
     font-size: 13px;
 }
+
+.recentRow {
+    padding-bottom: 10px;
+}
+
+.recentNews {
+    padding-left: 20px;
+    color: #000000;
+}

@@ -11,4 +11,5 @@ return [
     'welcome'   => 'Novice',
     'hotNews' => 'Vroče novice',
     'weather' => 'Vreme',
+    'recentNews' => 'Nedavno obiskano',
 ];
