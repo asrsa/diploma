@@ -5,11 +5,10 @@ return [
     /*
     |--------------------------------------------------------------------------
     | Sporocila uporabljena v viewih
-    | ENGLISH
     |--------------------------------------------------------------------------
     */
 
-    'reset'     => 'Reset password',
+    'reset'     => 'Change password',
     'email'     => 'E-mail',
     'password'  => 'Password',
     'password2' => 'Confirm password',

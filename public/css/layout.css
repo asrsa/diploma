@@ -67,3 +67,11 @@ body {
 .subnav-selected > a {
     text-decoration: underline;
 }
+
+.localeMenu {
+    min-width: 50px !important;
+}
+
+.localeMenu > li {
+    padding: 0px !important;
+}

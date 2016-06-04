@@ -8,10 +8,14 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'title'   => 'User settings',
-    'update_avatar' => 'Change avatar.',
+    'title'   => 'Account settings',
+    'update_avatar' => 'Change avatar',
     'avatarChanged' => 'Avatar was changed.',
     'resetPasswordLink' => 'Change password',
-    'passwordResetSuccess' => 'Password was changed successfully',
+    'passwordResetSuccess' => 'Password was changed successfully.',
     'back'  => 'Back',
+    'browseImage' => 'Choose image',
+    'imageInput' => 'Image',
+    'changeAvatar' => 'Change avatar',
+    'changeAvatarSubmit' => 'Change',
 ];

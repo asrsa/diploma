@@ -10,5 +10,5 @@ return [
 
     'reset' => 'Reset password',
     'email' => 'E-mail',
-    'send'  => 'Send e-mail',
+    'send'  => 'Reset',
 ];

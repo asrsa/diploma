@@ -74,3 +74,8 @@ Route::get('/ajax/subcategory', 'AuthorController@getSubcategories');
 Route::post('/ajax/post/comment', 'AccountController@postComment')->name('postComment');
 Route::get('/ajax/search/news', 'AuthorController@ajaxSearchNews');
 Route::get('/ajax/subscribe/cat', 'AccountController@ajaxSubscribe');
+
+Route::get('locale/{locale}', function ($locale) {
+    session()->put('locale', $locale);
+    return back();
+})->name('setLocale');

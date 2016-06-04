@@ -8,8 +8,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'welcome'   => 'News',
-    'hotNews' => 'Hot news',
-    'weather' => 'Weather',
-    'recentNews' => 'Recently visited',
+    'searchPage' => 'Search results',
+    'noResult' => 'Search yielded no results.',
+    'listOfCats' => 'Search results categories',
 ];

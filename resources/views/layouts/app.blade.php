@@ -54,6 +54,30 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            @if(session()->get('locale') == null)
+                                <img src="{{ URL::asset('locales/sl.png') }}">
+                            @elseif(session()->get('locale') == 'sl')
+                                <img src="{{ URL::asset('locales/sl.png') }}">
+                            @elseif(session()->get('locale') == 'en')
+                                <img src="{{ URL::asset('locales/en.png') }}">
+                            @endif
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu localeMenu">
+                            <?php
+                                $locales = array('sl', 'en');
+                                $sess = session()->get('locale') == null? 'sl': session()->get('locale');
+                            ?>
+                            @foreach($locales as $locale)
+                                @if($sess != $locale)
+                                    <li><a href="{{ URL::route('setLocale', $locale) }}"><img src="{{ URL::asset('locales/' . $locale . '.png') }}"></a></li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </li>
+
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">{{trans('views\layoutPage.login')}}</a></li>
                         <li><a href="{{ url('/register') }}">{{trans('views\layoutPage.register')}}</a></li>

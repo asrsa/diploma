@@ -76,6 +76,7 @@
             <div class="col-lg-2">
                 <div class="row">
                     {{--WEATHER--}}
+                    <input id="locale" class="hidden" value="{{ session()->get('locale') }}">
                     <div class="col-lg-12" id="sidebar">
                         <div class="panel panel-default">
                             <div class="panel-heading">{{ trans('views\welcomePage.weather') }}</div>

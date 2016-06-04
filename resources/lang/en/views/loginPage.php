@@ -5,13 +5,14 @@ return [
     /*
     |--------------------------------------------------------------------------
     | Sporocila uporabljena v viewih
-    | ENGLISH
     |--------------------------------------------------------------------------
     */
 
     'login'     => 'Login',
     'email'     => 'E-mail',
     'password'  => 'Password',
-    'remember'  => 'Remember me',
+    'remember'  => 'Remember',
     'forgottenPassword'  => 'Forgotten password',
+    'resendActivation' => 'Resend activation mail.',
+    'activationSent' => 'Activation mail sent.',
 ];

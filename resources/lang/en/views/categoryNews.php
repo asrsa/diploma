@@ -8,8 +8,8 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'welcome'   => 'News',
-    'hotNews' => 'Hot news',
-    'weather' => 'Weather',
-    'recentNews' => 'Recently visited',
+    'newNews' => 'New news',
+    'subscribe' => 'Subscribe',
+    'subscribed' => 'Subscribed',
+    'unsubscribe' => 'Unsubscribe',
 ];
