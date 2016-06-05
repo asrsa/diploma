@@ -5,9 +5,10 @@
 </head>
 
 <body>
-<h1>{{ $newsTitle }}</h1>
+<h1>{{ trans('emails\subscriptions.emailTitle') . $categoryName }}</h1>
 <p>
-    <a href="{{ URL::route('individualNews', $newsId) }}" >{{ trans('emails\subscriptions.visitNews') }}</a>
+    {{ trans('emails\subscriptions.visitNews') }}
+    <a href="{{ URL::route('individualNews', $newsId) }}" >{{ $newsTitle }}</a>
 </p>
 </body>
 </html>
