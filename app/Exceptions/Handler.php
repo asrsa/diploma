@@ -46,6 +46,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        if($e->getStatusCode() == 404) {
+            return Response::view('errors.404');
+        }
+
         if($e instanceof ModelNotFoundException) {
             return Response::view('errors.503');
         }
