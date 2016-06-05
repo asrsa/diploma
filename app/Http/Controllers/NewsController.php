@@ -34,8 +34,10 @@ class NewsController extends Controller
         $recentSession = session()->get('recent');
         $recentNews = array();
 
-        foreach($recentSession as $key => $recent) {
-            $recentNews[$key] = News::find($recent);
+        if($recentSession != null) {
+            foreach($recentSession as $key => $recent) {
+                $recentNews[$key] = News::find($recent);
+            }
         }
 
         return view('news.news', ['news' => $news, 'hotNews' => $hotNews, 'recentNews' => $recentNews]);

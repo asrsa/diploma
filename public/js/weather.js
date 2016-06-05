@@ -153,25 +153,7 @@ function setFourWeather() {
 function getDaySlo(day) {
     var locale = $('#locale').val();
 
-    if(locale == 'sl') {
-        switch (day) {
-            case 0:
-                return 'Ned';
-            case 1:
-                return 'Pon';
-            case 2:
-                return 'Tor';
-            case 3:
-                return 'Sre';
-            case 4:
-                return 'Čet';
-            case 5:
-                return 'Pet';
-            case 6:
-                return 'Sob';
-        }
-    }
-    else if(locale == 'en') {
+    if(locale == 'en') {
         switch (day) {
             case 0:
                 return 'Sun';
@@ -187,6 +169,24 @@ function getDaySlo(day) {
                 return 'Fri';
             case 6:
                 return 'Sat';
+        }
+    }
+    else {
+        switch (day) {
+            case 0:
+                return 'Ned';
+            case 1:
+                return 'Pon';
+            case 2:
+                return 'Tor';
+            case 3:
+                return 'Sre';
+            case 4:
+                return 'Čet';
+            case 5:
+                return 'Pet';
+            case 6:
+                return 'Sob';
         }
     }
 }

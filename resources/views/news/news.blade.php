@@ -93,7 +93,7 @@
                         </div>
                     </div>
                     {{--RECENT NEWS--}}
-                    @if(isset($recentNews))
+                    @if(count($recentNews) > 0)
                         <div class="col-lg-12" id="sidebar2">
                             <div class="panel panel-default">
                                 <div class="panel-heading">{{ trans('views\welcomePage.recentNews') }}</div>
