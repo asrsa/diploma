@@ -17,7 +17,7 @@ class UserMiddleware
      */
     public function handle($request, Closure $next)
     {
-        //only user can access
+        //vstop uporabnikom
         if(!$request->user()->isUser()) {
             return redirect(Config::get('paths.PATH_ROOT'))->withErrors(['error' => trans('errors.unathourized')]);
         }

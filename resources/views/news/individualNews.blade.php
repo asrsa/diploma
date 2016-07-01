@@ -125,9 +125,9 @@
                                 <i class="fa fa-btn fa-refresh"></i>{{trans('views\individualNews.hideComments')}}
                             </button>
                             @can('isUser')
-                                <button id="postComments" type="button" class="btn btn-default col-md-6" style="width:150px;">
-                                    <i class="fa fa-btn fa-refresh"></i>{{trans('views\individualNews.postComment')}}
-                                </button>
+                            <button id="postComments" type="button" class="btn btn-default col-md-6" style="width:150px;">
+                                <i class="fa fa-btn fa-refresh"></i>{{trans('views\individualNews.postComment')}}
+                            </button>
                             @endcan
                         </div>
 

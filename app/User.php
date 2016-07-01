@@ -35,7 +35,7 @@ class User extends Authenticatable
     public function isAuthor() {
         return $this->role->id == Config::get('constants.ROLE_AUTHOR');
     }
-
+    //datoteka: model User
     public function isUser() {
         return $this->role->id == Config::get('constants.ROLE_USER');
     }
