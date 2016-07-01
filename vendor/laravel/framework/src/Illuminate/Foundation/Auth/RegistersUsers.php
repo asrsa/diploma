@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 
-trait   RegistersUsers
+trait  RegistersUsers
 {
     use RedirectsUsers;
 

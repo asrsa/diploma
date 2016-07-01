@@ -85,7 +85,7 @@
                                 <br/>
                                     <div class="">
                                         <button type="submit" class="btn btn-primary">
-                                            <i class="fa fa-btn fa-refresh"></i>{{trans('views\authorPage.createNewsSubmit')}}
+                                            <i class="fa fa-btn fa-plus"></i>{{trans('views\authorPage.createNewsSubmit')}}
                                         </button>
                                     </div>
                             </form>
